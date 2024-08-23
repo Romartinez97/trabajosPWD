@@ -11,7 +11,7 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>-->
     <script src="./assets/jquery-3.7.1.min.js"></script>
     <script src="./assets/jquery.validate.min.js"></script>
-    <script src="./assets/validacion_jquery_ej3.js"></script>
+    <script src="./assets/validacion_jquery.js"></script>
     <title>Ejercicio 3</title>
 </head>
 <body>

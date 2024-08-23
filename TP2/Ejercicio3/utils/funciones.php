@@ -1,19 +1,15 @@
 <?php
 
-function dataSubmitted()
-{
-    $datos = [];
-    if (!empty($_GET)) {
-        $datos = $_GET;
-    } elseif (!empty($_POST)) {
-        $datos = $_POST;
+//FUNCION GLOBAL PARA CUALQUIER FORM
+function datos_submitted(){
+    $datos=[];
+    
+    //suponiendo que clave seria el name="" del form y valor lo que ingrese el usuario
+    foreach($_GET as $clave => $valor){ 
+        $datos[$clave] = $valor;
     }
-
-    foreach ($datos as $indice => $valor) {
-        if ($valor === "") {
-            $datos[$indice] = null;
-        }
+    foreach($_POST as $clave => $valor){
+        $datos[$clave] = $valor;
     }
-
     return $datos;
 }
