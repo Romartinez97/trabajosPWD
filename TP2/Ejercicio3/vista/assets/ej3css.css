@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(85, 85, 85);
+    display: flex;
+    justify-content: center;
+}
+form, .login{
+    background-color: rgb(182, 182, 182);
+    min-height: 300px;
+    width: 500px;
+    margin: 6em;
+    padding: 1em;
+    border-radius: 10px;
+}
+.login button{
+    text-decoration: none;
+    position: relative;
+    top: 9em;
+}
+a{
+    text-decoration: none;
+}
