@@ -27,38 +27,38 @@ $peliculaIngresada = new Pelicula($datos);
         <p class="display-6">La película introducida es:</p>
         <div class="container">
             <p><strong>Título:</strong>
-                <?php echo $peliculaIngresada->getTitulo() ?>;
+                <?php echo $peliculaIngresada->getTitulo() ?>
             </p>
             <p><strong>Actores:</strong>
-                <?php echo $peliculaIngresada->getActores() ?>;
+                <?php echo $peliculaIngresada->getActores() ?>
             </p>
             <p><strong>Director: </strong>
-                <?php echo $peliculaIngresada->getDirector() ?>;
+                <?php echo $peliculaIngresada->getDirector() ?>
             </p>
             <p><strong>Guión: </strong>
-                <?php echo $peliculaIngresada->getGuion() ?>;
+                <?php echo $peliculaIngresada->getGuion() ?>
             </p>
             <p><strong>Producción: </strong>
-                <?php echo $peliculaIngresada->getProduccion() ?>;
+                <?php echo $peliculaIngresada->getProduccion() ?>
             </p>
             <p><strong>Año: </strong>
-                <?php echo $peliculaIngresada->getAnio() ?>;
+                <?php echo $peliculaIngresada->getAnio() ?>
             </p>
             <p><strong>Nacionalidad: </strong>
-                <?php echo $peliculaIngresada->getNacionalidad() ?>;
+                <?php echo $peliculaIngresada->getNacionalidad() ?>
             </p>
             <p><strong>Género: </strong>
-                <?php echo $peliculaIngresada->getGenero() ?>;
+                <?php echo $peliculaIngresada->getGenero() ?>
             </p>
             <p>
                 <strong>Duración: </strong>
-                <?php echo $peliculaIngresada->getDuracion() ?>;
+                <?php echo $peliculaIngresada->getDuracion() ?>
             </p>
             <p><strong>Restricción de edad: </strong>
-                <?php echo $peliculaIngresada->getRestriccion() ?>;
+                <?php echo $peliculaIngresada->getRestriccion() ?>
             </p>
             <p><strong>Sinopsis: </strong>
-                <?php echo $peliculaIngresada->getSinopsis() ?>;
+                <?php echo $peliculaIngresada->getSinopsis() ?>
             </p>
         </div>
         <div class="d-flex justify-content-center">
