@@ -7,9 +7,9 @@
     <title>TP2 - Ejercicio 4</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-    <script src="../utils/validacion.js"></script>
+    <script src="./assets/jquery.min.js"></script>
+    <script src="./assets/jquery.validate.min.js"></script>
+    <script src="./assets/validacion.js"></script>
 
     <style>
         .form-check {
@@ -34,6 +34,7 @@
 <body class="container-sm text-light bg-dark">
     <p class="display-5">Cinem@s</p>
     <form action="../controller/indexController.php" method="post" id="formPelicula">
+        <!--OBS: se puede usar una table-->
         <div class="row">
             <div class="col">
                 <label for="titulo" class="form-label">Título:</label>
@@ -61,7 +62,7 @@
             </div>
             <div class="col">
                 <label for="anio" class="form-label">Año:</label>
-                <input type="text" class="form-control" name="anio" id="anio" required>
+                <input type="number" class="form-control" name="anio" id="anio" required>
             </div>
         </div>
         <div class="row">
@@ -85,7 +86,7 @@
         <div class="row">
             <div class="col">
                 <label for="duracion" class="form-label">Duración:</label>
-                <input type="text" class="form-control" name="duracion" id="duracion" required>
+                <input type="number" class="form-control" name="duracion" id="duracion" required>
                 <label class="form-label">(minutos)</label>
             </div>
             <div class="col">
