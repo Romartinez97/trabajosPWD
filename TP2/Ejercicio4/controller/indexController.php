@@ -62,7 +62,7 @@ $peliculaIngresada = new Pelicula($datos);
             </p>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="../view/index.html" class="btn btn-dark btn-block">Volver al formulario</a>
+            <a href="../view/index.php" class="btn btn-dark btn-block">Volver al formulario</a>
         </div>
     </div>
 </body>

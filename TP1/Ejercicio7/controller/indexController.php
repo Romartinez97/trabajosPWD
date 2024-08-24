@@ -22,7 +22,7 @@ $resultado = $operacionObj->realizarOperacion();
         <div>
             <p class="display-6 text-success">Calculadora</p>
             <p class="h4"> <?php echo $resultado; ?></p>
-            <a href="../view/index.html" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>

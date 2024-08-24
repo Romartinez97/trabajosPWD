@@ -22,7 +22,7 @@ $precio = $clienteObj->calcularPrecio();
         <div>
             <p class="display-6 text-success">Cine Cinem@s</p>
             <p class="h4"><?php echo "La entrada cuesta $$precio.\n"; ?></p>
-            <a href="../view/index.html" class="btn btn-primary mt-3">Volver a la calculadora</a>
+            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la calculadora</a>
         </div>
     </div>
 </body>

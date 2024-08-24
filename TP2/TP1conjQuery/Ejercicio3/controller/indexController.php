@@ -32,7 +32,7 @@ $personaObj = new Persona($datos);
             <p>
                 <?php echo "Practico en total ".$personaObj->totalDeportes()." deportes: " . $personaObj->mostrarDeportes() . "."; ?>
             </p>
-            <a href="../view/index.html" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>

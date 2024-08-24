@@ -25,7 +25,7 @@ $numero = new Numero($datos);
             <p class="display-6 text-success">¿Es positivo o negativo?</p>
             <p class="h4">Resultado: </p>
             <p> <?php echo $numero->devolverSigno(); ?> </p>
-            <a href="../view/index.html" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>
