@@ -22,6 +22,8 @@
                     <input class="form-control" name="numIngresado" id="numIngresado" maxlength="20" placeholder="0">
                 </div>
                 <input type="submit" value="Enviar" class="btn btn-success mt-3">
+                <br>
+                <a class="btn btn-info mt-3" href="../../../../index.php">Volver al menú</a>
             </form>
         </div>
     </div>

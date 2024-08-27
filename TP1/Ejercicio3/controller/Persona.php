@@ -78,8 +78,10 @@ class Persona
     {
         $deportes = $this->deportesPracticados;
         $mensaje = "";
-        for ($i = 0; $i < count($deportes); $i++) {
-            $mensaje . "\n* " . $deportes[$i] . "\n";
+        if (!empty($deportes)) {
+            for ($i = 0; $i < count($deportes); $i++) {
+                $mensaje .= "<br>" . ucfirst($deportes[$i]);
+            }
         }
         return $mensaje;
     }
@@ -88,8 +90,10 @@ class Persona
     {
         $deportes = $this->deportesPracticados;
         $cantDeportes = 0;
-        for ($i = 0; $i < count($deportes); $i++) {
-            $cantDeportes++;
+        if (!empty($deportes)) {
+            for ($i = 0; $i < count($deportes); $i++) {
+                $cantDeportes++;
+            }
         }
         return $cantDeportes;
     }

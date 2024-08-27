@@ -30,6 +30,8 @@
           <option value="division">División</option>
         </select>
         <input type="submit" value="Calcular" class="btn btn-success mt-3">
+        <br>
+        <a class="btn btn-info mt-3" href="../../../../index.php">Volver al menú</a>
       </form>
     </div>
   </div>

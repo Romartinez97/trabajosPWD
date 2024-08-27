@@ -15,8 +15,11 @@
             <p class="display-6 text-success">¿Es positivo o negativo?</p>
             <form action="../controller/indexController.php" method="post" name="formNumero">
                 <label class="form-label" for="numIngresado">Ingrese un número:</label>
-                <input class="form-control" name="numIngresado" id="numIngresado" type="number" maxlength="20" placeholder="0" required>
+                <input class="form-control" name="numIngresado" id="numIngresado" type="number" maxlength="20"
+                    placeholder="0" required>
                 <input type="submit" value="Enviar" class="btn btn-success mt-3">
+                <br>
+                <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
             </form>
         </div>
     </div>

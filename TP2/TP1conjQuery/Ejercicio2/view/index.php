@@ -36,6 +36,8 @@
                     <input class="form-control" name="horasViernes" id="horasViernes" placeholder="0">
                 </div>
                 <input type="submit" value="Calcular horas totales" class="btn btn-success mt-3">
+                <br>
+                <a class="btn btn-info mt-3" href="../../../../index.php">Volver al menú</a>
             </form>
         </div>
     </div>

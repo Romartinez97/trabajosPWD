@@ -7,7 +7,6 @@
   <title>TP1 - Ejercicio 3</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../utils/verificacion.js" defer></script>
 
   <style>
     .form-label {
@@ -34,15 +33,18 @@
         <div class="p-2">
           <label class="form-label">Nivel de estudios:</label>
           <div class="form-check">
-            <input class="form-check-input" name="nivelEstudios" id="sinEstudios" type="radio" value="sinEstudios" required>
+            <input class="form-check-input" name="nivelEstudios" id="sinEstudios" type="radio" value="sinEstudios"
+              required>
             <label class="form-check-label" for="sinEstudios">Sin estudios</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" name="nivelEstudios" id="estudiosPrimarios" type="radio" value="estudiosPrimarios">
+            <input class="form-check-input" name="nivelEstudios" id="estudiosPrimarios" type="radio"
+              value="estudiosPrimarios">
             <label class="form-check-label" for="estudiosPrimarios">Estudios primarios</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" name="nivelEstudios" id="estudiosSecundarios" type="radio" value="estudiosSecundarios">
+            <input class="form-check-input" name="nivelEstudios" id="estudiosSecundarios" type="radio"
+              value="estudiosSecundarios">
             <label class="form-check-label" for="estudiosSecundarios">Estudios secundarios</label>
           </div>
         </div>
@@ -84,6 +86,8 @@
         </div>
 
         <input class="btn btn-success mt-3" id="submit" name="submit" type="submit" value="Enviar" />
+        <br>
+        <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
       </form>
     </div>
   </div>

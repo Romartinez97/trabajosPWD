@@ -15,16 +15,23 @@
             <p class="display-6 text-info">Horas de cursada de Programación Web Dinámica</p>
             <form action="../controller/indexController.php" method="get" name="formHorasCursada">
                 <label class="form-label" for="horasLunes">Lunes:</label>
-                <input class="form-control" name="horasLunes" id="horasLunes" type="number" placeholder="0" min="0" max="6" required>
+                <input class="form-control" name="horasLunes" id="horasLunes" type="number" placeholder="0" min="0"
+                    max="6" required>
                 <label class="form-label" for="horasMartes">Martes:</label>
-                <input class="form-control" name="horasMartes" id="horasMartes" type="number" placeholder="0" min="0" max="6" required>
+                <input class="form-control" name="horasMartes" id="horasMartes" type="number" placeholder="0" min="0"
+                    max="6" required>
                 <label class="form-label" for="horasMiercoles">Miércoles:</label>
-                <input class="form-control" name="horasMiercoles" id="horasMiercoles" type="number" placeholder="0" min="0" max="6" required>
+                <input class="form-control" name="horasMiercoles" id="horasMiercoles" type="number" placeholder="0"
+                    min="0" max="6" required>
                 <label class="form-label" for="horasJueves">Jueves:</label>
-                <input class="form-control" name="horasJueves" id="horasJueves" type="number" placeholder="0" min="0" max="6" required>
+                <input class="form-control" name="horasJueves" id="horasJueves" type="number" placeholder="0" min="0"
+                    max="6" required>
                 <label class="form-label" for="horasViernes">Viernes:</label>
-                <input class="form-control" name="horasViernes" id="horasViernes" type="number" placeholder="0" min="0" max="6" required>
+                <input class="form-control" name="horasViernes" id="horasViernes" type="number" placeholder="0" min="0"
+                    max="6" required>
                 <input type="submit" value="Calcular horas totales" class="btn btn-success mt-3">
+                <br>
+                <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
             </form>
         </div>
     </div>

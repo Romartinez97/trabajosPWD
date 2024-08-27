@@ -117,6 +117,8 @@
         <div class="d-flex justify-content-center">
             <input type="submit" class="btn btn-lg bg-success" value="Enviar">
             <input type="reset" class="btn btn-lg bg-secondary" value="Borrar">
+            <br>
+            <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
         </div>
     </form>
 </body>

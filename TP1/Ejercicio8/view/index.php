@@ -26,6 +26,8 @@
                 </div>
                 <input type="submit" value="Calcular precio" class="btn btn-success mt-3">
                 <input type="reset" value="Limpiar formulario" class="btn btn-danger mt-3">
+                <br>
+                <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
             </form>
         </div>
     </div>

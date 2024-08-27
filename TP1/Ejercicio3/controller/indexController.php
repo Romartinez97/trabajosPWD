@@ -30,7 +30,12 @@ $personaObj = new Persona($datos);
                 <?php echo $personaObj->mensajeNivelEstudios() . " y mi sexo es " . $personaObj->getSexo() . "."; ?>
             </p>
             <p>
-                <?php echo "Practico en total ".$personaObj->totalDeportes()." deportes: " . $personaObj->mostrarDeportes() . "."; ?>
+                <?php
+                if ($personaObj->totalDeportes() == 0) {
+                    echo "No practico deportes.";
+                } else {
+                    echo "Practico en total " . $personaObj->totalDeportes() . " deportes: " . $personaObj->mostrarDeportes();
+                } ?>
             </p>
             <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
