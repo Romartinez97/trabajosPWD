@@ -12,7 +12,7 @@ $(document).ready(function () {
   jQuery.validator.addMethod(
     "alfanumerico",
     function (value, element) {
-      return this.optional(element) || /^[\w ]+$/i.test(value);
+      return this.optional(element) || /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ0-9,.\s]+$/i.test(value);
     },
     "Utilice solo caracteres alfanuméricos"
   );
@@ -21,7 +21,7 @@ $(document).ready(function () {
   jQuery.validator.addMethod(
     "lettersonly",
     function (value, element) {
-      return this.optional(element) || /^[a-z ]+$/i.test(value);
+      return this.optional(element) || /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ,.\s]+$/i.test(value);
     },
     "Ingrese solo caracteres alfabéticos"
   );

@@ -6,13 +6,13 @@ include "./Pelicula.php";
 $datos = dataSubmitted();
 $datosImagen = fileSubmitted();
 
-$tipo=$datosImagen['archivo']['type'];
-$tamanio=$datosImagen['archivo']['size'];
+$tipo = $datosImagen['archivo']['type'];
+$tamanio = $datosImagen['archivo']['size'];
 
 $peliculaIngresada = new Pelicula($datos, $datosImagen);
 $imagen = $peliculaIngresada->subirArchivo($tipo, $tamanio);
 
-$dir=$peliculaIngresada->getDir();
+$dir = $peliculaIngresada->getDir();
 
 //$peliculaIngresada->setArrayImagen($_FILES['archivo']);
 
@@ -58,7 +58,7 @@ $dir=$peliculaIngresada->getDir();
                 <?php echo $peliculaIngresada->getNacionalidad() ?>
             </p>
             <p><strong>Género: </strong>
-                <?php echo $peliculaIngresada->getGenero() ?>
+                <?php echo ucfirst($peliculaIngresada->getGenero()) ?>
             </p>
             <p>
                 <strong>Duración: </strong>
@@ -72,11 +72,11 @@ $dir=$peliculaIngresada->getDir();
             </p>
             <p><strong>Imagen de la película: </strong>
                 <?php
-                    if($imagen != 1){
-                        echo "<br><br><p>$imagen</p>";
-                    }else{
-                        echo "<img src='".$dir.$datosImagen['archivo']['name']."'>";
-                    }
+                if ($imagen != 1) {
+                    echo "<br><br><p>$imagen</p>";
+                } else {
+                    echo "<img alt='Imagen de la película' class='.img-thumbnail' src='" . $dir . $datosImagen['archivo']['name'] . "'>";
+                }
 
                 ?>
             </p>

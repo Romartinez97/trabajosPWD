@@ -48,7 +48,7 @@ $peliculaIngresada = new Pelicula($datos);
                 <?php echo $peliculaIngresada->getNacionalidad() ?>
             </p>
             <p><strong>Género: </strong>
-                <?php echo $peliculaIngresada->getGenero() ?>
+                <?php echo ucfirst($peliculaIngresada->getGenero()) ?>
             </p>
             <p>
                 <strong>Duración: </strong>
