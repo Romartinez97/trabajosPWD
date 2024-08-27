@@ -1,13 +1,20 @@
 <?php
 
 include "../utils/funciones.php";
-include "Pelicula.php";
+include "./Pelicula.php";
 
 $datos = dataSubmitted();
 $datosImagen = fileSubmitted();
 
+$tipo=$datosImagen['archivo']['type'];
+$tamanio=$datosImagen['archivo']['size'];
+
 $peliculaIngresada = new Pelicula($datos, $datosImagen);
-$peliculaIngresada->setArrayImagen($_FILES['archivo']);
+$imagen = $peliculaIngresada->subirArchivo($tipo, $tamanio);
+
+$dir=$peliculaIngresada->getDir();
+
+//$peliculaIngresada->setArrayImagen($_FILES['archivo']);
 
 ?>
 
@@ -64,8 +71,14 @@ $peliculaIngresada->setArrayImagen($_FILES['archivo']);
                 <?php echo $peliculaIngresada->getSinopsis() ?>
             </p>
             <p><strong>Imagen de la película: </strong>
-                <img src="<?php echo $peliculaIngresada->verArchivo() ?>" alt="Imagen de la película"
-                    class="img-thumbnail">
+                <?php
+                    if($imagen != 1){
+                        echo "<br><br><p>$imagen</p>";
+                    }else{
+                        echo "<img src='".$dir.$datosImagen['archivo']['name']."'>";
+                    }
+
+                ?>
             </p>
 
         </div>

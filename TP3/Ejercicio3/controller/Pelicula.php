@@ -119,7 +119,7 @@ class Pelicula
 
     public function revisarTipo()
     {
-        $datosImagen = $this->arrayImagen;
+        $datosImagen = $this->getArrayImagen();
         $esValido = false;
         if (($datosImagen['type'] == "image/jpeg") || ($datosImagen['type'] == "image/png")) {
             $esValido = true;
@@ -129,7 +129,7 @@ class Pelicula
 
     public function revisarTamanio()
     {
-        $datosImagen = $this->arrayImagen;
+        $datosImagen = $this->getArrayImagen();
         $esValido = false;
         if ($datosImagen['size'] < 5000000) {
             $esValido = true;
@@ -139,16 +139,17 @@ class Pelicula
 
     public function subirArchivo($tipo, $tamanio)
     {
-        $datosImagen = $this->arrayImagen;
+        $datosImagen = $this->getArrayImagen();
         if ($tipo && $tamanio) {
-            if (!copy($datosImagen["tmp_name"], $this->getDir() . $datosImagen["name"])) {
+            if (!copy($datosImagen['archivo']["tmp_name"], $this->getDir() . $datosImagen['archivo']["name"])) {
                 $mensaje = "ERROR: no se pudo cargar el equipo, intente nuevamente";
             } else {
-                $mensaje = "El archivo se subió correctamente.<br>" .
+                $mensaje = 1;
+                    /*"El archivo se subió correctamente.<br>" .
                     "Nombre del archivo: " . $datosImagen["name"] . "<br>" .
                     "Tipo de archivo: " . $datosImagen["type"] . "<br>" .
                     "Tamaño del archivo: " . round($datosImagen["size"] / 1000, 3) . " kB<br>" .
-                    "Ubicación temporal: " . $datosImagen["tmp_name"] . "<br>";
+                    "Ubicación temporal: " . $datosImagen["tmp_name"] . "<br>";*/
             }
         } elseif ($tipo && !$tamanio) {
             $mensaje = "ERROR: el archivo excede el tamaño permitido (5MB)";
@@ -162,7 +163,7 @@ class Pelicula
 
     public function verArchivo()
     {
-        $datosImagen = $this->arrayImagen;
+        $datosImagen = $this->getArrayImagen();
 
         if (isset($datosImagen["name"])) {
             $ruta = $this->getDir() . $datosImagen["name"];
