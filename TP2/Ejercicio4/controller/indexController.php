@@ -55,7 +55,7 @@ $peliculaIngresada = new Pelicula($datos);
                 <?php echo $peliculaIngresada->getDuracion() ?>
             </p>
             <p><strong>Restricción de edad: </strong>
-                <?php echo $peliculaIngresada->getRestriccion() ?>
+                <?php echo $peliculaIngresada->getMensajeRestriccion() ?>
             </p>
             <p><strong>Sinopsis: </strong>
                 <?php echo $peliculaIngresada->getSinopsis() ?>

@@ -7,10 +7,10 @@
     <title>TP2 - Ejercicio 4</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/jquery.min.js"></script>
-    <script src="./assets/jquery.validate.min.js"></script>
-    <script src="./assets/validacion.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
+    <script src="../utils/validacion.js"></script>
     <style>
         .form-check {
             margin-right: 1rem;
@@ -33,8 +33,7 @@
 
 <body class="container-sm text-light bg-dark">
     <p class="display-5">Cinem@s</p>
-    <form action="../controller/indexController.php" method="post" id="formPelicula">
-        <!--OBS: se puede usar una table-->
+    <form action="../controller/indexController.php" method="post" enctype="multipart/form-data" id="formPelicula">
         <div class="row">
             <div class="col">
                 <label for="titulo" class="form-label">Título:</label>
@@ -85,8 +84,9 @@
         </div>
         <div class="row">
             <div class="col">
-                <label for="duracion" class="form-label">Duración (en minutos):</label>
+                <label for="duracion" class="form-label">Duración:</label>
                 <input type="text" class="form-control" name="duracion" id="duracion">
+                <label class="form-label">(minutos)</label>
             </div>
             <div class="col">
                 <label for="restriccion" class="form-label">Restricciones de edad:</label>
@@ -114,11 +114,18 @@
                 <textarea class="form-control" rows="4" name="sinopsis" id="sinopsis"></textarea>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <label for="archivo">Imagen de la película:</label>
+                <input class="form-control" name="archivo" id="archivo" type="file">
+            </div>
+        </div>
         <div class="d-flex justify-content-center">
             <input type="submit" class="btn btn-lg bg-success" value="Enviar">
             <input type="reset" class="btn btn-lg bg-secondary" value="Borrar">
         </div>
     </form>
+
 </body>
 
 </html>

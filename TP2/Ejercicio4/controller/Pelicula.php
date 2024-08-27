@@ -29,7 +29,7 @@ class Pelicula
         $this->restriccion = $datos["restriccion"];
         $this->sinopsis = $datos["sinopsis"];
     }
-    
+
     public function getTitulo()
     {
         return $this->titulo;
@@ -83,6 +83,19 @@ class Pelicula
     public function getSinopsis()
     {
         return $this->sinopsis;
+    }
+
+    public function getMensajeRestriccion()
+    {
+        $mensaje = "";
+        if ($this->restriccion == "todoPublico") {
+            $mensaje = "Apta para todo público";
+        } elseif ($this->restriccion == "mayores7") {
+            $mensaje = "Apta para mayores de 7 años";
+        } else {
+            $mensaje = "Apta para mayores de 18 años";
+        }
+        return $mensaje;
     }
 
 }
