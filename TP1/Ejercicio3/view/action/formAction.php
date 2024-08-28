@@ -1,7 +1,7 @@
 <?php
 
-include "Persona.php";
-include "../utils/funciones.php";
+include "../../controller/Persona.php";
+include "../../utils/funciones.php";
 
 $datos = dataSubmitted();
 $personaObj = new Persona($datos);
@@ -37,7 +37,7 @@ $personaObj = new Persona($datos);
                     echo "Practico en total " . $personaObj->totalDeportes() . " deportes: " . $personaObj->mostrarDeportes();
                 } ?>
             </p>
-            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <a href="../index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>

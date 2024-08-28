@@ -31,7 +31,7 @@ class Pelicula
         $this->restriccion = $datos["restriccion"];
         $this->sinopsis = $datos["sinopsis"];
         $this->arrayImagen = $datosImagen;
-        $this->dir = "../files/";
+        $this->dir = "../files";
     }
 
     public function getTitulo()
@@ -145,11 +145,6 @@ class Pelicula
                 $mensaje = "ERROR: no se pudo cargar el equipo, intente nuevamente";
             } else {
                 $mensaje = 1;
-                    /*"El archivo se subió correctamente.<br>" .
-                    "Nombre del archivo: " . $datosImagen["name"] . "<br>" .
-                    "Tipo de archivo: " . $datosImagen["type"] . "<br>" .
-                    "Tamaño del archivo: " . round($datosImagen["size"] / 1000, 3) . " kB<br>" .
-                    "Ubicación temporal: " . $datosImagen["tmp_name"] . "<br>";*/
             }
         } elseif ($tipo && !$tamanio) {
             $mensaje = "ERROR: el archivo excede el tamaño permitido (5MB)";

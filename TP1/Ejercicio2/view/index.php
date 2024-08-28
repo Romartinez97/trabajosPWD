@@ -13,7 +13,7 @@
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
             <p class="display-6 text-info">Horas de cursada de Programación Web Dinámica</p>
-            <form action="../controller/indexController.php" method="get" name="formHorasCursada">
+            <form action="action/formAction.php" method="get" name="formHorasCursada">
                 <label class="form-label" for="horasLunes">Lunes:</label>
                 <input class="form-control" name="horasLunes" id="horasLunes" type="number" placeholder="0" min="0"
                     max="6" required>

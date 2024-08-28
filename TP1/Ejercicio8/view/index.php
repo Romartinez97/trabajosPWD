@@ -13,7 +13,7 @@
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div>
             <p class="display-6 text-success">Cine Cinem@s</p>
-            <form action="../controller/indexController.php" method="post">
+            <form action="action/formAction.php" method="post">
                 <label class="form-label" for="edad">Edad:</label>
                 <input class="form-control" name="edad" id="edad" type="number" min="6" max="110" required>
                 <div style="margin: 0.5rem 0;">

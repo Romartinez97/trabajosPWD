@@ -19,7 +19,12 @@ class Persona
         $this->direccion = $datos["direccion"];
         $this->nivelEstudios = $datos["nivelEstudios"];
         $this->sexo = $datos["sexo"];
-        $this->deportesPracticados = $datos["deportes"];
+        if (!empty($datos["deportes"])) {
+            $this->deportesPracticados = $datos["deportes"];
+        } else {
+            $this->deportesPracticados = [];
+        }
+        ;
     }
 
     public function getNombre()
@@ -78,10 +83,8 @@ class Persona
     {
         $deportes = $this->deportesPracticados;
         $mensaje = "";
-        if (!empty($deportes)) {
-            for ($i = 0; $i < count($deportes); $i++) {
-                $mensaje .= "<br>" . ucfirst($deportes[$i]);
-            }
+        for ($i = 0; $i < count($deportes); $i++) {
+            $mensaje .= "<br>" . ucfirst($deportes[$i]);
         }
         return $mensaje;
     }
@@ -90,10 +93,8 @@ class Persona
     {
         $deportes = $this->deportesPracticados;
         $cantDeportes = 0;
-        if (!empty($deportes)) {
-            for ($i = 0; $i < count($deportes); $i++) {
-                $cantDeportes++;
-            }
+        for ($i = 0; $i < count($deportes); $i++) {
+            $cantDeportes++;
         }
         return $cantDeportes;
     }

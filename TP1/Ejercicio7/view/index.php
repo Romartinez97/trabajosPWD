@@ -13,7 +13,7 @@
   <div class="container p-4 my-4 d-flex justify-content-center">
     <div>
       <p class="display-6 text-success">Calculadora</p>
-      <form method="POST" action="../controller/indexController.php">
+      <form method="POST" action="action/formAction.php">
         <label class="form-label" for="numeros">Ingrese dos números:</label>
         <input class="form-control" name="numero1" id="numero1" type="number" placeholder="0" required>
         <input class="form-control" name="numero2" id="numero2" type="number" placeholder="0" required>

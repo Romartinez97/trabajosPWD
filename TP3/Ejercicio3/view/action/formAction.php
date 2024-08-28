@@ -1,7 +1,7 @@
 <?php
 
-include "../utils/funciones.php";
-include "./Pelicula.php";
+include "../../utils/funciones.php";
+include "../../controller/Pelicula.php";
 
 $datos = dataSubmitted();
 $datosImagen = fileSubmitted();
@@ -13,8 +13,6 @@ $peliculaIngresada = new Pelicula($datos, $datosImagen);
 $imagen = $peliculaIngresada->subirArchivo($tipo, $tamanio);
 
 $dir = $peliculaIngresada->getDir();
-
-//$peliculaIngresada->setArrayImagen($_FILES['archivo']);
 
 ?>
 
@@ -83,7 +81,7 @@ $dir = $peliculaIngresada->getDir();
 
         </div>
         <div class="d-flex justify-content-center">
-            <a href="../view/index.php" class="btn btn-dark btn-block">Volver al formulario</a>
+            <a href="../index.php" class="btn btn-dark btn-block">Volver al formulario</a>
         </div>
     </div>
 

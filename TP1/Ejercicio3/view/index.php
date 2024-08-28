@@ -20,7 +20,7 @@
   <div class="container p-4 my-4 d-flex justify-content-center">
     <div>
       <p class="display-6 text-info">Formulario de información personal</p>
-      <form action="../controller/indexController.php" method="post" id="formInfoPersonal">
+      <form action="action/formAction.php" method="post" id="formInfoPersonal">
         <label class="form-label" for="nombre">Nombre: </label>
         <input class="form-control" name="nombre" id="nombre" type="text" maxlength="50" required />
         <label class="form-label" for="apellido">Apellido: </label>

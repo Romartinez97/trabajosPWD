@@ -1,11 +1,11 @@
 <?php
 
-include "Operacion.php";
-include "../utils/funciones.php";
+include "../../controller/Cliente.php";
+include "../../utils/funciones.php";
 
 $datos = dataSubmitted();
-$operacionObj = new Operacion($datos);
-$resultado = $operacionObj->realizarOperacion();
+$clienteObj = new Cliente($datos);
+$precio = $clienteObj->calcularPrecio();
 
 ?>
 
@@ -20,11 +20,13 @@ $resultado = $operacionObj->realizarOperacion();
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div>
-            <p class="display-6 text-success">Calculadora</p>
-            <p class="h4"> <?php echo $resultado; ?></p>
-            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <p class="display-6 text-success">Cine Cinem@s</p>
+            <p class="h4"><?php echo "La entrada cuesta $$precio.\n"; ?></p>
+            <a href="../index.php" class="btn btn-primary mt-3">Volver a la calculadora</a>
         </div>
     </div>
 </body>
+
+
 
 </html>

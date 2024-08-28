@@ -63,6 +63,7 @@ $(document).ready(function () {
                 required: true,
                 number: true,
                 maxlength: 3,
+                min:1,
             },
             restriccion: {
                 required: true,
@@ -83,6 +84,7 @@ $(document).ready(function () {
         messages: {
             duracion: {
                 maxlength: "Ingrese un número de máximo 3 cifras",
+                min: "Ingrese una duración válida (mayor a 0 minutos)",
             },
             sinopsis: {
                 maxlength: "Ingrese un máximo de 300 caracteres",

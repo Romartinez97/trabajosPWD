@@ -1,3 +1,13 @@
+<?php
+
+include "../../utils/funciones.php";
+include "../../controller/Numero.php";
+
+$datos = dataSubmitted();
+$numero = new Numero($datos);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,17 +23,11 @@
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
             <p class="display-6 text-success">¿Es positivo o negativo?</p>
-            <form action="action/formAction.php" method="post" name="formNumero">
-                <label class="form-label" for="numIngresado">Ingrese un número:</label>
-                <input class="form-control" name="numIngresado" id="numIngresado" type="number" maxlength="20"
-                    placeholder="0" required>
-                <input type="submit" value="Enviar" class="btn btn-success mt-3">
-                <br>
-                <a class="btn btn-info mt-3" href="../../../index.php">Volver al menú</a>
-            </form>
+            <p class="h4">Resultado: </p>
+            <p> <?php echo $numero->devolverSigno(); ?> </p>
+            <a href="../index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>
-
 
 </html>

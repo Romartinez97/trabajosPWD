@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
-    <script src="../utils/validacion.js"></script>
+    <script src="js/validacion.js"></script>
     <style>
         .form-check {
             margin-right: 1rem;
@@ -33,7 +33,7 @@
 
 <body class="container-sm text-light bg-dark">
     <p class="display-5">Cinem@s</p>
-    <form action="../controller/indexController.php" method="post" enctype="multipart/form-data" id="formPelicula">
+    <form action="action/formAction.php" method="post" enctype="multipart/form-data" id="formPelicula">
         <div class="row">
             <div class="col">
                 <label for="titulo" class="form-label">Título:</label>
@@ -84,9 +84,8 @@
         </div>
         <div class="row">
             <div class="col">
-                <label for="duracion" class="form-label">Duración:</label>
+                <label for="duracion" class="form-label">Duración (en minutos):</label>
                 <input type="text" class="form-control" name="duracion" id="duracion">
-                <label class="form-label">(minutos)</label>
             </div>
             <div class="col">
                 <label for="restriccion" class="form-label">Restricciones de edad:</label>

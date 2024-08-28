@@ -23,7 +23,7 @@
         <div>
             <p class="h1" style="color:#295F98">Programación Web Dinámica - Grupo 14</p>
             <div class="container mt-5">
-                <h4>TP 1<small> (ejercicio 3 integrado con ejercicios 4, 5 y 6)</small></h4>
+                <h4>TP 1<small> (ejercicios 4, 5 y 6 integrados en el ejercicio 3)</small></h4>
                 <table class="table table-borderless">
                     <tr>
                         <td><a class="form-label" href="TP1/Ejercicio1/view/index.php">Ejercicio 1</a></td>

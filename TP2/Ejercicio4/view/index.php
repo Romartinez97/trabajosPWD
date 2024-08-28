@@ -7,9 +7,9 @@
     <title>TP2 - Ejercicio 4</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/jquery.min.js"></script>
-    <script src="./assets/jquery.validate.min.js"></script>
-    <script src="./assets/validacion.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+    <script src="./assets/js/validacion.js"></script>
 
     <style>
         .form-check {
@@ -33,7 +33,7 @@
 
 <body class="container-sm text-light bg-dark">
     <p class="display-5">Cinem@s</p>
-    <form action="../controller/indexController.php" method="post" id="formPelicula">
+    <form action="action/actionIndex.php" method="post" id="formPelicula">
         <!--OBS: se puede usar una table-->
         <div class="row">
             <div class="col">
@@ -89,7 +89,7 @@
                 <input type="text" class="form-control" name="duracion" id="duracion">
             </div>
             <div class="col">
-                <label for="restriccion" class="form-label">Restricciones de edad:</label>
+                <label class="form-label">Restricciones de edad:</label>
                 <div class="input-group">
                     <div class="form-check">
                         <input type="radio" class="form-check-input" name="restriccion" id="todoPublico"

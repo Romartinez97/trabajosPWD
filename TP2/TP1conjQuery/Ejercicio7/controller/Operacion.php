@@ -45,10 +45,10 @@ class Operacion
                 $resultado = "$numero1" . " x " . "$numero2 es igual a " . $numero1 * $numero2;
                 break;
             case "division":
-                if ($numero1 >= $numero2) {
-                    $resultado = "$numero1 / $numero2 es igual a " . $numero1 / $numero2;
+                if($numero2 == 0){
+                    $resultado = "No se puede dividir por 0";
                 } else {
-                    $resultado = "En una división, el divisor (segundo número) debe ser igual o menor que el dividendo (primer número).\n";
+                    $resultado = "$numero1 / $numero2 es igual a " . $numero1 / $numero2;
                 }
                 break;
         }

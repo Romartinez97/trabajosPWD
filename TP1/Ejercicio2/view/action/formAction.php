@@ -1,7 +1,7 @@
 <?php
 
-include "../utils/funciones.php";
-include "HorasSemanales.php";
+include "../../utils/funciones.php";
+include "../../controller/HorasSemanales.php";
 
 $datos = dataSubmitted();
 $horasSemanalesObj = new HorasSemanales($datos);
@@ -29,7 +29,7 @@ $horasSemanalesObj = new HorasSemanales($datos);
             <p><?php echo "Horas cada jueves: " . $horasSemanalesObj->getHorasJueves() . "hs."; ?></p>
             <p><?php echo "Horas cada viernes: " . $horasSemanalesObj->getHorasViernes() . "hs."; ?></p>
             <p><?php echo "<b>Horas totales cada semana:<b> " . $horasSemanalesObj->getTotalHoras() . "hs."; ?></p>
-            <a href="../view/index.php" class="btn btn-primary mt-3">Volver a la página anterior</a>
+            <a href="../index.php"" class="btn btn-primary mt-3">Volver a la página anterior</a>
         </div>
     </div>
 </body>
