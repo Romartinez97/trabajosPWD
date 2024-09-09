@@ -1,0 +1,20 @@
+#tituloEjercicio {
+    color: #295F98;
+}
+
+nav {
+    background-color: #295F98;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+#botonMenu{
+    background-color: #295F98;
+}
