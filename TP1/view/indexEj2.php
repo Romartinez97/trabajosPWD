@@ -24,8 +24,7 @@ include 'estructura/header.php';
                 <input class="form-control" name="horasViernes" id="horasViernes" type="number" placeholder="0" min="0"
                     max="6" required>
                 <input type="submit" value="Calcular horas totales" class="btn btn-success mt-3">
-                <a class="btn mt-3 text-white" href="../../index.php" id="botonMenu">Volver al
-                    menú</a>
+                <a class="btn mt-3 text-white" href="../../index.php" id="botonMenu">Volver al menú</a>
             </form>
         </div>
     </div>

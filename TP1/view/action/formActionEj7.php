@@ -14,10 +14,10 @@ $resultado = $operacionObj->realizarOperacion();
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div>
-            <p class="display-6 text-success">Calculadora</p>
+            <p class="display-6" id="tituloEjercicio">Calculadora</p>
             <p class="h4"> <?php echo $resultado; ?></p>
             <a href="../indexEj7.php" class="btn btn-dark mt-3">Volver a la página anterior</a>
-            <a class="btn mt-3 text-white botonMenu" href="../../index.php" id="botonMenu">Volver al
+            <a class="btn mt-3 text-white" href="../../../index.php" id="botonMenu">Volver al
                 menú</a>
         </div>
     </div>

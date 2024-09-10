@@ -14,7 +14,7 @@ $horasSemanalesObj = new HorasSemanales($datos);
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div>
-            <p class="display-6 text-info">Horas de cursada de Programación Web Dinámica</p>
+            <p class="display-6" id="tituloEjercicio">Horas de cursada de Programación Web Dinámica</p>
             <p><?php echo "Horas cada lunes: " . $horasSemanalesObj->getHorasLunes() . "hs."; ?></p>
             <p><?php echo "Horas cada martes: " . $horasSemanalesObj->getHorasMartes() . "hs."; ?></p>
             <p><?php echo "Horas cada miércoles: " . $horasSemanalesObj->getHorasMiercoles() . "hs."; ?></p>

@@ -13,7 +13,7 @@ $personaObj = new Persona($datos);
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div>
-            <p class="display-6 text-info">Datos personales:</p>
+            <p class="display-6" id="tituloEjercicio">Datos personales:</p>
             <p>
                 <?php echo "Hola, yo soy " . $personaObj->getNombre() . " " . $personaObj->getApellido() . ", tengo " . $personaObj->getEdad() . " años (" . $personaObj->mayorEdad() . ") y vivo en " . $personaObj->getDireccion() . "."; ?>
             </p>
@@ -23,8 +23,8 @@ $personaObj = new Persona($datos);
             <p>
                 <?php echo "Practico en total " . $personaObj->totalDeportes() . " deportes: " . $personaObj->mostrarDeportes() . "."; ?>
             </p>
-            <a href="../index.phpEj3TP1" class="btn btn-dark mt-3">Volver a la página anterior</a>
-            <a class="btn mt-3 text-white botonMenu" href="../../../index.php" id="botonMenu">Volver al
+            <a href="../indexEj3TP1.php" class="btn btn-dark mt-3">Volver a la página anterior</a>
+            <a class="btn mt-3 text-white" href="../../../index.php" id="botonMenu">Volver al
                 menú</a>
         </div>
     </div>

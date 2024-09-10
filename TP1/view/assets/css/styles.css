@@ -11,6 +11,6 @@ nav {
     margin-top: 0.5rem;
 }
 
-.botonMenu {
-    color: #295F98;
+#botonMenu {
+    background-color: #295F98;
 }

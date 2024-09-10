@@ -1,4 +1,4 @@
-# trabajosPWD
+# Trabajos PWD
 Trabajos del grupo 14 desarrollados en Programación Web Dinámica
 
 # Materia
@@ -15,5 +15,4 @@ Grupo N° 14
 
 - **Juan Farroni**: Github: JuanF368
 - **Sabrina Gaspart**: Github: sabrinagaspart
-- **Juan Pablo Lausi**: GitHub: juanlausi89
 - **Rodrigo Martínez**: Github: Romartinez97

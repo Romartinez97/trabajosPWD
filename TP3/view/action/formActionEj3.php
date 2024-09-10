@@ -69,11 +69,9 @@ $dir = $peliculaIngresada->getDir();
                 </p>
 
             </div>
-            <div class="d-flex justify-content-center">
-                <a href="../indexEj3.php" class="btn btn-dark btn-block">Volver al formulario</a>
-                <a class="btn m-2 text-white" href="../../../index.php" id="botonMenu">Volver al
-                    menú</a>
-            </div>
+            <a href="../indexEj2.php" class="btn btn-dark mt-3">Volver a la página anterior</a>
+            <a class="btn mt-3 text-white" href="../../../index.php" id="botonMenu">Volver al
+                menú</a>
         </div>
     </div>
 

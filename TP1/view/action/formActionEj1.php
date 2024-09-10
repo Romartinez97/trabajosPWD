@@ -18,7 +18,7 @@ $numero = new Numero($datos);
             <p> <?php echo $numero->devolverSigno(); ?> </p>
             <a href="../indexEj1.php" class="btn btn-dark mt-3">Volver a la página anterior</a>
             <a class="btn mt-3 text-white" href="../../../index.php" id="botonMenu">Volver al
-                    menú</a>
+                menú</a>
         </div>
     </div>
 
