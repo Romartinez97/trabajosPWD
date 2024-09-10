@@ -1,7 +1,5 @@
 <?php
 
-echo "incluyendo BaseDatos.php<br>";
-include_once ('conector/BaseDatosPDO.php');
 class Auto{
     private $idAuto;
     private $patente;

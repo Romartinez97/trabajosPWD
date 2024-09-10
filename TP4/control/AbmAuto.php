@@ -1,5 +1,4 @@
 <?php
-include "../modelo/Auto.php";
 class AbmAuto{
 
     /**
