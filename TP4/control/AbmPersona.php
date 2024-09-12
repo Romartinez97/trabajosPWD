@@ -1,4 +1,6 @@
 <?php
+
+include_once "../modelo/Persona.php";
 class AbmPersona{
 
     /**

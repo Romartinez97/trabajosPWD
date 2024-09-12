@@ -34,7 +34,7 @@ class BaseDatosPDO extends PDO{
 
         $dns = $this->engine.":dbname=".$this->database.";host=".$this->host;
         try{
-            parent::__construct($dns, $this->user, $this->pass, array(PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES utf8"));
+            parent::__construct($dns, $this->user, $this->pass, /*array(PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES utf8")*/);
             $this->conec=true;
         }catch(PDOException $e){
             $this->sql = $e->getMessage();
@@ -185,7 +185,9 @@ class BaseDatosPDO extends PDO{
             $this->setIndice(0);
             $this->setResultado($arregloResult);
         }
+        /*
         echo "<br>La cantidad es ".$cant;
+        */
         return $cant;
     }
 
@@ -207,8 +209,10 @@ class BaseDatosPDO extends PDO{
                 $this->setIndice(-1);
             }
         }
+        /*
         echo "<br>El valor de la fila actual es: ";
         print_r($filaActual);
+        */
         return $filaActual;
     }
 

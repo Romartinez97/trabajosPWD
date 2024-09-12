@@ -57,6 +57,9 @@
                             <li><a class="dropdown-item" href="/trabajosPWD/TP3/view/indexEj3.php">Ejercicio 3</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/trabajosPWD/TP4/vista/index.php" role="button">TP 4</a>
+                    </li>
                 </ul>
             </div>
         </div>

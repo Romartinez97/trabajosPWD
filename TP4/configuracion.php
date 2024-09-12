@@ -7,7 +7,7 @@ $PROYECTO='xampp/htdocs/trabajosPWD/TP4';
 
 $ROOT=$_SERVER['DOCUMENT_ROOT']."/$PROYECTO/";
 
-include_once($ROOT.'util/funciones.php');
+include_once('../util/funciones.php');
 
 $_SESSION['ROOT']=$ROOT;
 
