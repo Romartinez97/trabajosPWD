@@ -118,7 +118,6 @@ class AbmAuto{
                 $where.=" and DniDuenio='".$param['DniDuenio']."'";
             }
         }
-        echo $where;
         $auto=new Auto();
         $arreglo=$auto->listar($where);
         //$arreglo=Auto::listar($where);
