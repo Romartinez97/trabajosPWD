@@ -103,25 +103,25 @@ class AbmPersona{
         $where=" true ";
         if($param!=null){
             if(isset($param['id'])){
-                $where.=" and id=".$param['id'];
+                $where.=" and id='".$param['id']."'";
             }
             if(isset($param['NroDni'])){
-                $where.=" and NroDni=".$param['NroDni'];
+                $where.=" and NroDni='".$param['NroDni']."'";
             }
             if(isset($param['Apellido'])){
-                $where.=" and Apellido=".$param['Apellido'];
+                $where.=" and Apellido='".$param['Apellido']."'";
             }
             if(isset($param['Nombre'])){
-                $where.=" and Nombre=".$param['Nombre'];
+                $where.=" and Nombre='".$param['Nombre']."'";
             }
             if(isset($param['fechaNac'])){
-                $where.=" and fechaNac=".$param['fechaNac'];
+                $where.=" and fechaNac='".$param['fechaNac']."'";
             }
             if(isset($param['Telefono'])){
-                $where.=" and Telefono=".$param['Telefono'];
+                $where.=" and Telefono='".$param['Telefono']."'";
             }
             if(isset($param['Domicilio'])){
-                $where.=" and Domicilio=".$param['Domicilio'];
+                $where.=" and Domicilio='".$param['Domicilio']."'";
             }
         }
         $persona=new Persona();

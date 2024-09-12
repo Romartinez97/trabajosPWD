@@ -103,21 +103,22 @@ class AbmAuto{
         $where=" true ";
         if($param!=null){
             if(isset($param['id'])){
-                $where.=" and id=".$param['id'];
+                $where.=" and id='".$param['id']."'";
             }
             if(isset($param['Patente'])){
-                $where.=" and Patente=".$param['Patente'];
+                $where.=" and Patente='".$param['Patente']."'";
             }
             if(isset($param['Marca'])){
-                $where.=" and Marca=".$param['Marca'];
+                $where.=" and Marca='".$param['Marca']."'";
             }
             if(isset($param['Modelo'])){
-                $where.=" and Modelo=".$param['Modelo'];
+                $where.=" and Modelo='".$param['Modelo']."'";
             }
             if(isset($param['DniDuenio'])){
-                $where.=" and DniDuenio=".$param['DniDuenio'];
+                $where.=" and DniDuenio='".$param['DniDuenio']."'";
             }
         }
+        echo $where;
         $auto=new Auto();
         $arreglo=$auto->listar($where);
         //$arreglo=Auto::listar($where);

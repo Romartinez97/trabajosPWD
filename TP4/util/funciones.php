@@ -1,18 +1,22 @@
 <?php
+
 include_once('../configuracion.php');
 function data_submitted(){
     $datos=array();
     if(!empty($_POST)){
-        $datos=$_POST;
+        foreach($_POST as $clave => $valor){
+            $datos[$clave] = $valor;
+            if($valor==""){
+                $datos[$clave]='null';
+            }
+        }
     }else{
         if(!empty($_GET)){
-            $datos=$_GET;
-        }
-    }
-    if(count($datos)){
-        foreach($datos as $indice => $valor){
-            if($valor==""){
-                $datos[$indice]='null';
+            foreach($_GET as $clave => $valor){
+                $datos[$clave] = $valor;
+                if($valor==""){
+                    $datos[$clave]='null';
+                }
             }
         }
     }
