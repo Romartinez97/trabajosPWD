@@ -1,8 +1,8 @@
 <?php
 $titulo = "TP4 - Buscar auto";
 include '../estructura/header.php';
-include_once '../../control/AbmAuto.php';
-include_once '../../control/AbmPersona.php';
+//include_once '../../control/AbmAuto.php';
+//include_once '../../control/AbmPersona.php';
 
 $datos = data_submitted();
 $objAuto = new AbmAuto();

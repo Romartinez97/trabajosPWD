@@ -1,5 +1,5 @@
 <?php
-
+include_once('../configuracion.php');
 function data_submitted(){
     $datos=array();
     if(!empty($_POST)){
