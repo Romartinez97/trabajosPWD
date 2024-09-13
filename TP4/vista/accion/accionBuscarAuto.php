@@ -9,14 +9,14 @@ include_once('../../util/funciones.php');
 $datos = data_submitted();
 $objAuto = new AbmAuto();
 $objPersona = new AbmPersona();
-$param = ["Patente" => $datos["patente"]];
+$param = ["patente" => $datos["patente"]];
 $autoBuscado = $objAuto->buscar($param);
 ?>
 
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
-            <?php if (empty($listadoAutos)): ?>
+            <?php if (empty($autoBuscado)): ?>
                 <p class="display-6" id="tituloEjercicio">Auto no encontrado</p>
                 <p>No se encontró un auto registrado con esa patente.</p>
             <?php else: ?>
@@ -31,7 +31,7 @@ $autoBuscado = $objAuto->buscar($param);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($listadoAutos as $auto): ?>
+                        <?php foreach ($autoBuscado as $auto): ?>
                             <?php
                             $dueno = $objPersona->buscar(["NroDni" => $auto->getObjPersona()]);
                             $duenoNombre = $dueno ? $dueno[0]->getNombre() . " " . $dueno[0]->getApellido() : "Desconocido";
