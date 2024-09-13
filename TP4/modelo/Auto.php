@@ -78,7 +78,7 @@ class Auto{
             if($res>-1){
                 if($res>0){
                     $row=$base->Registro();
-                    $this->setear($row['id'], $row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
+                    $this->setear($row['id'], $row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
                     $resp=true;//se setea la resp como true para demostrar que la carga fue exitosa
                 }
             }
@@ -91,7 +91,7 @@ class Auto{
     public function insertar(){
         $resp=false;
         $base = new BaseDatosPDO();
-        $sql="INSERT INTO auto (Patente, Marca, Modelo, DniDuenio)
+        $sql="INSERT INTO auto (patente, marca, modelo, dniDuenio)
                 VALUES ('".$this->getPatente()."', '".$this->getMarca()."', '".$this->getModelo()."', '".$this->getObjPersona()."')";
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
@@ -110,7 +110,7 @@ class Auto{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE auto SET
-            Patente='".$this->getPatente()."', Marca='".$this->getMarca()."', Modelo='".$this->getModelo()."', DniDuenio='".$this->getObjPersona();
+            patente='".$this->getPatente()."', marca='".$this->getMarca()."', modelo='".$this->getModelo()."', dniDuenio='".$this->getObjPersona();
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;
@@ -151,7 +151,7 @@ class Auto{
             if($res>0){
                 while($row=$base->Registro()){
                     $obj=new Auto();
-                    $obj->setear($row['id'], $row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
+                    $obj->setear($row['id'], $row['patente'], $row['marca'], $row['modelo'], $row['dniDuenio']);
                     array_push($arreglo, $obj);
                 }
             }
