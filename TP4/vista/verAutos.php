@@ -1,7 +1,8 @@
 <?php
 $titulo = "TP4 - Ver autos";
 include 'estructura/header.php';
-include_once('../util/funciones.php');
+include "../configuracion.php";
+include_once '../util/funciones.php';
 //include_once '../control/AbmAuto.php';
 //include_once '../control/AbmPersona.php';
 
@@ -13,10 +14,11 @@ $listadoAutos = $objAuto->buscar(null);
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
-            <p class="display-6" id="tituloEjercicio">Listado de autos:</p>
             <?php if (empty($listadoAutos)): ?>
+                <p class="display-6" id="tituloEjercicio">Autos no encontrados</p>
                 <p>No hay autos cargados en la base de datos.</p>
             <?php else: ?>
+                <p class="display-6" id="tituloEjercicio">Listado de autos:</p>
                 <table class="table table-striped">
                     <thead>
                         <tr>

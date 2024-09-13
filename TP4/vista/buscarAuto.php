@@ -9,9 +9,9 @@ include 'estructura/header.php';
             <p class="display-6" id="tituloEjercicio">Buscar un auto (patente):</p>
 
             <form action="accion/accionBuscarAuto.php" method="post" name="formBuscarAuto" id="formBuscarAuto">
-                <input class="form-control" type="text" name="Patente" id="Patente" required>
+                <input class="form-control" type="text" name="patente" id="patente" required>
                 <div class="d-flex justify-content-center">
-                    <input type="submit" class="btn m-3 bg-success text-white" value="Enviar">
+                    <input type="submit" class="btn m-3 bg-success text-white" value="Buscar">
                     <a class="btn m-3 text-white" href="index.php" id="botonMenu">Volver atrás</a>
                     <a class="btn m-3 text-white bg-dark" href="../../index.php" id="botonMenu">Volver al
                         menú</a>

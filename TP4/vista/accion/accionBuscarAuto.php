@@ -8,7 +8,7 @@ include_once('../../util/funciones.php');
 $datos = data_submitted();
 $objAuto = new AbmAuto();
 $objPersona = new AbmPersona();
-$param = ["Patente" => $datos["Patente"]];
+$param = ["Patente" => $datos["patente"]];
 $autoBuscado = $objAuto->buscar($param);
 ?>
 
