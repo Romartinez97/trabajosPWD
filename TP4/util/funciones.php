@@ -1,6 +1,6 @@
 <?php
 
-include_once('../configuracion.php');
+include_once '../configuracion.php';
 function data_submitted(){
     $datos=array();
     if(!empty($_POST)){
@@ -31,6 +31,7 @@ function verEstructura($e){
 
 function my_autoloader($class_name){
     //Directorios donde se buscaran las clases
+    echo $_SESSION['ROOT']."<br>";//linea para ver si funciona (borrar luego)
     $directories=array(
         $_SESSION['ROOT'].'control/',
         $_SESSION['ROOT'].'modelo/',
@@ -39,6 +40,7 @@ function my_autoloader($class_name){
     foreach($directories as $directory){
         if(file_exists($directory.$class_name.'.php')){
             require_once($directory.$class_name.'.php');
+            echo $directory.$class_name.'.php'."<br>"; //linea para ver si funciona (borrar luego)
             return;
         }
     }
