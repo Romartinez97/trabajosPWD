@@ -5,13 +5,16 @@ include_once '../util/funciones.php';
 //include_once '../control/AbmAuto.php';
 //include_once '../control/AbmPersona.php';
 
-$dni = isset($_GET["dni"]) ? $_GET["dni"] : null;
+$datos=data_submitted();
+$dni = $datos["dni"];
+//$dni = isset($datos["dni"]) ? $datos["dni"] : null;
+//$dni = isset($_GET["dni"]) ? $_GET["dni"] : null;
 
 if ($dni) {
     $objPersona = new AbmPersona();
     $objAuto = new AbmAuto();
-    $persona = $objPersona->buscar(["NroDni" => $dni]);
-    $listadoAutos = $objAuto->buscar(["NroDni" => $dni]);
+    $persona = $objPersona->buscar(["nroDni" => $dni]);
+    $listadoAutos = $objAuto->buscar(["dniDuenio" => $dni]);
 } else {
     $persona = [];
     $listadoAutos = [];
@@ -21,8 +24,8 @@ if ($dni) {
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
+            <?php if (empty($persona)): ?>
             <p class="display-6" id="tituloEjercicio">Persona no encontrada</p>
-            <?php if (empty($listadoAutos)): ?>
                 <p>No se encontró una persona registrada con ese DNI en la base de datos.</p>
             <?php else: ?>
                 <p class="display-6" id="tituloEjercicio">Datos de la persona:</p>
@@ -74,7 +77,7 @@ if ($dni) {
                     </table>
                 <?php endif; ?>
             <?php endif; ?>
-            <a class="btn mt-3 text-white" href="index.php" id="botonMenu">Volver atrás</a>
+            <a class="btn mt-3 text-white" href="listaPersonas.php" id="botonMenu">Volver atrás</a>
             <a class="btn mt-3 text-white bg-dark" href="../../index.php">Volver al menú principal</a>
         </div>
     </div>
