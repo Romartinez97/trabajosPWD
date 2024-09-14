@@ -33,7 +33,7 @@ $autoBuscado = $objAuto->buscar($param);
                     <tbody>
                         <?php foreach ($autoBuscado as $auto): ?>
                             <?php
-                            $dueno = $objPersona->buscar(["NroDni" => $auto->getObjPersona()]);
+                            $dueno = $objPersona->buscar(["nroDni" => $auto->getObjPersona()]);
                             $duenoNombre = $dueno ? $dueno[0]->getNombre() . " " . $dueno[0]->getApellido() : "Desconocido";
                             ?>
                             <tr>

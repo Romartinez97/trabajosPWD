@@ -1,6 +1,10 @@
 <?php
 
-include_once '../configuracion.php';
+if(file_exists('../configuracion.php')){
+    include_once '../configuracion.php';
+}elseif(file_exists('../../configuracion.php')){
+    include_once '../../configuracion.php';
+}
 function data_submitted(){
     $datos=array();
     if(!empty($_POST)){
