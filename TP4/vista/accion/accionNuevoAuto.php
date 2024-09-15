@@ -19,7 +19,7 @@ if(!empty($objPersona->buscar(["nroDni" => $datos["dniDuenio"]]))){
     $personaExiste=true;
 }
 if($personaExiste && !$yaExiste){
-    //$objAuto->alta($datos);
+    $objAuto->alta($datos);
     $auto=$objAuto->buscar($param);
     $datosDuenio=$objPersona->buscar(["nroDni" => $auto[0]->getObjPersona()]);
     $duenio=$datosDuenio[0]->getNombre()." ".$datosDuenio[0]->getApellido();
