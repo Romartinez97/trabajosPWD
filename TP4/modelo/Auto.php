@@ -110,7 +110,7 @@ class Auto{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE auto SET
-            patente='".$this->getPatente()."', marca='".$this->getMarca()."', modelo='".$this->getModelo()."', dniDuenio='".$this->getObjPersona();
+            patente='".$this->getPatente()."', marca='".$this->getMarca()."', modelo='".$this->getModelo()."', dniDuenio='".$this->getObjPersona()."' WHERE id='".$this->getId()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

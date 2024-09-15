@@ -2,11 +2,13 @@
 $titulo = "TP4 - Nuevo auto";
 include 'estructura/header.php';
 include_once '../util/funciones.php';
-//include_once '../control/AbmAuto.php';
-//include_once '../control/AbmPersona.php';
 
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">

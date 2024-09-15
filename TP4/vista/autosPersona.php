@@ -20,7 +20,10 @@ if ($dni) {
     $listadoAutos = [];
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
