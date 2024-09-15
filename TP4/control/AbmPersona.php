@@ -13,7 +13,7 @@ class AbmPersona{
         $obj=null;
         if(array_key_exists('nroDni', $param)&& array_key_exists('apellido', $param)&& array_key_exists('nombre', $param)&& array_key_exists('fechaNac', $param)&& array_key_exists('telefono', $param)&& array_key_exists('domicilio', $param)){
             $obj=new Persona();
-            $obj->setear($param['nroDni'], $param['apellido'], $param['nombre'], $param['fechaNac'], $param['Telefono'], $param['Domicilio']);
+            $obj->setear($param['nroDni'], $param['apellido'], $param['nombre'], $param['fechaNac'], $param['telefono'], $param['domicilio']);
         }
         return $obj;
     }
@@ -54,7 +54,7 @@ class AbmPersona{
      */
     public function alta($param){
         $resp=false;
-        $param['nroDni']=null;
+        //$param['nroDni']=null;
         $elObjtPersona=$this->cargarObjeto($param);
         if($elObjtPersona!=null && $elObjtPersona->insertar()){
             $resp=true;

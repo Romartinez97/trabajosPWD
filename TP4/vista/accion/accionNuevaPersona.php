@@ -1,19 +1,19 @@
 <?php
 $titulo = "TP4 - Nueva persona";
-include 'estructura/header.php';
-include_once '../util/funciones.php';
+include '../estructura/header.php';
+include_once '../../util/funciones.php';
 //include_once '../control/AbmAuto.php';
 //include_once '../control/AbmPersona.php';
 
 $datos = data_submitted();
-$datos['Telefono'] = $datos['codigoArea'] . '-' . $datos['Telefono'];
+$datos['telefono'] = $datos['codigoArea'] . '-' . $datos['telefono'];
 unset($datos['codigoArea']);
 
 $yaExiste = true;
 $objPersona = new AbmPersona();
-$param = ["NroDni" => $datos["NroDni"]];
+$param = ["nroDni" => $datos["nroDni"]];
 if (empty($objPersona->buscar($param))) {
-    $objPersona->cargarObjeto($datos);
+    //$objPersona->cargarObjeto($datos);
     $objPersona->alta($datos);
     $yaExiste = false;
 }
@@ -30,15 +30,15 @@ if (empty($objPersona->buscar($param))) {
                 <p class="display-6" id="tituloEjercicio">Persona ingresada</p>
                 <p>Datos de la persona ingresada:</p>
                 <ul>
-                    <li>Nombre: <?php echo $datos["Nombre"]; ?></li>
-                    <li>Apellido: <?php echo $datos["Apellido"]; ?></li>
-                    <li>DNI: <?php echo $datos["NroDni"]; ?></li>
+                    <li>Nombre: <?php echo $datos["nombre"]; ?></li>
+                    <li>Apellido: <?php echo $datos["apellido"]; ?></li>
+                    <li>DNI: <?php echo $datos["nroDni"]; ?></li>
                     <li>Fecha de nacimiento: <?php echo $datos["fechaNac"]; ?></li>
-                    <li>Teléfono: <?php echo $datos["Telefono"]; ?></li>
-                    <li>Domicilio: <?php echo $datos["Domicilio"]; ?></li>
+                    <li>Teléfono: <?php echo $datos["telefono"]; ?></li>
+                    <li>Domicilio: <?php echo $datos["domicilio"]; ?></li>
                 </ul>
             <?php endif; ?>
-            <a class="btn mt-3 text-white" href="../buscarAuto.php" id="botonMenu">Volver atrás</a>
+            <a class="btn mt-3 text-white" href="../nuevaPersona.php" id="botonMenu">Volver atrás</a>
             <a class="btn mt-3 text-white bg-dark" href="../../../index.php">Volver al menú principal</a>
         </div>
     </div>

@@ -115,7 +115,7 @@ class Persona{
                 VALUES ('".$this->getNroDni()."', '".$this->getApellido()."', '".$this->getNombre()."', '".$this->getFechaNac()."', '".$this->getTelefono()."', '".$this->getDomicilio()."')";
         if($base->Iniciar()){
             if($elid=$base->Ejecutar($sql)){
-                $this->setId($elid);
+                //$this->setId($elid);
                 $resp=true;
             }else{
                 $this->setMensajeOperacion("persona->insertar: ".$base->getError());
