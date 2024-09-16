@@ -35,18 +35,16 @@ $autoBuscado = $objAuto->buscar($param);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($autoBuscado as $auto): ?>
                             <?php
-                            $dueno = $objPersona->buscar(["nroDni" => $auto->getObjPersona()]);
-                            $duenoNombre = $dueno ? $dueno[0]->getNombre() . " " . $dueno[0]->getApellido() : "Desconocido";
+                            $duenio = $objPersona->buscar(["nroDni" => $autoBuscado[0]->getObjPersona()]);
+                            $duenioNombre = $duenio ? $duenio[0]->getNombre() . " " . $duenio[0]->getApellido() : "Desconocido";
                             ?>
                             <tr>
-                                <td><?php echo "Patente: " . $auto->getPatente(); ?></td>
-                                <td><?php echo "Marca: " . $auto->getMarca(); ?></td>
-                                <td><?php echo "Modelo: " . $auto->getModelo(); ?></td>
-                                <td><?php echo "Dueño: " . $duenoNombre; ?></td>
+                                <td><?php echo $autoBuscado[0]->getPatente(); ?></td>
+                                <td><?php echo $autoBuscado[0]->getMarca(); ?></td>
+                                <td><?php echo $autoBuscado[0]->getModelo(); ?></td>
+                                <td><?php echo $duenioNombre; ?></td>
                             </tr>
-                        <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php endif; ?>

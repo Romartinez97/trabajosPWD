@@ -42,7 +42,7 @@ $listadoPersonas = $objPersona->buscar(null);
                                 <td><?php echo $persona->getFechaNac(); ?></td>
                                 <td><?php echo $persona->getTelefono(); ?></td>
                                 <td><?php echo $persona->getDomicilio(); ?></td>
-                                <td><a class="btn mt-3 text-white" href="autosPersona.php?dni=<?php echo $persona->getNroDni(); ?>" id="botonMenu">Ver autos asociados</a></td>
+                                <td><a class="btn m-2 text-white" href="autosPersona.php?dni=<?php echo $persona->getNroDni(); ?>" id="botonMenu">Ver autos asociados</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

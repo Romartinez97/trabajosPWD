@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-    //Método para verificar que el año de la película sea válido (entre 1895 y 2024)
-    jQuery.validator.addMethod("validarAnioPelicula", function (value, element) {
-        return this.optional(element) || value >= 1895 && value <= 2024;
-    }, "Ingrese un año válido (entre 1895 y 2024)");
-
     //Método para verificar que se ingresen solos caracteres alfanuméricos
     jQuery.validator.addMethod("alfanumerico", function (value, element) {
         return this.optional(element) || /^(?! )[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ0-9,.\s]+$/i.test(value);
@@ -16,16 +11,11 @@ $(document).ready(function () {
         return this.optional(element) || /^(?! )[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ,.\s]+$/i.test(value);
     }, "Ingrese solo caracteres alfabéticos");
 
-    // Función para verificar el tamaño del archivo
-    $.validator.addMethod('tamanio', function (value, element, param) {
-        return this.optional(element) || (element.files[0] && element.files[0].size <= param);
-    }, 'El archivo debe pesar menos de {0} bytes');
-
     $.validator.messages.required = "Dato requerido";
     $.validator.messages.number = "Ingrese solo números decimales";
 
-//Valido formulario de Ejercicio 4
-
+    //Validación de formularios de Ejercicio 4
+    //Formulario de buscarAuto.php
     $("#formBuscarAuto").validate({
 
         rules: {
@@ -39,7 +29,50 @@ $(document).ready(function () {
             form.submit();
         }
     })
+    //Formulario de buscarPersona.php
+    $("#formBuscarPersona").validate({
+
+        rules: {
+            nroDni: {
+                required: true,
+                number: true,
+            },
+        },
+
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
+    //Formulario de accionBuscarPersona.php
+    $("#actualizarDatosPersona").validate({
+
+        rules: {
+            nombre: {
+                required: true,
+                lettersonly: true,
+            },
+            apellido: {
+                required: true,
+                lettersonly: true,
+            },
+            fechaNac: {
+                required: true,
+            },
+            telefono: {
+                required: true,
+                number: true,
+            },
+            domicilio: {
+                required: true,
+                alfanumerico: true,
+            },
+        },
+
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
 
 
-    
+
 });

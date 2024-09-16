@@ -39,10 +39,10 @@ $listadoAutos = $objAuto->buscar(null);
                             $duenoNombre = $dueno ? $dueno[0]->getNombre() . " " . $dueno[0]->getApellido() : "Desconocido";
                             ?>
                             <tr>
-                                <td><?php echo "Patente: " . $auto->getPatente(); ?></td>
-                                <td><?php echo "Marca: " . $auto->getMarca(); ?></td>
-                                <td><?php echo "Modelo: " . $auto->getModelo(); ?></td>
-                                <td><?php echo "Dueño: " . $duenoNombre; ?></td>
+                                <td><?php echo $auto->getPatente(); ?></td>
+                                <td><?php echo $auto->getMarca(); ?></td>
+                                <td><?php echo $auto->getModelo(); ?></td>
+                                <td><?php echo $duenoNombre; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
