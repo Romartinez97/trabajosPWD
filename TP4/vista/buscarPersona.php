@@ -13,7 +13,7 @@ include 'estructura/header.php';
             <p class="display-6" id="tituloEjercicio">Buscar una persona (DNI):</p>
 
             <form action="accion/accionBuscarPersona.php" method="post" name="formBuscarPersona" id="formBuscarPersona">
-                <input class="form-control" type="text" name="dni" id="dni" required>
+                <input class="form-control" type="text" name="nroDni" id="nroDni" required>
                 <div class="d-flex justify-content-center">
                     <input type="submit" class="btn m-3 bg-success text-white" value="Buscar">
                     <a class="btn m-3 text-white" href="index.php" id="botonMenu">Volver atrás</a>

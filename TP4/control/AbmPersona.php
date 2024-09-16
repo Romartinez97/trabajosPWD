@@ -1,6 +1,8 @@
 <?php
 
-include_once "../modelo/Persona.php";
+include_once $_SESSION['ROOT'].'modelo/Persona.php';
+include_once $_SESSION['ROOT'].'modelo/conector/BaseDatosPDO.php';
+
 class AbmPersona{
 
     /**

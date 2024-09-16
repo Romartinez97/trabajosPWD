@@ -26,7 +26,7 @@ $paramModif = [
 $objPersona->modificacion($paramModif);
 
 //Busco a la persona de nuevo en la BD para chequear si se actualizaron los datos correctamente
-$param = ["nroDni" => $datos["dni"]];
+$param = ["nroDni" => $datos["nroDni"]];
 $personaBuscada = $objPersona->buscar($param);
 ?>
 

@@ -29,6 +29,50 @@ $(document).ready(function () {
             form.submit();
         }
     })
+
+    $("#formNuevaPersona").validate({
+
+        rules: {
+            nroDni: {
+                required: true,
+                number: true,
+                min: 1,
+                max: 9999999999,
+            },
+            nombre: {
+                required: true,
+                lettersonly: true,
+                max: 50,
+            },
+            apellido: {
+                required: true,
+                lettersonly: true,
+                max: 50,
+            },
+            fechaNac: {
+                required: true,
+            },
+            codigoArea: {
+                required: true,
+                number: true,
+                min: 1,
+                max: 999,
+            },
+            telefono: {
+                required: true,
+                number: true,
+            },
+            domicilio: {
+                required: true,
+                alfanumerico: true,
+            },
+        },
+
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
+
     //Formulario de buscarPersona.php
     $("#formBuscarPersona").validate({
 

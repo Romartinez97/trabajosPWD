@@ -16,8 +16,8 @@ include_once '../util/funciones.php';
         <div class="div-form">
             <p class="display-6" id="tituloEjercicio">Agregar una persona:</p>
             <form action="accion/accionNuevaPersona.php" method="post" name="formNuevaPersona" id="formNuevaPersona">
-                <label class="form-label" for="NroDni">DNI:</label>
-                <input class="form-control" type="number" name="nroDni" id="NroDni">
+                <label class="form-label" for="nroDni">DNI:</label>
+                <input class="form-control" type="number" name="nroDni" id="nroDni">
                 <label class="form-label" for="Nombre">Nombre:</label>
                 <input class="form-control" type="text" name="nombre" id="Nombre">
                 <label class="form-label" for="Apellido">Apellido:</label>

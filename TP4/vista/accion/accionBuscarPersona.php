@@ -8,7 +8,7 @@ include_once('../../util/funciones.php');
 
 $datos = data_submitted();
 $objPersona = new AbmPersona();
-$param = ["nroDni" => $datos["dni"]];
+$param = ["nroDni" => $datos["nroDni"]];
 if ($personaBuscada = $objPersona->buscar($param)) {
     $nroDni = $personaBuscada[0]->getNroDni();
     $nombre = $personaBuscada[0]->getNombre();
@@ -28,18 +28,18 @@ if ($personaBuscada = $objPersona->buscar($param)) {
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
-            <?php if (empty($autoBuscado)): ?>
+            <?php if (empty($personaBuscada)): ?>
                 <p class="display-6" id="tituloEjercicio">Persona no encontrada</p>
                 <p>No se encontró una persona registrada con ese DNI.</p>
             <?php else: ?>
                 <p class="display-6" id="tituloEjercicio">Persona encontrada</p>
                 <p class="display-6" id="tituloEjercicio">En caso de desearlo, puede modificar los datos personales:</p>
 
-                <form form action="accion/actualizarDatosPersona.php" method="post" name="formActualizarPersona"
+                <form form action="actualizarDatosPersona.php" method="post" name="formActualizarPersona"
                     id="formActualizarPersona">
 
                     <label class="form-label" for="nroDni">DNI:</label>
-                    <input class="form-control" type="text" name="nroDni" id="nroDni" value="<?php echo $nroDni; ?>" disabled>
+                    <input class="form-control" type="text" name="nroDni" id="nroDni" value="<?php echo $nroDni; ?>" readonly>
 
                     <label class="form-label" for="nombre">Nombre:</label>
                     <input class="form-control" type="text" name="nombre" id="nombre" value="<?php echo $nombre; ?>">
@@ -54,7 +54,8 @@ if ($personaBuscada = $objPersona->buscar($param)) {
                     <input class="form-control" type="text" name="telefono" id="telefono" value="<?php echo $telefono; ?>">
 
                     <label class="form-label" for="domicilio">Domicilio:</label>
-                    <input class="form-control" type="text" name="domicilio" id="domicilio" value="<?php echo $nombre; ?>">
+                    <input class="form-control" type="text" name="domicilio" id="domicilio" value="<?php echo $domicilio; ?>">
+                    <input type="submit" class="btn mt-3 bg-success text-white" value="Actualizar datos">
                 </form>
             <?php endif; ?>
             <a class="btn mt-3 text-white" href="../buscarPersona.php" id="botonMenu">Volver atrás</a>
