@@ -130,7 +130,7 @@ class Persona{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE persona SET
-            nroDni='".$this->getNroDni()."', apellido='".$this->getApellido()."', nombre='".$this->getNombre()."', fechaNac='".$this->getFechaNac()."', telefono='".$this->getTelefono()."', domicilio='".$this->getDomicilio();
+            nroDni='".$this->getNroDni()."', apellido='".$this->getApellido()."', nombre='".$this->getNombre()."', fechaNac='".$this->getFechaNac()."', telefono='".$this->getTelefono()."', domicilio='".$this->getDomicilio()."' WHERE nroDni='".$this->getNroDni()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

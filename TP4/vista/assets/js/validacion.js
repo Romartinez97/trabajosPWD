@@ -42,12 +42,12 @@ $(document).ready(function () {
             nombre: {
                 required: true,
                 lettersonly: true,
-                max: 50,
+                maxlength: 50,
             },
             apellido: {
                 required: true,
                 lettersonly: true,
-                max: 50,
+                maxlength: 50,
             },
             fechaNac: {
                 required: true,
