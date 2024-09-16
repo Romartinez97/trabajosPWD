@@ -1,6 +1,6 @@
 <?php
-include_once $_SESSION['ROOT'].'modelo/Auto.php';
-include_once $_SESSION['ROOT'].'modelo/conector/BaseDatosPDO.php';
+//include_once $_SESSION['ROOT'].'modelo/Auto.php';
+//include_once $_SESSION['ROOT'].'modelo/conector/BaseDatosPDO.php';
 
 class AbmAuto{
 
