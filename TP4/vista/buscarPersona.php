@@ -18,7 +18,7 @@ include 'estructura/header.php';
                     <input type="submit" class="btn m-3 bg-success text-white" value="Buscar">
                     <a class="btn m-3 text-white" href="index.php" id="botonMenu">Volver atrás</a>
                     <a class="btn m-3 text-white bg-dark" href="../../index.php" id="botonMenu">Volver al
-                        menú</a>
+                        menú principal</a>
                 </div>
             </form>
 

@@ -38,7 +38,7 @@ if ($personaBuscada = $objPersona->buscar($param)) {
                 <form form action="actualizarDatosPersona.php" method="post" name="formActualizarPersona"
                     id="formActualizarPersona">
 
-                    <label class="form-label" for="nroDni">DNI:</label>
+                    <label class="form-label" for="nroDni">DNI (no modificable):</label>
                     <input class="form-control" type="text" name="nroDni" id="nroDni" value="<?php echo $nroDni; ?>" readonly>
 
                     <label class="form-label" for="nombre">Nombre:</label>

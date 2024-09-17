@@ -15,6 +15,7 @@ $param = ["nroDni" => $datos["nroDni"]];
 if (empty($objPersona->buscar($param))) {
     //$objPersona->cargarObjeto($datos);
     $objPersona->alta($datos);
+    $objPersona = $objPersona->buscar($datos)[0];
     $yaExiste = false;
 }
 
@@ -22,8 +23,10 @@ if (empty($objPersona->buscar($param))) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 </head>
+
 <body>
     <div class="container p-4 my-4 d-flex justify-content-center">
         <div class="div-form">
@@ -34,12 +37,12 @@ if (empty($objPersona->buscar($param))) {
                 <p class="display-6" id="tituloEjercicio">Persona ingresada</p>
                 <p>Datos de la persona ingresada:</p>
                 <ul>
-                    <li>Nombre: <?php echo $datos["nombre"]; ?></li>
-                    <li>Apellido: <?php echo $datos["apellido"]; ?></li>
-                    <li>DNI: <?php echo $datos["nroDni"]; ?></li>
-                    <li>Fecha de nacimiento: <?php echo $datos["fechaNac"]; ?></li>
-                    <li>Teléfono: <?php echo $datos["telefono"]; ?></li>
-                    <li>Domicilio: <?php echo $datos["domicilio"]; ?></li>
+                    <li>Nombre: <?php echo $objPersona->getNombre(); ?></li>
+                    <li>Apellido: <?php echo $objPersona->getApellido(); ?></li>
+                    <li>DNI: <?php echo $objPersona->getNroDni(); ?></li>
+                    <li>Fecha de nacimiento: <?php echo $objPersona->getFechaNac(); ?></li>
+                    <li>Teléfono: <?php echo $objPersona->getTelefono(); ?></li>
+                    <li>Domicilio: <?php echo $objPersona->getDomicilio(); ?></li>
                 </ul>
             <?php endif; ?>
             <a class="btn mt-3 text-white" href="../nuevaPersona.php" id="botonMenu">Volver atrás</a>
@@ -50,5 +53,5 @@ if (empty($objPersona->buscar($param))) {
     <?php
     include '../estructura/footer.php';
     ?>
-    
+
 </body>

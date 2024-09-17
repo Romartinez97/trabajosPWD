@@ -22,6 +22,14 @@ $(document).ready(function () {
             patente: {
                 required: true,
                 alfanumerico: true,
+                minlength: 6,
+                maxlength: 10,
+            },
+        },
+        messages: {
+            patente: {
+                minlength: "La patente no puede tener menos de 6 caracteres",
+                maxlength: "La patente no puede tener más de 10 caracteres",
             },
         },
 
@@ -37,7 +45,7 @@ $(document).ready(function () {
                 required: true,
                 number: true,
                 min: 1,
-                max: 9999999999,
+                maxlength: 10,
             },
             nombre: {
                 required: true,
@@ -56,15 +64,39 @@ $(document).ready(function () {
                 required: true,
                 number: true,
                 min: 1,
-                max: 999,
+                maxlength: 3,
             },
             telefono: {
                 required: true,
                 number: true,
+                maxlength: 15,
             },
             domicilio: {
                 required: true,
                 alfanumerico: true,
+                maxlength: 200,
+            },
+        },
+        messages: {
+            nroDni: {
+                min: "El DNI no puede ser menor a 1",
+                maxlength: "El DNI no puede tener más de 10 caracteres",
+            },
+            nombre: {
+                maxlength: "El nombre no puede tener más de 50 caracteres",
+            },
+            apellido: {
+                maxlength: "El apellido no puede tener más de 50 caracteres",
+            },
+            codigoArea: {
+                min: "El código de área no puede ser menor a 1",
+                maxlength: "El código de área no puede tener más de 3 caracteres",
+            },
+            telefono: {
+                maxlength: "El teléfono no puede tener más de 15 caracteres",
+            },
+            domicilio: {
+                maxlength: "El domicilio no puede tener más de 200 caracteres",
             },
         },
 
@@ -80,6 +112,14 @@ $(document).ready(function () {
             nroDni: {
                 required: true,
                 number: true,
+                min: 1,
+                maxlength: 10,
+            },
+        },
+        messages: {
+            nroDni: {
+                min: "El DNI no puede ser menor a 1",
+                maxlength: "El DNI no puede tener más de 10 caracteres",
             },
         },
 
@@ -94,10 +134,12 @@ $(document).ready(function () {
             nombre: {
                 required: true,
                 lettersonly: true,
+                maxlength: 50,
             },
             apellido: {
                 required: true,
                 lettersonly: true,
+                maxlength: 50,
             },
             fechaNac: {
                 required: true,
@@ -105,10 +147,30 @@ $(document).ready(function () {
             telefono: {
                 required: true,
                 number: true,
+                maxlength: 20,
             },
             domicilio: {
                 required: true,
                 alfanumerico: true,
+                maxlength: 200,
+            },
+        },
+        messages: {
+            nroDni: {
+                min: "El DNI no puede ser menor a 1",
+                maxlength: "El DNI no puede tener más de 10 caracteres",
+            },
+            nombre: {
+                maxlength: "El nombre no puede tener más de 50 caracteres",
+            },
+            apellido: {
+                maxlength: "El apellido no puede tener más de 50 caracteres",
+            },
+            telefono: {
+                maxlength: "El teléfono no puede tener más de 20 caracteres",
+            },
+            domicilio: {
+                maxlength: "El domicilio no puede tener más de 200 caracteres",
             },
         },
 
