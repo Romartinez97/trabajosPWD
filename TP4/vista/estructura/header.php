@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
     <script src="assets/js/validacion.js"></script>
+    <script src="../assets/js/validacion.js"></script><!--Esta linea la meti por el caso especifico de accionBuscarPersona.php que sino no funcionan las validaciones de jquery-->
 </head>
 
 

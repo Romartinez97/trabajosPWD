@@ -35,8 +35,7 @@ if ($personaBuscada = $objPersona->buscar($param)) {
                 <p class="display-6" id="tituloEjercicio">Persona encontrada</p>
                 <p class="display-6" id="tituloEjercicio">En caso de desearlo, puede modificar los datos personales:</p>
 
-                <form form action="actualizarDatosPersona.php" method="post" name="formActualizarPersona"
-                    id="formActualizarPersona">
+                <form form action="actualizarDatosPersona.php" method="post" name="formActualizarPersona" id="formActualizarPersona">
 
                     <label class="form-label" for="nroDni">DNI (no modificable):</label>
                     <input class="form-control" type="text" name="nroDni" id="nroDni" value="<?php echo $nroDni; ?>" readonly>

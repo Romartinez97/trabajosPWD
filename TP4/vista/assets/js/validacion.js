@@ -128,7 +128,7 @@ $(document).ready(function () {
         }
     })
     //Formulario de accionBuscarPersona.php
-    $("#actualizarDatosPersona").validate({
+    $("#formActualizarPersona").validate({
 
         rules: {
             nombre: {
@@ -179,6 +179,75 @@ $(document).ready(function () {
         }
     })
 
+    //Formulario de nuevoAuto.php
+    $("#formNuevoAuto").validate({
+        rules:{
+            patente: {
+                required: true,
+                alfanumerico: true,
+                minlength: 6,
+                maxlength: 10,
+            },
+            marca: {
+                required: true,
+            },
+            modelo: {
+                required: true,
+                number: true,
+            },
+            dniDuenio: {
+                required: true,
+                number: true,
+                minlength: 1,
+                maxlength: 10,
+            },
+        },
+        messages:{
+            patente: {
+                minlength: "La patente no puede tener menos de 6 caracteres",
+                maxlength: "La patente no puede tener más de 10 caracteres",
+            },
+            dniDuenio: {
+                minlength: "El DNI no puede tener menos de 1 numero",
+                maxlength: "El DNI no puede tener más de 10 caracteres",
+            }
+        },
 
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
+
+    //formulario de cambioDuenio.php
+    $("#formCambioDuenio").validate({
+        rules: {
+            patente: {
+                required: true,
+                alfanumerico: true,
+                minlength: 6,
+                maxlength: 10,
+            },
+            dni: {
+                required: true,
+                number: true,
+                minlength: 1,
+                maxlength: 10,
+            }
+        },
+        messages: {
+            patente: {
+                minlength: "La patente no puede tener menos de 6 caracteres",
+                maxlength: "La patente no puede tener más de 10 caracteres",
+            },
+            dniDuenio: {
+                minlength: "El DNI no puede tener menos de 1 numero",
+                maxlength: "El DNI no puede tener más de 10 caracteres",
+            }
+        },
+
+        submitHandler: function (form) {
+            form.submit();
+        }
+    })
 
 });
