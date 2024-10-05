@@ -23,12 +23,11 @@ CREATE DATABASE infoautos;
 USE infoautos;
 
 CREATE TABLE `auto` (
-  `id` bigint AUTO_INCREMENT,
   `patente` varchar(10) character set utf8 collate utf8_unicode_ci NOT NULL,
   `marca` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `modelo` int(11) NOT NULL,
   `dniDuenio` varchar(10) character set utf8 collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`patente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 

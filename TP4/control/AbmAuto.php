@@ -12,9 +12,9 @@ class AbmAuto{
      */
     private function cargarObjeto($param){
         $obj=null;
-        if(array_key_exists('id', $param) && array_key_exists('patente', $param)&& array_key_exists('marca', $param)&& array_key_exists('modelo', $param)&& array_key_exists('dniDuenio', $param)){
+        if(array_key_exists('patente', $param)&& array_key_exists('marca', $param)&& array_key_exists('modelo', $param)&& array_key_exists('dniDuenio', $param)){
             $obj=new Auto();
-            $obj->setear($param['id'], $param['patente'], $param['marca'], $param['modelo'], $param['dniDuenio']);
+            $obj->setear($param['patente'], $param['marca'], $param['modelo'], $param['dniDuenio']);
         }
         return $obj;
     }
@@ -27,9 +27,9 @@ class AbmAuto{
      */
     private function cargarObjetoConClave($param){
         $obj=null;
-        if(isset($param['id'])){
+        if(isset($param['patente'])){
             $obj=new Auto();
-            $obj->setear($param['id'], null, null, null, null);
+            $obj->setear($param['patente'], null, null, null);
         }
         return $obj;
     }
@@ -42,7 +42,7 @@ class AbmAuto{
      */
     private function seteadosCamposClave($param){
         $resp=false;
-        if(isset($param['id'])){
+        if(isset($param['patente'])){
             $resp=true;
         }
         return $resp;
@@ -55,7 +55,7 @@ class AbmAuto{
      */
     public function alta($param){
         $resp=false;
-        $param['id']=null;
+        //$param['patente']=null;
         $elObjtAuto=$this->cargarObjeto($param);
         if($elObjtAuto!=null && $elObjtAuto->insertar()){
             $resp=true;
@@ -103,9 +103,6 @@ class AbmAuto{
     public function buscar($param){
         $where=" true ";
         if($param!=null){
-            if(isset($param['id'])){
-                $where.=" and id='".$param['id']."'";
-            }
             if(isset($param['patente'])){
                 $where.=" and patente='".$param['patente']."'";
             }

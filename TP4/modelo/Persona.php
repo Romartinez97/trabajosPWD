@@ -8,6 +8,7 @@ class Persona{
     private $fechaNac;
     private $telefono;
     private $domicilio;
+    private $colAutos;
     private $mensajeOperacion;
 
     public function __construct(){
@@ -18,10 +19,11 @@ class Persona{
         $this->fechaNac="";
         $this->telefono="";
         $this->domicilio="";
+        $this->colAutos=[];
         $this->mensajeOperacion="";
     }
 
-    public function setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio){
+    public function setear($nroDni, $apellido, $nombre, $fechaNac, $telefono, $domicilio, $colAutos){
         //$this->setId($id);
         $this->setNroDni($nroDni);
         $this->setApellido($apellido);
@@ -29,6 +31,7 @@ class Persona{
         $this->setFechaNac($fechaNac);
         $this->setTelefono($telefono);
         $this->setDomicilio($domicilio);
+        $this->setColAutos($colAutos);
     }
 
     //metodos de acceso
@@ -82,6 +85,13 @@ class Persona{
         $this->domicilio=$domicilio;
     }
 
+    public function getColAutos(){
+        return $this->colAutos;
+    }
+    public function setColAutos($newColAutos){
+        $this->colAutos=$newColAutos;
+    }
+
     public function getMensajeOperacion(){
         return $this->mensajeOperacion;
     }
@@ -98,7 +108,7 @@ class Persona{
             if($res>-1){
                 if($res>0){
                     $row=$base->Registro();
-                    $this->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
+                    $this->setear($row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio'], "");
                     $resp=true;//se setea la resp como true para demostrar que la carga fue exitosa
                 }
             }
@@ -114,7 +124,7 @@ class Persona{
         $sql="INSERT INTO persona (nroDni, apellido, nombre, fechaNac, telefono, domicilio)
                 VALUES ('".$this->getNroDni()."', '".$this->getApellido()."', '".$this->getNombre()."', '".$this->getFechaNac()."', '".$this->getTelefono()."', '".$this->getDomicilio()."')";
         if($base->Iniciar()){
-            if($elid=$base->Ejecutar($sql)){
+            if($base->Ejecutar($sql)){
                 //$this->setId($elid);
                 $resp=true;
             }else{
@@ -171,7 +181,9 @@ class Persona{
             if($res>0){
                 while($row=$base->Registro()){
                     $obj=new Persona();
-                    $obj->setear( $row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio']);
+                    $objAuto=new Auto();
+                    $autosPersona = $objAuto->listar("dniDuenio =".$row['nroDni']);
+                    $obj->setear( $row['nroDni'], $row['apellido'], $row['nombre'], $row['fechaNac'], $row['telefono'], $row['domicilio'], $autosPersona);
                     array_push($arreglo, $obj);
                 }
             }

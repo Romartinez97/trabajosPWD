@@ -14,7 +14,6 @@ $paramA=["patente" => $datos["patente"]];
 $paramP=["nroDni" => $datos["dni"]];
 if($auto=$objAuto->buscar($paramA)){
     $autoExiste=true;
-    $id=$auto[0]->getId();
     $patente=$auto[0]->getPatente();
     $marca=$auto[0]->getMarca();
     $modelo=$auto[0]->getModelo();
@@ -24,7 +23,7 @@ if($persona=$objPersona->buscar($paramP)){
     $duenio=$persona[0]->getNombre()." ".$persona[0]->getApellido();
 }
 if($autoExiste && $personaExiste){
-    $paramModif=["id" => $id,
+    $paramModif=[
                 "patente" => $patente,
                 "marca" => $marca,
                 "modelo" => $modelo,

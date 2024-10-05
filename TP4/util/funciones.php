@@ -45,9 +45,9 @@ function my_autoloader($class_name){
         if(file_exists($directory.$class_name.'.php')){
             require_once($directory.$class_name.'.php');
             //echo $directory.$class_name.'.php'."<br>"; //linea para ver si funciona (borrar luego)
-            return;
         }
     }
+    return;
 }
 spl_autoload_register('my_autoloader');
 

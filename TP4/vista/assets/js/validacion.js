@@ -11,6 +11,10 @@ $(document).ready(function () {
         return this.optional(element) || /^(?! )[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ,.\s]+$/i.test(value);
     }, "Ingrese solo caracteres alfabéticos");
 
+    jQuery.validator.addMethod("formatoNumero", function (value, element) {
+        return this.optional(element) || /^\d{3}-\d{7}$/.test(value);
+    }, "Ingrese un formato de telefono válido");
+
     $.validator.messages.required = "Dato requerido";
     $.validator.messages.number = "Ingrese solo números decimales";
 
@@ -146,7 +150,7 @@ $(document).ready(function () {
             },
             telefono: {
                 required: true,
-                number: true,
+                formatoNumero: true,
                 maxlength: 20,
             },
             domicilio: {
@@ -194,6 +198,7 @@ $(document).ready(function () {
             modelo: {
                 required: true,
                 number: true,
+                maxlength:9
             },
             dniDuenio: {
                 required: true,

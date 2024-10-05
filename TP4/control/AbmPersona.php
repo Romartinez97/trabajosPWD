@@ -15,7 +15,9 @@ class AbmPersona{
         $obj=null;
         if(array_key_exists('nroDni', $param)&& array_key_exists('apellido', $param)&& array_key_exists('nombre', $param)&& array_key_exists('fechaNac', $param)&& array_key_exists('telefono', $param)&& array_key_exists('domicilio', $param)){
             $obj=new Persona();
-            $obj->setear($param['nroDni'], $param['apellido'], $param['nombre'], $param['fechaNac'], $param['telefono'], $param['domicilio']);
+            $objAuto=new Auto();
+            $autosPersona=$objAuto->listar("dniDuenio = '".$param['nroDni']."'");
+            $obj->setear($param['nroDni'], $param['apellido'], $param['nombre'], $param['fechaNac'], $param['telefono'], $param['domicilio'], $autosPersona);
         }
         return $obj;
     }
