@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP1 - Ejercicio 7";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../controller/Operacion.php";
 include "../../utils/funciones.php";
 
@@ -21,9 +21,9 @@ $resultado = $operacionObj->realizarOperacion();
                 menú</a>
         </div>
     </div>
-    
-<?php
-    include '../estructura/footer.php';
+
+    <?php
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

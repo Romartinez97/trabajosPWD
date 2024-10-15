@@ -13,7 +13,7 @@ $tamanioOpt=filesize($imagenOptimizada);
 $porcentaje=$controlImg->porcentaje();
 
 $titulo = "Spatie/image-Optimizer";
-include '../estructura/header.php'
+include '../../../estructura/header.php'
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ include '../estructura/header.php'
         </div>
     </div>
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 </body>
 </html>

@@ -112,6 +112,24 @@
                     </a>
                 </div>
 
+                <div class="card">
+                    <a class="btn" data-bs-toggle="collapse" href="#tpCU-acordeon">
+                        <div class="card-header">
+                            <span class="h5">Trabajo práctico Clases Útiles</span>
+                        </div>
+                    </a>
+                    <div id="tpCU-acordeon" class="collapse" data-bs-parent="#acordeon">
+                        <div class="card-body">
+                            <div class="form-label">
+                                <a href="TP_CUtiles/vista/spatieIO.php"><span class="h6">Spatie Image Optimizer (optimizador de imágenes)</span></a>
+                            </div>
+                            <div class="form-label">
+                                <a href="TP_CUtiles/vista/languageDetection.php"><span class="h6">Language detection (detector de idiomas)</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

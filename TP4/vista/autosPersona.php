@@ -1,9 +1,7 @@
 <?php
 $titulo = "TP4 - Ver autos asociados";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 include_once '../util/funciones.php';
-//include_once '../control/AbmAuto.php';
-//include_once '../control/AbmPersona.php';
 
 $datos=data_submitted();
 $dni = $datos["dni"];
@@ -86,7 +84,7 @@ if ($dni) {
     </div>
 
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 
 </body>

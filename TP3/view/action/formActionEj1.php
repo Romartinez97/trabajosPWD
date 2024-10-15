@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "Archivo copiado";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../utils/funciones.php";
 include "../../controller/Archivo.php";
 
@@ -26,7 +26,7 @@ $archivoSubido = $archivo->subirArchivo($datos, $tipo, $tamanio);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

@@ -1,10 +1,8 @@
 <?php
 $titulo = "TP4 - Modificar datos persona";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../configuracion.php";
 include_once('../../util/funciones.php');
-//include_once '../../control/AbmAuto.php';
-//include_once '../../control/AbmPersona.php';
 
 $datos = data_submitted();
 $objPersona = new AbmPersona();
@@ -63,7 +61,7 @@ if ($personaBuscada = $objPersona->buscar($param)) {
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

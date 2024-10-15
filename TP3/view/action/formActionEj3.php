@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "Película ingresada";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../utils/funciones.php";
 include "../../controller/Pelicula.php";
 
@@ -76,7 +76,7 @@ $dir = $peliculaIngresada->getDir();
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

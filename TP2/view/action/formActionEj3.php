@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "Ingreso exitoso";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include '../../utils/funciones.php';
 include '../../controller/Usuario.php';
 
@@ -32,7 +32,7 @@ $login = $user->ingreso($datos);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 </body>
 

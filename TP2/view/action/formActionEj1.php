@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP1 - Ejercicio 1";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../utils/funciones.php";
 include "../../controller/Numero.php";
 
@@ -23,7 +23,7 @@ $numero = new Numero($datos);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

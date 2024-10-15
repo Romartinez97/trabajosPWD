@@ -1,6 +1,6 @@
 <?php
 $titulo = "TP4 - Menú";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +86,7 @@ include 'estructura/header.php';
     </div>
 
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 
 </body>

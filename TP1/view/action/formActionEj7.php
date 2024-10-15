@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP1 - Ejercicio 7";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../controller/Operacion.php";
 include "../../utils/funciones.php";
 
@@ -23,7 +23,7 @@ $resultado = $operacionObj->realizarOperacion();
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

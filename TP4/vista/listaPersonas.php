@@ -1,9 +1,7 @@
 <?php
 $titulo = "TP4 - Ver personas";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 include_once '../util/funciones.php';
-//include_once '../control/AbmAuto.php';
-//include_once '../control/AbmPersona.php';
 
 $objPersona = new AbmPersona();
 $listadoPersonas = $objPersona->buscar(null);
@@ -54,7 +52,7 @@ $listadoPersonas = $objPersona->buscar(null);
     </div>
 
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 
 </body>

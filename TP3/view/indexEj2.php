@@ -1,6 +1,6 @@
 <?php
 $titulo = "TP3 - Ejercicio 2";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 ?>
 
 <body>
@@ -19,7 +19,7 @@ include 'estructura/header.php';
     </div>
 
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 
 </body>

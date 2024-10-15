@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP4 - Cambio Dueño";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 include_once '../util/funciones.php';
 
 ?>
@@ -29,7 +29,7 @@ include_once '../util/funciones.php';
         </div>
     </div>
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 </body>
 </html>

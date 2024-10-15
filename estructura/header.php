@@ -9,6 +9,9 @@
     <link href="../assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
 </head>
 
 
@@ -60,9 +63,14 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="/trabajosPWD/TP4/vista/index.php" role="button">TP 4</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TP Clases Útiles</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/trabajosPWD/TP_CUtiles/vista/spatieIO.php">Optimizador de imágenes</a></li>
+                            <li><a class="dropdown-item" href="/trabajosPWD/TP_CUtiles/vista/languageDetection.php">Detector de idiomas</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-</body>

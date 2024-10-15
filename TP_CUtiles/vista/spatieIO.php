@@ -1,6 +1,6 @@
 <?php
 $titulo = "Spatie/image-Optimizer";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,7 +142,7 @@ include 'estructura/header.php';
         </div>
     </div>
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 </body>
 </html>

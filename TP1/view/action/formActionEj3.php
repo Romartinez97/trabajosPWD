@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP1 - Ejercicio 3";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../controller/Persona.php";
 include "../../utils/funciones.php";
 
@@ -35,7 +35,7 @@ $personaObj = new Persona($datos);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

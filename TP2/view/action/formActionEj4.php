@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP2 - Ejercicio 4";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../utils/funciones.php";
 include "../../controller/Pelicula.php";
 
@@ -57,7 +57,7 @@ $peliculaIngresada = new Pelicula($datos);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>

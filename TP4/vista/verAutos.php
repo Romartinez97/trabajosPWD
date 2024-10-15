@@ -1,10 +1,8 @@
 <?php
 $titulo = "TP4 - Ver autos";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 include "../configuracion.php";
 include_once '../util/funciones.php';
-//include_once '../control/AbmAuto.php';
-//include_once '../control/AbmPersona.php';
 
 $objAuto = new AbmAuto();
 $objPersona = new AbmPersona();
@@ -54,7 +52,7 @@ $listadoAutos = $objAuto->buscar(null);
     </div>
 
     <?php
-    include 'estructura/footer.php';
+    include '../../estructura/footer.php';
     ?>
 
 </body>

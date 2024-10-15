@@ -1,9 +1,7 @@
 <?php
 $titulo = "TP4 - Nueva persona";
-include 'estructura/header.php';
+include '../../estructura/header.php';
 include_once '../util/funciones.php';
-//include_once '../control/AbmAuto.php';
-//include_once '../control/AbmPersona.php';
 
 ?>
 
@@ -55,7 +53,7 @@ include_once '../util/funciones.php';
     </div>
 
     <?php
-    include 'estructura/footer.php';
+   include '../../estructura/footer.php';
     ?>
 
 </body>

@@ -1,7 +1,7 @@
 <?php
 
 $titulo = "TP1 - Ejercicio 2";
-include '../estructura/header.php';
+include '../../../estructura/header.php';
 include "../../utils/funciones.php";
 include "../../controller/HorasSemanales.php";
 
@@ -28,7 +28,7 @@ $horasSemanalesObj = new HorasSemanales($datos);
     </div>
 
     <?php
-    include '../estructura/footer.php';
+    include '../../../estructura/footer.php';
     ?>
 
 </body>
