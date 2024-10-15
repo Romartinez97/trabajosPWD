@@ -1,44 +1,6 @@
 <?php
 $titulo = "patrickschur/language-detection";
 include '../../estructura/header.php';
-require '../../vendor/autoload.php';
-
-use LanguageDetection\Language;
-use LanguageDetection\LanguageResult;
-use LanguageDetection\Trainer;
-
-$t = new Trainer();
-$t->setMaxNgrams(9000);
-$t->learn();
-
-$ld = new Language();
-$ld->setMaxNgrams(9000);
-$ejemplo1 = "La amistad es un regalo que debemos cuidar y valorar.";
-$ejemplo2 = "Traveling opens our minds and helps us understand different cultures.";
-$ejemplo3 = "Le chocolat chaud est parfait pour se réchauffer en hiver.";
-$ejemplo4 = "Freundschaft ist wichtig, um in schwierigen Zeiten Unterstützung zu finden.";
-$ejemplo5 = "La musica unisce le persone e crea momenti indimenticabili insieme.";
-
-$resultado1 = $ld->detect($ejemplo1)->bestResults()->close();
-$resultado2 = $ld->detect($ejemplo2)->bestResults()->close();
-$resultado3 = $ld->detect($ejemplo3)->bestResults()->close();
-$resultado4 = $ld->detect($ejemplo4)->bestResults()->close();
-$resultado5 = $ld->detect($ejemplo5)->bestResults()->close();
-
-//
-$detector = new LanguageDetection\Language();
-$resultado1 = $detector->detect($ejemplo1)->close();
-$idiomaDetectado = 'No se pudo detectar el idioma.';
-$valorDetectado = 0;
-if ($resultado1) {
-    $resultArray = (array) $resultado1;
-    if (!empty($resultArray['result'])) {
-        $idiomas = $resultArray['result'];
-        $idiomaDetectado = key($idiomas);
-        $valorDetectado = $idiomas[$idiomaDetectado];
-    }
-}
-//
 ?>
 
 <div class="container p-4 my-4 d-flex justify-content-center">
@@ -87,45 +49,9 @@ if ($resultado1) {
             </div>
             <br>
             <p class="h2" style="color:#295F98">Ejemplos:</p>
-            <div>
-                Texto: <?php echo $ejemplo1 . "\n"; ?>
-                <p>Idioma detectado: <?php echo $resultado1["es"] . "\n"; ?></p>
-                <?php print_r($resultado1); ?>
-                <br>-------------------------<br>
-                Texto: <?php echo $ejemplo2 . "\n"; ?>
-                <p>Idioma detectado: <?php echo $resultado2 . "\n"; ?></p>
-                <?php print_r($resultado2); ?>
-                <br>-------------------------<br>
-                Texto: <?php echo $ejemplo3 . "\n"; ?>
-                <p>Idioma detectado: <?php echo $resultado3 . "\n"; ?></p>
-                <?php print_r($resultado3); ?>
-                <br>-------------------------<br>
-                Texto: <?php echo $ejemplo4 . "\n"; ?>
-                <p>Idioma detectado: <?php echo $resultado4 . "\n"; ?></p>
-                <?php print_r($resultado4); ?>
-                <br>-------------------------<br>
-                Texto: <?php echo $ejemplo5 . "\n"; ?>
-                <p>Idioma detectado: <?php echo $resultado5 . "\n"; ?></p>
-                <?php print_r($resultado5); ?>
-                <br>-------------------------<br>
-
-                <div>
-                    Texto: <?php echo $ejemplo1 . "\n"; ?>
-                    <p>Idioma detectado: <?php echo $idiomaDetectado . " (" . $valorDetectado . ")\n"; ?></p>
-                    <?php print_r($resultado1); ?>
-                </div>
-
-            </div>
+            <p class="text-danger">Verificar que la librería esté instalada para continuar</p>
+            <a href="languageDetectionEjemplos.php" class="btn  text-white" id="botonMenu">Ir a ejemplos</a>
         </div>
-        <br>
-        <p class="h2" style="color:#295F98">Identificar un idioma:</p>
-        <form action="accion/accionLanguageDetection.php" method="post">
-            <label class="form-label" for="textoIngresado">Ingrese un texto para detectar su idioma (mínimo 5
-                palabras):</label>
-            <input class="form-control" type="text" name="textoIngresado" id="textoIngresado">
-            <input type="submit" class="btn m-2 bg-success text-white" value="Identificar">
-            <input type="reset" class="btn m-2 bg-danger text-white" value="Borrar">
-        </form>
     </div>
 </div>
 <?php
