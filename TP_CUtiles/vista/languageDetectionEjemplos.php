@@ -7,7 +7,7 @@ $composer = '../../vendor/autoload.php';
 $libreriaDisponible = file_exists($composer);
 if ($libreriaDisponible) {
     require $composer;
-    require "../modelo/Idioma.php";
+    require "../control/Idioma.php";
     $idioma = new Idioma();
     $idioma->setMaxNgrams(9000);
 }
@@ -16,10 +16,12 @@ if ($libreriaDisponible) {
 
 <div class="container p-4 my-4 d-flex justify-content-center">
     <?php if (!$libreriaDisponible): ?>
-        <p class="h1 mb-4" style="color:#295F98">patrickschur/language-detection</p>
-        <p class="h2 text-danger">ERROR: no está instalada la librería</p>
-        <p>Vuelva atrás y revise los requerimientos nuevamente</p>
-        <a href="../" class="btn  text-white" id="botonMenu">Volver atrás</a>
+        <div>
+            <p class="h1 mb-4" style="color:#295F98">patrickschur/language-detection</p>
+            <p class="h2 text-danger">ERROR: no está instalada la librería</p>
+            <p>Vuelva atrás y revise los requerimientos nuevamente</p>
+            <a href="languageDetection.php" class="btn  text-white" id="botonMenu">Volver atrás</a>
+        </div>
     <?php else: ?>
         <div>
             <p class="h1 mb-4" style="color:#295F98">patrickschur/language-detection</p>

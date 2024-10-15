@@ -3,7 +3,7 @@ $titulo = "patrickschur/language-detection";
 include "../../../estructura/header.php";
 include "../../util/funciones.php";
 require '../../../vendor/autoload.php';
-require "../../modelo/Idioma.php";
+require "../../control/Idioma.php";
 
 $datos = data_submitted();
 $textoIngresado = $datos["textoIngresado"];
