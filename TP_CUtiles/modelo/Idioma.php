@@ -1,17 +1,14 @@
 <?php
 
-require '../../vendor/autoload.php';
 use LanguageDetection\Language;
 
-class Idioma
+class Idioma extends Language
 {
-    private $ld;
     private $listaIdiomas;
 
     public function __construct()
     {
-        $this->ld = new Language();
-        $this->ld->setMaxNgrams(9000);
+        parent::__construct();
         $this->listaIdiomas = [
             'ab' => 'abjasio',
             'af' => 'afrikaans',
@@ -125,7 +122,7 @@ class Idioma
             'zh-Hans' => 'chino mandarín (simplificado)',
             'zh-Hant' => 'chino mandarín (tradicional)',
             'sw' => 'suajili (Kiswahili)',
-            'ml' => 'malabar (Malayalam)',
+            'it' => 'italiano',
         ];
 
     }
@@ -142,7 +139,10 @@ class Idioma
 
     public function detectarIdioma($texto)
     {
-        return $this->ld->detect($texto)->bestResults()->close();
+        $detector = new LanguageDetection\Language();
+        $detector->setMaxNgrams(9000);
+        $resultado = $detector->detect($texto)->bestResults()->close();
+        return $resultado;
     }
 
     public function obtenerNombreIdioma($codigo)
@@ -161,18 +161,23 @@ class Idioma
         return $arregloResultado;
     }
 
-    public function mostrarTodosLosResultados($texto)
+    public function mostrarTodosLosResultados($textos)
     {
-        $resultado = $this->ld->detect($texto)->close();
-        $arregloResultados = [];
-        foreach ($resultado as $codigoIdioma => $probabilidad) {
-            $nombreIdioma = $this->obtenerNombreIdioma($codigoIdioma);
-            $probabilidad = $this->mostrarPorcentaje($probabilidad);
-            $arregloResultados[] = [$nombreIdioma => $probabilidad];
+        $resultadosFinales = [];
+        foreach ($textos as $texto) {
+            $resultado = $this->detect($texto)->close();
+            $arregloResultados = [];
+            foreach ($resultado as $codigoIdioma => $probabilidad) {
+                $nombreIdioma = $this->obtenerNombreIdioma($codigoIdioma);
+                $probabilidad = $this->mostrarPorcentaje($probabilidad);
+                $arregloResultados[] = [$nombreIdioma => $probabilidad];
+            }
+            $resultadosFinales[] = [
+                "texto" => $texto,
+                "resultados" => $arregloResultados
+            ];
         }
-        return $arregloResultados;
+        return $resultadosFinales;
     }
-
-
 
 }

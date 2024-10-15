@@ -51,6 +51,7 @@ include '../../estructura/header.php';
             <p class="h2" style="color:#295F98">Ejemplos:</p>
             <p class="text-danger">Verificar que la librería esté instalada para continuar</p>
             <a href="languageDetectionEjemplos.php" class="btn  text-white" id="botonMenu">Ir a ejemplos</a>
+            <a class="btn text-white bg-dark" href="../../index.php">Volver al menú principal</a>
         </div>
     </div>
 </div>

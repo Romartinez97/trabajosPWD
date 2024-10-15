@@ -2,48 +2,60 @@
 $titulo = "patrickschur/language-detection";
 include "../../../estructura/header.php";
 include "../../util/funciones.php";
-
 require '../../../vendor/autoload.php';
-use LanguageDetection\Language;
-use LanguageDetection\Trainer;
+require "../../modelo/Idioma.php";
 
 $datos = data_submitted();
 $textoIngresado = $datos["textoIngresado"];
-print_r($datos);
+$idioma = new Idioma();
+$idioma->setMaxNgrams(9000);
 
-$ld = new Language();
-$ld->setMaxNgrams(9000);
-$resultado = $ld->detect($textoIngresado)->bestResults()->close();
-print_r($resultado);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-</head>
-
-<body>
-    <div class="container p-4 my-4 d-flex justify-content-center">
-        <div class="div-form">
-            <?php
-            if (empty($datos)) {
-                echo "<p>Texto ingresado: " . $textoIngresado . "</p>";
-
-                foreach ($resultado as $idioma => $probabilidad) {
-                    echo "<p>Idioma detectado: " . $idioma . " con una probabilidad de: " . $probabilidad . "</p>";
-                }
-            } else {
-                echo "<p>Error: No se ingresó ningún texto.</p>";
-            }
-            ?>
-            <a class="btn mt-3 text-white" href="../languageDetectionEjemplos.php" id="botonMenu">Volver atrás</a>
-            <a class="btn mt-3 text-white bg-dark" href="../../../index.php">Volver al menú principal</a>
-        </div>
+<div class="container p-4 my-4 d-flex justify-content-center">
+    <div>
+        <p class="h1 mb-4" style="color:#295F98">patrickschur/language-detection</p>
+        <p class="h2 mb-4" style="color:#295F98">Resultado de la detección de idioma:</p>
+        <?php if (empty($textoIngresado)): ?>
+            <p class="h2 text-danger">ERROR: no se ingresó ningún texto</p>
+            <p>Vuelva atrás e intente nuevamente</p>
+        <?php else: ?>
+            <div>
+                <p class="h5 mb-3" style="color:#295F98">Mostrando solo el primer resultado (el de mayor probabilidad):</p>
+                <div class="ms-3">
+                    <?php
+                    $resultado = $idioma->mostrarPrimerResultado($textoIngresado);
+                    echo "<p class='h6'>Texto: " . $textoIngresado . "</p>";
+                    foreach ($resultado as $idiomaDetectado => $probabilidad) {
+                        echo "<p>" . ucfirst($idiomaDetectado) . ", con una probabilidad de acierto del " . $probabilidad . "%</p>";
+                    }
+                    ?>
+                </div>
+                <br>
+                <p class="h5 mb-3" style="color:#295F98">Mostrando todos los posibles idiomas y su probabilidad:</p>
+                <div class="ms-3">
+                    <?php
+                    $resultados = $idioma->mostrarTodosLosResultados([$textoIngresado]);
+                    foreach ($resultados as $resultado) {
+                        echo "<div style='max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;'>";
+                        echo "<p class='h6'>Texto: " . $resultado['texto'] . "</p>";
+                        foreach ($resultado['resultados'] as $idiomaProbabilidad) {
+                            foreach ($idiomaProbabilidad as $idiomaDetectado => $probabilidad) {
+                                echo "<p>" . ucfirst($idiomaDetectado) . ": " . $probabilidad . "%</p>";
+                            }
+                        }
+                        echo "</div><br>";
+                    }
+                    ?>
+                </div>
+                <a class="btn mt-3 text-white" href="../languageDetectionEjemplos.php" id="botonMenu">Volver atrás</a>
+            </div>
+        <?php endif; ?>
     </div>
+</div>
 
-    <?php
-    include '../../../estructura/footer.php';
-    ?>
-
+<?php
+include '../../../estructura/footer.php';
+?>
 </body>
