@@ -1,5 +1,4 @@
 <?php
-
 use LanguageDetection\Language;
 
 class Idioma extends Language
@@ -137,20 +136,34 @@ class Idioma extends Language
         return round($probabilidad * 100, 2);
     }
 
+    /**
+     * Función para mostrar los idiomas más probables.
+     * Retorna un array con los idiomas detectados y su probabilidad.
+     * @param string $texto
+     * @return array
+     * */
     public function detectarIdioma($texto)
     {
-        $detector = new LanguageDetection\Language();
-        $detector->setMaxNgrams(9000);
-        $resultado = $detector->detect($texto)->bestResults()->close();
+        $resultado = $this->detect($texto)->bestResults()->close();
         return $resultado;
     }
 
+    /**
+     * Transforma el código de idioma en el nombre completo del idioma.
+     * @param string $codigo
+     * @return string
+     */
     public function obtenerNombreIdioma($codigo)
     {
         $listaIdiomas = $this->getListaIdiomas();
         return isset($listaIdiomas[$codigo]) ? $listaIdiomas[$codigo] : $codigo;
     }
 
+    /**
+     * Retorna solo el primer resultado de la detección de idioma, con el idioma con su nombre completo y la probabilidad pasada a porcentaje.
+     * @param string $texto
+     * @return array
+     */
     public function mostrarPrimerResultado($texto)
     {
         $resultado = $this->detectarIdioma($texto);
@@ -161,6 +174,11 @@ class Idioma extends Language
         return $arregloResultado;
     }
 
+    /**
+     * Función que retorna todos los resultados de la detección de idioma, con el texto y los idiomas (con nombre completo) detectados con su probabilidad (en porcentaje).
+     * @param array $textos
+     * @return array
+     */
     public function mostrarTodosLosResultados($textos)
     {
         $resultadosFinales = [];

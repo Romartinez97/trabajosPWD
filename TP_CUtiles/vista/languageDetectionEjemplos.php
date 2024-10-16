@@ -1,15 +1,20 @@
 <?php
 $titulo = "patrickschur/language-detection Ejemplos";
 include '../../estructura/header.php';
-
+use LanguageDetection\Trainer;
 //Verifico si existe el archivo autoload
-$composer = '../../vendor/autoload.php';
+$composer = '../vendor/autoload.php';
 $libreriaDisponible = file_exists($composer);
 if ($libreriaDisponible) {
     require $composer;
     require "../control/Idioma.php";
+     
+    $t = new Trainer();
+    $t->setMaxNgrams(9000);
+    $t->learn();
     $idioma = new Idioma();
     $idioma->setMaxNgrams(9000);
+
 }
 
 ?>
@@ -25,7 +30,7 @@ if ($libreriaDisponible) {
     <?php else: ?>
         <div>
             <p class="h1 mb-4" style="color:#295F98">patrickschur/language-detection</p>
-            <p class="h2 mb-4" style="color:#295F98">Ejemplos</p>
+            <p class="h2 mb-4" style="color:#295F98">Ejemplos:</p>
             <p class="h5 mb-3" style="color:#295F98">Mostrando solo el primer resultado (el de mayor probabilidad):</p>
             <div class="ms-3">
                 <?php

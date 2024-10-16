@@ -2,11 +2,16 @@
 $titulo = "patrickschur/language-detection";
 include "../../../estructura/header.php";
 include "../../util/funciones.php";
-require '../../../vendor/autoload.php';
+require '../../vendor/autoload.php';
 require "../../control/Idioma.php";
 
 $datos = data_submitted();
 $textoIngresado = $datos["textoIngresado"];
+
+use LanguageDetection\Trainer;
+$t = new Trainer();
+$t->setMaxNgrams(9000);
+$t->learn();
 $idioma = new Idioma();
 $idioma->setMaxNgrams(9000);
 
