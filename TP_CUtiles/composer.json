@@ -1,5 +1,6 @@
 {
     "require": {
+        "spatie/image-optimizer": "^1.7",
         "patrickschur/language-detection": "^5.3"
     }
 }
