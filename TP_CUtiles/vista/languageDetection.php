@@ -7,12 +7,27 @@ include '../../estructura/header.php';
     <div>
         <p class="h1" style="color:#295F98">patrickschur/language-detection</p>
         <div class="container">
-            <p>patrickschur/language-detection es una librería de PHP que se utiliza para la detección de una cadena de
-                texto dada.</p>
-            <p>A partir de un texto de prueba en distintos idiomas, se crea una base de datos que se convierte en
-                secuencias
-                de n-gramas (subsecuencias de n elementos de una secuencia dada). Estas secuencias se utilizarán
-                posteriormente para comparar el texto ingresado y determinar el idioma en el que está escrito.</p>
+            <p><a
+                    href="https://packagist.org/packages/patrickschur/language-detection">patrickschur/language-detection</a>
+                es una librería de PHP que se utiliza para la detección del idioma de una cadena de texto dada.</p>
+            <p>Esta librería está basada en el concepto de n-gramas, secuencias de "n" elementos consecutivos de un
+                conjunto de elementos, generalmente de palabras o caracteres, y se utilizan en el procesamiento de
+                lenguaje natural para análisis y modelado de texto. En este caso, los n-gramas son solo de caracteres,
+                con n=1 (unigrama), n=2 (bigrama), y n=3 (trigrama).</p>
+            <p>A partir de un texto base, la librería utiliza modelos de n-gramas para los distintos idiomas, los cuales
+                son colecciones de los n-gramas más representativos de cada idioma. Cuando se proporciona un texto para
+                analizar, la librería extrae n-gramas del texto para luego compararlos con los modelos de cada idioma.
+                Se cuenta cuántos coinciden, y mientras mayor sea esa coincidencia, mayor la probabilidad de que ese
+                texto pertenezca a ese idioma.
+            </p>
+            <p>Por ejemplo, para el texto "Hola mundo" podemos generar los siguientes n-gramas:
+            <ul>
+                <li><b>Unigrama (n=1):</b> ["H", "o", "l", "a", " ", "M", "u", "n", "d", "o"]</li>
+                <li><b>Bigrama (n=2):</b> ["Ho", "ol", "la", "a ", " M", "Mu", "un", "nd", "do"]</li>
+                <li><b>Trigrama (n=3):</b> ["Hol", "ola", "la ", "a M", " Mu", "Mun", "und", "ndo"]</li>
+            </ul>
+            El programa luego compara estos n-gramas con los modelos de todos los idiomas previamente generados para ver
+            con cuál hay mayor coincidencia.</p>
         </div>
         <div class="container">
             <p class="h2" style="color:#295F98">Requisitos:</p>
