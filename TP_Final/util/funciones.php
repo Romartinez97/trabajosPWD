@@ -38,9 +38,9 @@ function my_autoloader($class_name){
     //Directorios donde se buscaran las clases
     //echo $_SESSION['ROOT']."<br>";//linea para ver si funciona (borrar luego)
     $directories=array(
-        $_POST['ROOT'].'control/',
-        $_POST['ROOT'].'modelo/',
-        $_POST['ROOT'].'modelo/conector/',
+        $GLOBALS['ROOT'].'control/',
+        $GLOBALS['ROOT'].'modelo/',
+        $GLOBALS['ROOT'].'modelo/conector/',
     );
     foreach($directories as $directory){
         if(file_exists($directory.$class_name.'.php')){
