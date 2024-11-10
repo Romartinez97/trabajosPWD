@@ -2,50 +2,38 @@
 
 class Session
 {
-
-    /**
-     * Constructor que inicia la sesión
-     */
     public function __construct()
     {
-        if (!isset($_SESSION)) {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
     }
 
-    /**
-     * Actualiza las variables de sesión con los valores ingresados
-     * @param mixed $nombreUsuario
-     * @param mixed $psw
-     * @return bool
-     */
     public function iniciar($nombreUsuario, $psw)
     {
         $resp = false;
-        if ($this->validar($nombreUsuario, $psw)) {
-            $_SESSION['nombreUsuario'] = $nombreUsuario;
+        $obj = new ABMUsuario();
+        $param['usmail'] = $nombreUsuario;
+        $param['uspass'] = $psw;
+
+        error_log("Iniciando sesión para: usmail = $nombreUsuario, uspass = $psw");
+
+        $resultado = $obj->buscar($param);
+        if (count($resultado) > 0) {
+            $usuario = $resultado[0];
+            $_SESSION['idUsuario'] = $usuario->getIdUsuario();
             $resp = true;
+            error_log("Usuario encontrado: idUsuario = " . $usuario->getIdUsuario());
+        } else {
+            $this->cerrar();
+            error_log("Usuario no encontrado o contraseña incorrecta.");
         }
         return $resp;
     }
 
-    /**
-     * Valida si la sesión actual tiene usuario y contraseña válidos.
-     * @param mixed $nombreUsuario
-     * @param mixed $psw
-     * @return bool
-     */
-    public function validar($nombreUsuario, $psw)
+    public function validar()
     {
-        $resp = false;
-        $usuario = new Usuario();
-        $arreglo = $usuario->listar("usNombre = '" . $nombreUsuario . "'");
-        if (count($arreglo) > 0) {
-            if ($arreglo[0]->getUsPass() == $psw) {
-                $resp = true;
-            }
-        }
-        return $resp;
+        return isset($_SESSION['idUsuario']);
     }
 
     /**
@@ -54,10 +42,11 @@ class Session
      */
     public function activa()
     {
-        if (isset($_SESSION['nombreUsuario'])) {
-            return true;
+        $resp = false;
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $resp = true;
         }
-        return false;
+        return $resp;
     }
 
     /**
@@ -66,10 +55,13 @@ class Session
      */
     public function getUsuario()
     {
-        if (isset($_SESSION['nombreUsuario'])) {
-            return $_SESSION['nombreUsuario'];
+        $usuario = null;
+        if ($this->validar()) {
+            $obj = new AbmUsuario();
+            $idUsuario = $_SESSION['idUsuario'];
+            $usuario = $obj->obtenerUsuarioPorId($idUsuario);
         }
-        return null;
+        return $usuario;
     }
 
     /**
@@ -78,20 +70,24 @@ class Session
      */
     public function getRol()
     {
-        if (isset($_SESSION['rol'])) {
-            return $_SESSION['rol'];
+        $listaRoles = null;
+        if ($this->validar()) {
+            $obj = new AbmUsuario();
+            $idUsuario = $_SESSION['idUsuario'];
+            $resultado = $obj->obtenerRolesPorUsuario($idUsuario);
+            if (count($resultado) > 0) {
+                $listaRoles = $resultado;
+            }
         }
-        return null;
+        return $listaRoles;
     }
 
-    /**
-     * Cierra la sesión actual
-     * @return void
-     */
     public function cerrar()
     {
-        session_unset();
-        session_destroy();
+        if (session_status() == PHP_SESSION_ACTIVE) {
+            session_unset();
+            session_destroy();
+        }
     }
-
 }
+?>

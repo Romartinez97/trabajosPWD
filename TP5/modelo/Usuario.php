@@ -1,5 +1,7 @@
 <?php
 
+include_once 'conector/BaseDatosPDO.php';
+
 class Usuario
 {
     private $idUsuario;
@@ -163,25 +165,26 @@ class Usuario
         return $resp;
     }
 
-    public function listar($parametro = "")
+    public function listar($condicion = "")
     {
-        $arreglo = array();
+        $arreglo = [];
         $base = new BaseDatosPDO();
-        $sql = "SELECT * FROM usuario ";
-        if ($parametro != "") {
-            $sql .= 'WHERE ' . $parametro;
+        $consulta = "SELECT * FROM usuario";
+        if ($condicion != "") {
+            $consulta .= " WHERE " . $condicion;
         }
-        $res = $base->Ejecutar($sql);
-        if ($res > -1) {
-            if ($res > 0) {
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($consulta)) {
                 while ($row = $base->Registro()) {
                     $obj = new Usuario();
-                    $obj->setear($row['idUsuario'], $row['usNombre'], $row['usPass'], $row['usMail'], $row['usDeshabilitado']);
+                    $obj->setear($row['idusuario'], $row['usnombre'], $row['uspass'], $row['usmail'], $row['usdeshabilitado']);
                     array_push($arreglo, $obj);
                 }
+            } else {
+                $this->setMensajeOperacion($base->getError());
             }
         } else {
-            $this->setMensajeOperacion("Usuario->listar: " . $base->getError());
+            $this->setMensajeOperacion($base->getError());
         }
         return $arreglo;
     }
