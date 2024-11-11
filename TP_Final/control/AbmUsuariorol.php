@@ -11,7 +11,16 @@ class AbmUsuariorol{
         $obj=null;
         if(array_key_exists('idusuario', $param)&& array_key_exists('idrol', $param)){
             $obj=new Usuariorol();
-            $obj->setear($param['idusuario'], $param['idrol']);
+            //--
+            $objusuario=new Usuario();
+            $objusuario->setidusuario($param['idusuario']);
+            $objusuario->cargar();
+            //--
+            $objrol=new Rol();
+            $objrol->setidrol($param['idrol']);
+            $objrol->cargar();
+            //--
+            $obj->setear($objusuario, $objrol);
         }
         return $obj;
     }
@@ -26,7 +35,16 @@ class AbmUsuariorol{
         $obj=null;
         if(isset($param['idusuario']) && isset($param['idrol'])){
             $obj=new Usuariorol();
-            $obj->setear($param['idusuario'], $param['idrol']);
+            //--
+            $objusuario=new Usuario();
+            $objusuario->setidusuario($param['idusuario']);
+            $objusuario->cargar();
+            //--
+            $objrol=new Rol();
+            $objrol->setidrol($param['idrol']);
+            $objrol->cargar();
+            //--
+            $obj->setear($objusuario, $objrol);
         }
         return $obj;
     }

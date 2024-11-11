@@ -3,20 +3,20 @@
 class Compra{
     private $idcompra;
     private $cofecha;
-    private $idusuario;
+    private $objusuario;
     private $mensajeoperacion;
 
     public function __construct(){
         $this->idCompra="";
-        $this->cofecha="";
-        $this->idUsuario="";
+        $this->cofecha=null;
+        $this->objusuario=null;
         $this->mensajeoperacion="";
     }
 
-    public function setear($idcompra, $cofecha, $idusuario){
+    public function setear($idcompra, $cofecha, $objusuario){
         $this->setidcompra($idcompra);
         $this->setcofecha($cofecha);
-        $this->setidusuario($idusuario);
+        $this->setobjusuario($objusuario);
     }
 
     //metodos de acceso
@@ -35,11 +35,11 @@ class Compra{
         $this->cofecha=$param;
     }
 
-    public function getidusuario(){
-        return $this->idusuario;
+    public function getobjusuario(){
+        return $this->objusuario;
     }
-    public function setidusuario($param){
-        $this->idusuario=$param;
+    public function setobjusuario($param){
+        $this->objusuario=$param;
     }
 
     public function getmensajeoperacion(){
@@ -58,7 +58,12 @@ class Compra{
             if($res>-1){
                 if($res>0){
                     $row=$base->Registro();
-                    $this->setear($row['idcompra'], $row['cofecha'], $row['idusuario']);
+                    //--
+                    $objusuario=new Usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
+                    //--
+                    $this->setear($row['idcompra'], $row['cofecha'], $objusuario);
                     $resp=true;
                 }
             }
@@ -71,8 +76,8 @@ class Compra{
     public function insertar(){
         $resp=false;
         $base=new BaseDatosPDO();
-        $sql="INSERT INTO compras(cofecha, idusuario)
-                VALUES ('".$this->getcofecha()."', '".$this->getidusuario()."')";
+        $sql="INSERT INTO compra(cofecha, idusuario)
+                VALUES ('".$this->getcofecha()."', '".$this->getobjusuario()->getidusuario()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;
@@ -85,6 +90,22 @@ class Compra{
         return $resp;
     }
 
+    public function modificar(){
+        $resp=false;
+        $base=new BaseDatosPDO();
+        $sql="UPDATE compra SET
+            cofecha='".$this->getcofecha()."', idusuario='".$this->getobjusuario()->getidusuario()."' WHERE idcompra='".$this->getidcompra()."'";
+        if($base->Iniciar()){
+            if($base->Ejecutar($sql)){
+                $resp=true;
+            }else{
+                $this->setmensajeoperacion("compra->modificar: ".$base->getError());
+            }
+        }else{
+            $this->setmensajeoperacion("compra->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
     public function eliminar(){
         $resp=false;
         $base=new BaseDatosPDO();
@@ -113,7 +134,12 @@ class Compra{
             if($res>0){
                 while($row=$base->Registro()){
                     $obj=new Compra();
-                    $obj->setear($row['idcompra'], $row['cofecha'], $row['idusuario']);
+                    //--
+                    $objusuario=new Usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
+                    //--
+                    $obj->setear($row['idcompra'], $row['cofecha'], $objusuario);
                     array_push($arreglo, $obj);
                 }
             }

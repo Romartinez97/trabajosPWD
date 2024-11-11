@@ -1,35 +1,35 @@
 <?php
 
 class Usuariorol{
-    private $idusuario;
-    private $idrol;
+    private $objusuario;
+    private $objrol;
     private $mensajeoperacion;
 
     public function __construct(){
-        $this->idusuario="";
-        $this->idrol="";
+        $this->objusuario=null;
+        $this->objrol=null;
         $this->mensajeoperacion="";
     }
 
-    public function setear($idusuario, $idrol){
-        $this->setidusuario($idusuario);
-        $this->setidrol($idrol);
+    public function setear($objusuario, $objrol){
+        $this->setobjusuario($objusuario);
+        $this->setobjrol($objrol);
     }
 
     //metodos de acceso
 
-    public function getidusuario(){
-        return $this->idusuario;
+    public function getobjusuario(){
+        return $this->objusuario;
     }
-    public function setidusuario($param){
-        $this->idusuario=$param;
+    public function setobjusuario($param){
+        $this->objusuario=$param;
     }
 
-    public function getidrol(){
-        return $this->idrol;
+    public function getobjrol(){
+        return $this->objrol;
     }
-    public function setidrol($param){
-        $this->idrol=$param;
+    public function setobjrol($param){
+        $this->objrol=$param;
     }
 
     public function getmensajeoperacion(){
@@ -42,13 +42,22 @@ class Usuariorol{
     public function cargar(){
         $resp=false;
         $base=new BaseDatosPDO();
-        $sql="SELECT * FROM usuariorol WHERE idusuario = ".$this->getidusuario()." AND idrol =".$this->getidrol();
+        $sql="SELECT * FROM usuariorol WHERE idusuario = ".$this->getobjusuario()->getidusuario()." AND idrol =".$this->getobjrol()->getidrol();
         if($base->Iniciar()){
             $res=$base->Ejecutar($sql);
             if($res>-1){
                 if($res>0){
                     $row=$base->Registro();
-                    $this->setear($row['idusuario'], $row['idrol']);
+                    //--
+                    $objusuario=new Usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
+                    //--
+                    $objrol=new Rol();
+                    $objrol->setidrol($row['idrol']);
+                    $objrol->cargar();
+                    //--
+                    $this->setear($objusuario, $objrol);
                     $resp=true;//se setea la resp como true para demostrar que la carga fue exitosa
                 }
             }
@@ -62,7 +71,7 @@ class Usuariorol{
         $resp=false;
         $base = new BaseDatosPDO();
         $sql="INSERT INTO usuariorol (idusuario, idrol)
-                VALUES ('".$this->getidusuario()."', '".$this->getidrol()."')";
+                VALUES ('".$this->getobjusuario()->getidusuario()."', '".$this->getobjrol()->getidrol()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;
@@ -79,7 +88,7 @@ class Usuariorol{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE usuariorol SET
-            idusuario='".$this->getidusuario()."', idrol='".$this->getidrol()."'";
+            idusuario='".$this->getobjusuario()->getidusuario()."', idrol='".$this->getobjrol()->getidrol()."' WHERE idusuario='".$this->getobjusuario()->getidusuario()."' AND idrol='".$this->getobjrol()->getidrol();
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;
@@ -95,7 +104,7 @@ class Usuariorol{
     public function eliminar(){
         $resp=false;
         $base=new BaseDatosPDO();
-        $sql="DELETE FROM usuariorol WHERE idusuario=".$this->getidusuario()." AND idrol=".$this->getidrol();
+        $sql="DELETE FROM usuariorol WHERE idusuario=".$this->getobjusuario()->getidusuario()." AND idrol=".$this->getobjrol()->getidrol();
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;
@@ -120,7 +129,16 @@ class Usuariorol{
             if($res>0){
                 while($row=$base->Registro()){
                     $obj=new Usuariorol();
-                    $obj->setear( $row['idusuario'], $row['idrol']);
+                    //--
+                    $objusuario=new Usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
+                    //--
+                    $objrol=new Rol();
+                    $objrol->setidrol($row['idrol']);
+                    $objrol->cargar();
+                    //--
+                    $obj->setear( $objusuario, $objrol);
                     array_push($arreglo, $obj);
                 }
             }
