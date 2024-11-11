@@ -1,15 +1,45 @@
 <?php
+$titulo = "Eliminar usuario";
 include_once '../../util/funciones.php';
-
-session_start();
+include "../estructura/header.php";
 
 $datos = data_submitted();
-$idUsuario = $datos["idusuario"];
+
 $objAbmUsuario = new AbmUsuario();
+$idUsuario = $datos['idusuario'];
+$usuarioEncontrado = $objAbmUsuario->obtenerUsuarioPorId($idUsuario);
 $mensaje = $objAbmUsuario->borradoLogico($idUsuario);
 
-$_SESSION['mensaje'] = $mensaje;
-
-header("Location: ../listarUsuario.php");
-exit();
 ?>
+
+<div class="container p-4 my-4 d-flex justify-content-center">
+    <div class="div-form">
+        <p class="display-6" id="tituloEjercicio">
+            <?php
+            if($mensaje == "Usuario actualizado correctamente."){
+                echo $mensaje;
+            }else{
+                echo "Error actualizando al usuario.";
+            }
+            ?>
+        </p>
+        <p class="h4">
+            <?php
+            if($mensaje == "Usuario actualizado correctamente."){
+                echo "El usuario ".$usuarioEncontrado->getUsNombre()." ha sido eliminado correctamente.";
+            }else{
+                echo "No se ha podido eliminar al usuario ".$usuarioEncontrado->getUsNombre().", intente nuevamente.";
+            }
+            ?>
+        </p>
+        <a class="btn m-3 text-white" href="../index.php" id="botonMenu">Volver atrás</a>
+        <a class="btn m-3 text-white bg-dark" href="../../../index.php" id="botonMenu">Volver al menú principal</a>
+    </div>
+</div>
+
+<?php
+include '../estructura/footer.php';
+?>
+</body>
+
+</html>

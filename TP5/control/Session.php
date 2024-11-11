@@ -12,7 +12,7 @@ class Session
     public function iniciar($nombreUsuario, $psw)
     {
         $resp = false;
-        $obj = new ABMUsuario();
+        $obj = new AbmUsuario();
         $param['usmail'] = $nombreUsuario;
         $param['uspass'] = $psw;
 
@@ -74,7 +74,7 @@ class Session
         if ($this->validar()) {
             $obj = new AbmUsuario();
             $idUsuario = $_SESSION['idUsuario'];
-            $resultado = $obj->obtenerRolesPorUsuario($idUsuario);
+            $resultado = $obj->obtenerRolesUsuario($idUsuario);
             if (count($resultado) > 0) {
                 $listaRoles = $resultado;
             }

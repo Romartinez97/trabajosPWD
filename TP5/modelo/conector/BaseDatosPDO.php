@@ -247,6 +247,9 @@ class BaseDatosPDO extends PDO
         $this->setError($e[2]); // Set the detailed error message
         if ($this->getDebug()) {
             error_log("SQL Error: " . print_r($e, true));
+            error_log("SQL State: " . $e[0]);
+            error_log("Error Code: " . $e[1]);
+            error_log("Error Message: " . $e[2]);
         }
     }
 }

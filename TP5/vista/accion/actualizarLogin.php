@@ -7,7 +7,6 @@ $datos = data_submitted();
 $objUsuario = new AbmUsuario();
 $idUsuario = $datos["idusuario"];
 $usuarioEncontrado = $objUsuario->obtenerUsuarioPorId($idUsuario);
-print_r($usuarioEncontrado);
 ?>
 
 <div class="container p-4 my-4 d-flex justify-content-center">

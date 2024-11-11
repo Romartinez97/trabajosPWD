@@ -2,31 +2,41 @@
 include_once '../../util/funciones.php';
 
 $sesion = new Session();
-$titulo = "Sesión iniciada";
+$titulo = "Verificar login";
 
 $datos = data_submitted();
 $usmail = $datos['usmail'];
 $uspass = $datos['uspass'];
 
-// Verificar los datos de entrada
+// Verifico si se enviaron los campos vacíos
 if (empty($usmail) || empty($uspass)) {
-    error_log("Correo electrónico o contraseña no proporcionados.");
     header("Location: ../login.php?error=1");
     exit();
 }
 
-error_log("Datos recibidos: usmail = $usmail, uspass = $uspass");
+// Verifico si el usuario está deshabilitado
+$objAbmUsuario = new AbmUsuario();
+$listadoUsuarios = $objAbmUsuario->buscar(['usmail' => $usmail]);
+
+if (!empty($listadoUsuarios)) {
+    $usuarioEncontrado = $listadoUsuarios[0];
+    $usDeshabilitado = $usuarioEncontrado->getUsdeshabilitado();
+}
+
+if ($usDeshabilitado == "0000-00-00 00:00:00") {
+    header("Location: ../login.php?error=2");
+    exit();
+}
+
 
 $sesion->iniciar($usmail, $uspass);
 
 // Verificar si la autenticación fue exitosa
 if ($sesion->validar()) {
-    error_log("Login exitoso. Redirigiendo a paginaSegura.php...");
     header("Location: ../paginaSegura.php");
     exit();
 } else {
-    error_log("Login fallido. Redirigiendo a login.php...");
-    header("Location: ../login.php?error=1");
+    header("Location: ../login.php?error=3");
     exit();
 }
 ?>

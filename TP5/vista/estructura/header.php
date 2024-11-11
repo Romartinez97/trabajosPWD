@@ -64,15 +64,15 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="/trabajosPWD/TP4/vista/index.php" role="button">TP 4</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="/trabajosPWD/TP5/vista/index.php" role="button">TP 5</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">TP Clases Útiles</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/trabajosPWD/TP_CUtiles/vista/spatieIO.php">Optimizador de imágenes</a></li>
                             <li><a class="dropdown-item" href="/trabajosPWD/TP_CUtiles/vista/languageDetection.php">Detector de idiomas</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/trabajosPWD/TP5/vista/index.php" role="button">TP 5</a>
                     </li>
                 </ul>
             </div>

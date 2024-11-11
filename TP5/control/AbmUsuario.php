@@ -111,7 +111,7 @@ class AbmUsuario
         return $mensaje;
     }
 
-    public function obtenerRolesPorUsuario($idUsuario)
+    public function obtenerRolesUsuario($idUsuario)
     {
         $usuarioRol = new UsuarioRol();
         $roles = $usuarioRol->listar("idusuario = " . $idUsuario);
@@ -146,23 +146,27 @@ class AbmUsuario
         return $mensaje;
     }
 
+
     public function borradoLogico($idUsuario)
     {
-        $resp = false;
-        $base = new BaseDatosPDO();
-        $sql = "UPDATE usuario SET usDeshabilitado = 1 WHERE idUsuario = " . $idUsuario;
-        if ($base->Iniciar()) {
-            if ($base->Ejecutar($sql)) {
-                $resp = true;
-                $mensaje = "Usuario deshabilitado correctamente.";
-            } else {
-                $mensaje = "Error al deshabilitar el usuario: " . $base->getError();
-                error_log($mensaje);
-            }
+        $usuario = new Usuario();
+        $usuarioExistente = $usuario->listar("idusuario = " . $idUsuario);
+        $mensaje = "";
+
+        if (!empty($usuarioExistente)) {
+            $usuario = $usuarioExistente[0];
+            $param = [
+                "idusuario" => $usuario->getIdUsuario(),
+                "usnombre" => $usuario->getUsNombre(),
+                "uspass" => $usuario->getUsPass(),
+                "usmail" => $usuario->getUsMail(),
+                "usdeshabilitado" => 1 //Deshabilito al usuario (borrado lógico)
+            ];
+            $mensaje = $this->actualizarUsuario($param);
         } else {
-            $mensaje = "Error al iniciar la base de datos: " . $base->getError();
-            error_log($mensaje);
+            $mensaje = "Usuario no encontrado.";
         }
+
         return $mensaje;
     }
 

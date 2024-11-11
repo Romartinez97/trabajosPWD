@@ -18,9 +18,15 @@ $listadoUsuarios = $objUsuario->buscar(null);
 
 <div class="container p-4 my-4 d-flex justify-content-center">
     <div class="div-form">
-        <?php if (empty($listadoUsuarios)): ?>
+        <?php 
+        //Filtro a los usuarios deshabilitados
+        $listadoUsuarios = array_filter($listadoUsuarios,function($usuario){
+            return $usuario->getUsdeshabilitado() != "0000-00-00 00:00:00";
+        });
+
+        if (empty($listadoUsuarios)): ?>
             <p class="display-6" id="tituloEjercicio">Usuarios no encontrados</p>
-            <p>No hay usuarios cargadas en la base de datos.</p>
+            <p>No hay usuarios cargados en la base de datos.</p>
         <?php else: ?>
             <p class="display-6" id="tituloEjercicio">Listado de usuarios:</p>
             <table class="table table-striped">
@@ -38,7 +44,7 @@ $listadoUsuarios = $objUsuario->buscar(null);
                         <tr>
                             <td><?php echo $usuario->getUsNombre(); ?></td>
                             <td><?php echo $usuario->getUsMail(); ?></td>
-                            <td><?php echo implode(', ', $objUsuario->obtenerRolesPorUsuario($usuario->getIdUsuario())); ?></td>
+                            <td><?php echo implode(', ', $objUsuario->obtenerRolesUsuario($usuario->getIdUsuario())); ?></td>
                             <td>
                                 <form action="accion/actualizarLogin.php" method="post">
                                     <input type="hidden" name="idusuario" value="<?php echo $usuario->getIdUsuario(); ?>">

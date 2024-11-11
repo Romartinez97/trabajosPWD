@@ -6,7 +6,6 @@ include '../estructura/header.php';
 
 
 $datos = data_submitted();
-print_r($datos);
 $objUsuario = new AbmUsuario();
 
 $idUsuario = $datos["idusuario"];

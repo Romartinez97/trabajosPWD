@@ -10,6 +10,12 @@ include 'estructura/header.php';
         if (isset($_GET['error']) && $_GET['error'] == 1) {
             echo '<div class="alert alert-danger" role="alert">Correo electrónico o contraseña incorrectos.</div>';
         }
+        if (isset($_GET['error']) && $_GET['error'] == 2) {
+            echo '<div class="alert alert-danger" role="alert">Usuario deshabilitado, no se permite el ingreso.</div>';
+        }
+        if (isset($_GET['error']) && $_GET['error'] == 3) {
+            echo '<div class="alert alert-danger" role="alert">Error en el login, intente nuevamente.</div>';
+        }
         ?>
         <form action="accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
             <div>
@@ -45,4 +51,5 @@ include 'estructura/header.php';
 include 'estructura/footer.php';
 ?>
 </body>
+
 </html>
