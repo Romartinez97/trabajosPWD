@@ -85,4 +85,8 @@ class Session{
         $resp=true;
         return $resp;
     }
+
+    public function estaLogueado() {
+        return isset($_SESSION['idusuario']);
+    }
 }

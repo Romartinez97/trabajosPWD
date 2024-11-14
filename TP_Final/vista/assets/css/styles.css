@@ -1,0 +1,57 @@
+/*
+Posible paleta de colores:
+Verde: #A5B68D
+Beige oscuro: #ECDFCC
+Beige claro: #FCFAEE
+Naranja: #DA8359
+*/
+
+html, body{
+    height: 100%;
+}
+
+body {
+    margin:0;
+    background-color: #FCFAEE;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.carousel {
+    max-width: 1000px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.card-body .btn {
+    background-color: #A5B68D;
+}
+
+.card-image-top {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+}
+
+#page-container {
+    flex: 1;
+}
+
+#footer-container {
+    position: relative;
+    padding-bottom: 2.5rem; /* Ajusta el padding según sea necesario */
+}
+
+#footer {
+    flex-shrink: 0;
+}
+
+#botonLogin{
+    background-color: #A5B68D;
+}
+
+#botonRegistro{
+    background-color: #DA8359;
+}
