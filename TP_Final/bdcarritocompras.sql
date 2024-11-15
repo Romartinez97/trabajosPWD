@@ -168,7 +168,6 @@ CREATE TABLE `usuario` (
 --
 -- Volcado de datos para la tabla `usuario`
 --
-<<<<<<< HEAD
 -- Las contraseñas son:
 -- admin: admin
 -- cliente: cliente
@@ -177,13 +176,7 @@ INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabili
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '2024-01-01 00:00:00'),
 (2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', '2024-01-01 00:00:00'),
 (3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'deposito@gmail.com', '2024-01-01 00:00:00');
-=======
---contraseñas respectivamente: admin, cliente, deposito
-INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', NULL),
-(2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', NULL),
-(3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'depostio@gmail.com', NULL);
->>>>>>> c91674f5c931354f4df95742fc54755de71a96e2
+
 -- --------------------------------------------------------
 
 --
