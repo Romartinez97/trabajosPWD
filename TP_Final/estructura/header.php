@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
     <script src="assets/js/validacion.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 
     <style>
         #navbar {
@@ -35,15 +35,17 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Géneros</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Aventura</a></li>
-                                <li><a class="dropdown-item" href="#">Ciencia ficción</a></li>
-                                <li><a class="dropdown-item" href="#">Fantasía</a></li>
-                                <li><a class="dropdown-item" href="#">Contemporánea</a></li>
-                                <li><a class="dropdown-item" href="#">Historia</a></li>
-                                <li><a class="dropdown-item" href="#">Infantil</a></li>
-                                <li><a class="dropdown-item" href="#">Poesía</a></li>
-                                <li><a class="dropdown-item" href="#">Romance</a></li>
-                                <li><a class="dropdown-item" href="#">Terror</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=aventura">Aventura</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=cienciaFiccion">Ciencia
+                                        ficción</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=contemporanea">Contemporánea</a>
+                                </li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=fantasia">Fantasía</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=historia">Historia</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=infantil">Infantil</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=poesia">Poesía</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=romance">Romance</a></li>
+                                <li><a class="dropdown-item" href="pagGenero.php?genero=terror">Terror</a></li>
                             </ul>
                         </li>
                         <li class="nav-item ">
@@ -56,7 +58,8 @@
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="login.php">Ingresar</a></li>
-                    <li class="nav-item"><a class="btn rounded-pill btn-dark py-2 px-4" href="registro.php">Registrarse</a>
+                    <li class="nav-item"><a class="btn rounded-pill btn-dark py-2 px-4"
+                            href="registro.php">Registrarse</a>
                     </li>
                 </ul>
             </div>

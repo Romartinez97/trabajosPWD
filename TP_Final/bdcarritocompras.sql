@@ -127,7 +127,7 @@ CREATE TABLE `menurol` (
 
 CREATE TABLE `producto` (
   `idproducto` bigint(20) NOT NULL,
-  `pronombre` int(11) NOT NULL,
+  `pronombre` varchar(50) NOT NULL,
   `prodetalle` varchar(512) NOT NULL,
   `procantstock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -168,11 +168,15 @@ CREATE TABLE `usuario` (
 --
 -- Volcado de datos para la tabla `usuario`
 --
---contraseñas respectivamente: admin, cliente, deposito
+-- Las contraseñas son:
+-- admin: admin
+-- cliente: cliente
+-- deposito: deposito
 INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', NULL),
-(2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', NULL),
-(3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'depostio@gmail.com', NULL);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '2024-01-01 00:00:00'),
+(2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', '2024-01-01 00:00:00'),
+(3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'deposito@gmail.com', '2024-01-01 00:00:00');
+
 -- --------------------------------------------------------
 
 --
