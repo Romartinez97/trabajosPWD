@@ -168,10 +168,11 @@ CREATE TABLE `usuario` (
 --
 -- Volcado de datos para la tabla `usuario`
 --
-INSERT INTO `usuario` (`idusuario`, `usnombre`, 'uspass', 'usmail', 'usdeshabilitado') VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '0000-00-00 00:00:00'),--contraseña: admin
-(2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', '0000-00-00 00:00:00'),--contraseña: cliente
-(3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'depostio@gmail.com', '0000-00-00 00:00:00');--contraseña: deposito
+--contraseñas respectivamente: admin, cliente, deposito
+INSERT INTO `usuario` (`idusuario`, `usnombre`, `uspass`, `usmail`, `usdeshabilitado`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', NULL),
+(2, 'cliente', '4983a0ab83ed86e0e7213c8783940193', 'cliente@gmail.com', NULL),
+(3, 'deposito', 'caaf856169610904e4f188e6ee23e88c', 'depostio@gmail.com', NULL);
 -- --------------------------------------------------------
 
 --
@@ -185,7 +186,7 @@ CREATE TABLE `usuariorol` (
 --
 -- Volcado de datos para la tabla `usuariorol`
 --
-INSERT INTO `usuariorol` ('idusuario', `idrol`) VALUES
+INSERT INTO `usuariorol` (`idusuario`, `idrol`) VALUES
 (1, 1),
 (2, 2),
 (3, 3);
@@ -363,3 +364,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-------------
+--borrar DB
+DROP DATABASE bdcarritocompras;

@@ -6,7 +6,7 @@ $titulo = "Verificar login";
 
 $datos = data_submitted();
 $usmail = $datos['usmail'];
-$uspass = $datos['uspass'];
+$uspass = md5($datos['uspass']);
 
 // Verifico si se enviaron los campos vacíos
 if (empty($usmail) || empty($uspass)) {
@@ -17,7 +17,6 @@ if (empty($usmail) || empty($uspass)) {
 // Verifico si el usuario está deshabilitado
 $objAbmUsuario = new AbmUsuario();
 $listadoUsuarios = $objAbmUsuario->buscar(['usmail' => $usmail]);
-
 if (!empty($listadoUsuarios)) {
     $usuarioEncontrado = $listadoUsuarios[0];
     $usDeshabilitado = $usuarioEncontrado->getUsdeshabilitado();
