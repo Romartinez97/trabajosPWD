@@ -16,6 +16,9 @@ include "../../estructura/header.php";
         if (isset($_GET['error']) && $_GET['error'] == 3) {
             echo '<div class="alert alert-danger" role="alert">Error en el login, intente nuevamente.</div>';
         }
+        if (isset($_GET['regis']) && $_GET['regis'] == 1) {
+            echo '<div class="alert alert-success" role="alert">Registrado con exito, Porfavor inicie sesión.</div>';
+        }
         ?>
     </div>
     <div class="container">

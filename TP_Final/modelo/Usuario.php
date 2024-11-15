@@ -91,8 +91,8 @@ class Usuario{
     public function insertar(){
         $resp=false;
         $base = new BaseDatosPDO();
-        $sql="INSERT INTO usuario (usnombre, uspass, usmail, usdeshabilitado)
-                VALUES ('".$this->getusnombre()."', '".$this->getuspass()."', '".$this->getusmail()."', '".$this->getusdeshabilitado()."')";
+        $sql="INSERT INTO usuario (idusuario, usnombre, uspass, usmail, usdeshabilitado)
+                VALUES ('".$this->getidusuario()."', '".$this->getusnombre()."', '".$this->getuspass()."', '".$this->getusmail()."', '".$this->getusdeshabilitado()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

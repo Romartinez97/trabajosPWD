@@ -9,10 +9,10 @@ include "../../estructura/header.php";
     </div>
     <div class="container">
         <div class="div-form">
-            <form action="accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
+            <form action="../accion/verificarRegistro.php" method="post" name="formLogin" id="formLogin">
                 <div>
                     <label class="form-label fw-bold" for="usmail">Nombre y apellido:</label>
-                    <input class="form-control" type="text" name="usmail" id="usmail" required>
+                    <input class="form-control" type="text" name="usnombre" id="usnombre" required>
                 </div>
                 <div>
                     <label class="form-label fw-bold pt-3" for="usmail">Correo electrónico:</label>
