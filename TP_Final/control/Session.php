@@ -9,12 +9,11 @@ class Session{
     /**
      * Actualiza las variables de sesion con los valores ingresados.
      */
-    public function iniciar($nombreUsuario,$psw){
+    public function iniciar($mailUsuario,$psw){
         $resp=false;
         $obj= new AbmUsuario();
-        $param['usnombre']=$nombreUsuario;
+        $param['mail']=$mailUsuario;
         $param['uspass']=$psw;
-        $param['usdeshabilitado']='0000-00-00 00:00:00';
         $resultado = $obj->buscar($param);
         if(count($resultado)>0){
             $usuario=$resultado[0];
