@@ -20,7 +20,8 @@ include "../../estructura/header.php";
     </div>
     <div class="container">
         <div class="div-form">
-            <form action="accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
+            <form action="../accion/verificarLogin.php" method="post" name="formLogin" id="formLogin"
+                onsubmit="encriptarPass()">
                 <div>
                     <i class="fa-solid fa-envelope"></i>
                     <label class="form-label fw-bold" for="usmail">Correo electrónico:</label>
@@ -42,6 +43,14 @@ include "../../estructura/header.php";
         </div>
     </div>
 </div>
+
+<script>
+    function encriptarPass() {
+        var uspass = document.getElementById('uspass');
+        var passEncriptada = CryptoJS.SHA256(uspass.value).toString();
+        uspass.value = passEncriptada;
+    }
+</script>
 
 <?php
 include '../../estructura/footer.php';

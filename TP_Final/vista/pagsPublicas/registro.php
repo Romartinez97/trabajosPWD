@@ -9,7 +9,7 @@ include "../../estructura/header.php";
     </div>
     <div class="container">
         <div class="div-form">
-            <form action="accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
+            <form action="accion/accionRegistro.php" method="post" name="formLogin" id="formLogin">
                 <div>
                     <label class="form-label fw-bold" for="usmail">Nombre y apellido:</label>
                     <input class="form-control" type="text" name="usmail" id="usmail" required>

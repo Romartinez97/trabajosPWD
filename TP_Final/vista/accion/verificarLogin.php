@@ -10,7 +10,7 @@ $uspass = $datos['uspass'];
 
 // Verifico si se enviaron los campos vacíos
 if (empty($usmail) || empty($uspass)) {
-    header("Location: ../login.php?error=1");
+    header("Location: ../pagsPublicas/login.php?error=1");
     exit();
 }
 
@@ -24,7 +24,7 @@ if (!empty($listadoUsuarios)) {
 }
 
 if ($usDeshabilitado == "0000-00-00 00:00:00") {
-    header("Location: ../login.php?error=2");
+    header("Location: ../pagsPublicas/login.php?error=2");
     exit();
 }
 
