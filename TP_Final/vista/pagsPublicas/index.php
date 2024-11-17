@@ -1,6 +1,5 @@
 <?php
 include_once '../../util/funciones.php';
-$sesion = new Session();
 
 $titulo = "Página principal";
 include "../../estructura/header.php";
@@ -29,27 +28,16 @@ include "../../estructura/header.php";
                             <div class="card-body">
                                 <h4 class="card-title">Libro</h4>
                                 <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
-
                             </div>
                         </div>
                         <div class="col-md-4 card carouselCard">
                             <img src="../assets/imgs/libros/Libro2.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -57,14 +45,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro3.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -77,14 +61,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro4.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -92,14 +72,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro5.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -107,15 +83,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro6.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
-
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,14 +98,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro7.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -142,14 +109,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro8.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
 
                             </div>
                         </div>
@@ -157,15 +120,10 @@ include "../../estructura/header.php";
                             <img src="../assets/imgs/libros/Libro9.jpg" alt="Foto de un libro"
                                 class="card-img-top imagenCarrusel">
                             <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
-                                <h6 class="card-text">$9999,99</h6>
-                                <?php
-                                if ($sesion->estaLogueado()) {
-                                    echo '<a href="#" class="btn">Agregar</a>';
-                                }
-                                ?>
-
+                                <div class="card-body">
+                                    <h4 class="card-title">Libro</h4>
+                                    <p class="card-text">Autor</p>
+                                </div>
                             </div>
                         </div>
                     </div>

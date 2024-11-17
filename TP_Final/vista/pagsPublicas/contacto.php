@@ -8,7 +8,6 @@ include "../../estructura/header.php";
         <div class="text-center p-4">
             <p class="display-5">Contacto</p>
         </div>
-
     </div>
     <div class="container text-center">
         <h5 class="">¡Estamos aquí para ayudarte!</h5>

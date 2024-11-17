@@ -71,6 +71,12 @@
                             <li><a class="dropdown-item" href="/trabajosPWD/TP_CUtiles/vista/languageDetection.php">Detector de idiomas</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/trabajosPWD/TP5/vista/index.php" role="button">TP 5</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/trabajosPWD/TP_Final/vista/PagsPublicas/index.php" role="button">TP Final</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -49,6 +49,9 @@
                             </ul>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link" href="listadoLibros.php" role="button">Todos los libros</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link" href="contacto.php" role="button">Contacto</a>
                         </li>
                     </ul>
@@ -57,9 +60,13 @@
 
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="login.php">Ingresar</a></li>
-                    <li class="nav-item"><a class="btn rounded-pill btn-dark py-2 px-4"
+                    <li class="nav-item active"><a class="nav-link m-1" href="login.php">Ingresar</a></li>
+                    <li class="nav-item"><a class="btn rounded-pill btnRegistro py-2 px-4 m-1"
                             href="registro.php">Registrarse</a>
+                    </li>
+                    </li>
+                    <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
+                            <i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
                 </ul>
             </div>

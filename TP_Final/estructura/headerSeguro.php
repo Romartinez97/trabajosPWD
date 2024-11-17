@@ -27,7 +27,8 @@
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">Nombre de la página</a>
+                <a class="navbar-brand" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">Nombre de la
+                    página</a>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -47,6 +48,9 @@
                             </ul>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link" href="listadoLibros.php" role="button">Todos los libros</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link" href="contacto.php" role="button">Contacto</a>
                         </li>
                     </ul>
@@ -55,11 +59,11 @@
 
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#">Perfil</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="#">Cerrar sesión</a></li>
-                    <li class="nav-item"><a class="btn rounded-pill btn-dark py-2 px-4" href="#">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a></li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="#">Perfil</a></li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="#">Cerrar sesión</a></li>
+                    <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
+                            <i class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>

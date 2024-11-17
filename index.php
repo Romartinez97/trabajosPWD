@@ -130,6 +130,22 @@
                     </div>
                 </div>
 
+                <div class="card">
+                    <a class="btn" href="TP5/vista/index.php">
+                        <div class="card-header">
+                            <span class="h5">Trabajo práctico 5</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a class="btn" href="TP_Final/vista/PagsPublicas/index.php">
+                        <div class="card-header">
+                            <span class="h5">Trabajo práctico final</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>

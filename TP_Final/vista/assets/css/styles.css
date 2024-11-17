@@ -6,90 +6,115 @@ Beige claro: #FCFAEE
 Naranja: #DA8359
 */
 
-html, body{
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin:0;
-    background-color: #FCFAEE;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  margin: 0;
+  background-color: #fcfaee !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-
 .carousel {
-    max-width: 100%;
-    max-height: 400px;
-    margin: 0 auto;
+  max-width: 100%;
+  max-height: 400px;
+  margin: 0 auto;
 }
 
 .card-body .btn {
-    background-color: #A5B68D;
+  background-color: #a5b68d;
 }
 
 .imagenCarrusel {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit:contain;
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon{
-    filter: invert(100%);
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
 }
 
 #page-container {
-    flex: 1;
+  flex: 1;
 }
 
 #footer-container {
-    position: relative;
-    padding-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 2.5rem;
 }
 
 #footer {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
-#botonLogin{
-    background-color: #A5B68D;
+#botonLogin {
+  background-color: #a5b68d;
 }
 
-#botonRegistro{
-    background-color: #DA8359;
+#botonRegistro {
+  background-color: #da8359;
 }
 
-.imagenGrilla{
-    width: 100%;
-    height: 150px;
-    object-fit:cover;
-    padding: 1px;
+.imagenGrilla {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  padding: 1px;
 }
 
-.nombreGrilla{
-    color: black;
-    background-color: rgba(255, 255, 255, 0.8);
-    width: 50%;
-    padding-left: 5px;
+.nombreGrilla {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 50%;
+  padding-left: 5px;
 }
 
-.imgCard{
-    margin: 10px;
+.imgCard {
+  margin: 10px;
 }
 
-.carouselCard{
-    padding:5px;
+.carouselCard {
+  padding: 5px;
 }
 
-.imgLibroListado{
-    width: auto;
-    height: 250px;
-    object-fit:cover;
-    padding: 5px;
+.imgLibroListado {
+  width: auto;
+  height: 250px;
+  object-fit: cover;
+  padding: 5px;
 }
 
-.detLibroListado{
-    padding: 10px;
+.detLibroListado {
+  padding: 10px;
+}
+
+.btnAgregar {
+  background-color: #a5b68d !important;
+  color: white !important;
+}
+
+.btnAgregar:hover {
+  background-color: #83b33f !important;
+  color: white !important;
+}
+
+.txtNaranja {
+  color: #da8359 !important;
+}
+
+.btnRegistro {
+  background-color: #da8359 !important;
+  color: white !important;
+}
+
+.btnRegistro:hover {
+  background-color: #dca387 !important;
+  color: white !important;
 }

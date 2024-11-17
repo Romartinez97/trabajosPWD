@@ -1,50 +1,51 @@
 <?php
 include_once '../../util/funciones.php';
 
-$genero = strtolower($_GET['genero']);
-
-switch ($genero) {
-    case "aventura":
-        $genero = "Aventura";
-        break;
-    case "cienciaficcion":
-        $genero = "Ciencia Ficción";
-        break;
-    case "fantasia":
-        $genero = "Fantasía";
-        break;
-    case "contemporanea":
-        $genero = "Literatura Contemporánea";
-        break;
-    case "historia":
-        $genero = "Historia";
-        break;
-    case "infantil":
-        $genero = "Literatura Infantil";
-        break;
-    case "poesia":
-        $genero = "Poesía";
-        break;
-    case "romance":
-        $genero = "Romance";
-        break;
-    case "terror":
-        $genero = "Terror";
-        break;
-}
-
-$titulo = "Libros de $genero";
+$titulo = "Listado de libros";
 include "../../estructura/header.php";
 
 $abmProducto = new AbmProducto();
-$listaProductos = $abmProducto->buscarPorGenero($genero);
+$listaProductos = $abmProducto->buscar(null);
+function arreglarNombreGenero($genero)
+{
+    switch ($genero) {
+        case "aventura":
+            $genero = "Aventura";
+            break;
+        case "cienciaficcion":
+            $genero = "Ciencia Ficción";
+            break;
+        case "fantasia":
+            $genero = "Fantasía";
+            break;
+        case "contemporanea":
+            $genero = "Literatura Contemporánea";
+            break;
+        case "historia":
+            $genero = "Historia";
+            break;
+        case "infantil":
+            $genero = "Literatura Infantil";
+            break;
+        case "poesia":
+            $genero = "Poesía";
+            break;
+        case "romance":
+            $genero = "Romance";
+            break;
+        case "terror":
+            $genero = "Terror";
+            break;
+    }
+}
+
 ?>
 
 <div id="page-container">
 
     <div class="container-fluid d-flex align-items-center justify-content-center">
         <div class="text-center p-4">
-            <p class="display-5">Libros de <?php echo $genero; ?></p>
+            <p class="display-5">Todos nuestros libros</p>
         </div>
     </div>
 
@@ -57,6 +58,7 @@ $listaProductos = $abmProducto->buscarPorGenero($genero);
                     <div class="detLibroListado">
                         <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
                         <p class="h5"><?php echo $producto->getLibroAutor(); ?></p>
+                        <p class="h5"><?php echo "Género:" . $producto->getLibroGenero(); ?></p>
                         <p class="h6"><?php echo "$".$producto->getLibroPrecio(); ?></p>
                         <a href="#" class="btn btnAgregar">Agregar</a>
                     </div>
@@ -64,7 +66,7 @@ $listaProductos = $abmProducto->buscarPorGenero($genero);
             <?php endforeach; ?>
         <?php } else { ?>
             <div class="d-flex pb-4">
-                <p class="h4 txtNaranja">No hay stock de libros de <?php echo $genero; ?></p>
+                <p class="h4 txtNaranja">No hay stock de libros</p>
             </div>
         </div>
     <?php } ?>

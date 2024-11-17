@@ -79,4 +79,10 @@ class AbmProducto{
         $arreglo=$producto->listar($where);
         return $arreglo;
     }
+
+    public function buscarPorGenero($genero){
+        $producto = new Producto();
+        $parametro = "prodetalle LIKE '%Género: $genero%'";
+        return $producto->listar($parametro);
+    }
 }
