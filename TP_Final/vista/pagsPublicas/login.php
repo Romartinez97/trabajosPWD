@@ -23,12 +23,8 @@ include "../../estructura/header.php";
     </div>
     <div class="container">
         <div class="div-form">
-<<<<<<< HEAD
             <form action="../accion/verificarLogin.php" method="post" name="formLogin" id="formLogin"
-                onsubmit="encriptarPass()">
-=======
-            <form action="../accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
->>>>>>> c91674f5c931354f4df95742fc54755de71a96e2
+                >
                 <div>
                     <i class="fa-solid fa-envelope"></i>
                     <label class="form-label fw-bold" for="usmail">Correo electrónico:</label>
