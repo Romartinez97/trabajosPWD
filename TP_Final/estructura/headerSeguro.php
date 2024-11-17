@@ -5,7 +5,7 @@
     <title><?php echo $titulo ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="../assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -13,7 +13,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
     <script src="assets/js/validacion.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 
     <style>
         nav {
@@ -35,23 +36,24 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Géneros</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Autoayuda</a></li>
-                                <li><a class="dropdown-item" href="#">Ciencias</a></li>
-                                <li><a class="dropdown-item" href="#">Computación</a></li>
-                                <li><a class="dropdown-item" href="#">Derecho</a></li>
-                                <li><a class="dropdown-item" href="#">Ficción</a></li>
-                                <li><a class="dropdown-item" href="#">Historia</a></li>
-                                <li><a class="dropdown-item" href="#">Infantil</a></li>
-                                <li><a class="dropdown-item" href="#">Música</a></li>
-                                <li><a class="dropdown-item" href="#">Negocios</a></li>
-                                <li><a class="dropdown-item" href="#">Religión</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=aventura">Aventura</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=cienciaFiccion">Ciencia
+                                        ficción</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=contemporanea">Contemporánea</a>
+                                </li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=fantasia">Fantasía</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=historia">Historia</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=infantil">Infantil</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=poesia">Poesía</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=romance">Romance</a></li>
+                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=terror">Terror</a></li>
                             </ul>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="listadoLibros.php" role="button">Todos los libros</a>
+                            <a class="nav-link" href="../pagsPublicas/listadoLibros.php" role="button">Todos los libros</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="contacto.php" role="button">Contacto</a>
+                            <a class="nav-link" href="../pagsPublicas/contacto.php" role="button">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -59,8 +61,8 @@
 
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link m-1" href="#">Perfil</a></li>
-                    <li class="nav-item active"><a class="nav-link m-1" href="#">Cerrar sesión</a></li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/perfil.php">Perfil</a></li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="../accion/cerrarSesion.php">Cerrar sesión</a></li>
                     <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
                             <i class="fa-solid fa-cart-shopping"></i></a>
                     </li>

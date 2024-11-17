@@ -56,10 +56,22 @@ body {
 
 #botonLogin {
   background-color: #a5b68d;
+  color: white;
+}
+
+#botonLogin:hover {
+  background-color: #83b33f !important;
+  color: white;
 }
 
 #botonRegistro {
   background-color: #da8359;
+  color: white;
+}
+
+#botonRegistro:hover {
+  background-color: #dca387 !important;
+  color: white;
 }
 
 .imagenGrilla {

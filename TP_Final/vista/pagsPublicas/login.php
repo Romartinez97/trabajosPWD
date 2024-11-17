@@ -1,5 +1,13 @@
 <?php
+include_once '../../util/funciones.php';
 $titulo = "Ingreso";
+$sesion = new Session();
+
+if ($sesion->estaLogueado()) {
+    header('Location: ../pagsRestringidas/perfil.php');
+    exit();
+}
+
 include "../../estructura/header.php";
 ?>
 
@@ -23,8 +31,7 @@ include "../../estructura/header.php";
     </div>
     <div class="container">
         <div class="div-form">
-            <form action="../accion/verificarLogin.php" method="post" name="formLogin" id="formLogin"
-                >
+            <form action="../accion/verificarLogin.php" method="post" name="formLogin" id="formLogin">
                 <div>
                     <i class="fa-solid fa-envelope"></i>
                     <label class="form-label fw-bold" for="usmail">Correo electrónico:</label>

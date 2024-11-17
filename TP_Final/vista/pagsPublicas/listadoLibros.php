@@ -1,8 +1,13 @@
 <?php
 include_once '../../util/funciones.php';
+$sesion = new Session();
 
 $titulo = "Listado de libros";
-include "../../estructura/header.php";
+if ($sesion->estaLogueado()) {
+    include "../../estructura/headerSeguro.php";
+} else {
+    include "../../estructura/header.php";
+}
 
 $abmProducto = new AbmProducto();
 $listaProductos = $abmProducto->buscar(null);
@@ -57,9 +62,9 @@ function arreglarNombreGenero($genero)
                     <img src="../assets/imgs/libros/Libro1.jpg" alt="" class="imgLibroListado">
                     <div class="detLibroListado">
                         <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
-                        <p class="h5"><?php echo $producto->getLibroAutor(); ?></p>
-                        <p class="h5"><?php echo "Género:" . $producto->getLibroGenero(); ?></p>
-                        <p class="h6"><?php echo "$".$producto->getLibroPrecio(); ?></p>
+                        <p class="h5"><?php echo $producto->getprodetalle(); ?></p>
+                        <p class="h5"><?php echo "Género:" . $producto->getprogenero(); ?></p>
+                        <p class="h6"><?php echo "$".$producto->getproprecio(); ?></p>
                         <a href="#" class="btn btnAgregar">Agregar</a>
                     </div>
                 </div>

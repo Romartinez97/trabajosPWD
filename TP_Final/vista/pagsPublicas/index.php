@@ -1,8 +1,14 @@
 <?php
 include_once '../../util/funciones.php';
+$sesion = new Session();
 
 $titulo = "Página principal";
-include "../../estructura/header.php";
+
+if ($sesion->estaLogueado()) {
+    include "../../estructura/headerSeguro.php";
+} else {
+    include "../../estructura/header.php";
+}
 ?>
 
 <div id="page-container">

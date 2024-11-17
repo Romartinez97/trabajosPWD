@@ -1,6 +1,13 @@
 <?php
+include_once '../../util/funciones.php';
 $titulo = "Contacto";
-include "../../estructura/header.php";
+
+$sesion = new Session();
+if ($sesion->estaLogueado()) {
+    include "../../estructura/headerSeguro.php";
+} else {
+    include "../../estructura/header.php";
+}
 ?>
 
 <div id="page-container">

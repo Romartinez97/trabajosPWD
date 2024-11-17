@@ -1,6 +1,15 @@
 <?php
+include_once '../../util/funciones.php';
 $titulo = "Registro";
-include "../../estructura/header.php";
+$sesion = new Session();
+
+if ($sesion->estaLogueado()) {
+    header('Location: ../pagsRestringidas/perfil.php');
+    exit();
+} else {
+    include "../../estructura/header.php";
+}
+
 ?>
 
 <div id="page-container">
