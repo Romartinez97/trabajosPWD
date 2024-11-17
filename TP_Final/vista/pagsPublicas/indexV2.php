@@ -43,6 +43,7 @@ include "../../estructura/header.php";
             $pronombre=$prod->getpronombre();
             $prodetalle=$prod->getprodetalle();
             $proid=$prod->getidproducto();
+            $prostock=$prod->getprocantstock();
             $rutaimg="../assets/imgs/libros/".$proid.".jpg";
     ?>
         <div class="col">
@@ -55,7 +56,11 @@ include "../../estructura/header.php";
                 </div>
                 <?php
                     if ($sesion->estaLogueado()) {
-                        echo '<div class="card-footer text-center"><button class="btn btn-custom">Agregar</button></div>';
+                        if($prostock>0){
+                            echo '<div class="card-footer text-center"><button class="btn btn-custom">Agregar</button></div>';
+                        }else{
+                            echo '<div class="card-footer text-center"><button class="btn btn-danger">No hay Stock</button></div>';
+                        } 
                     }
                 ?>
                 
