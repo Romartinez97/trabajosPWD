@@ -71,9 +71,11 @@ class Session{
         if($this->validar()){
             $obj=new AbmUsuariorol();
             $param['idusuario']=$_SESSION['idusuario'];
+            print_r($param);
             $resultado=$obj->buscar($param);
             if(count($resultado)>0){
-                $rol=$resultado;
+                $usuariorol=$resultado[0];
+                $rol=$usuariorol->getobjrol()->getidrol();
             }
         }
         return $rol;
