@@ -139,13 +139,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idproducto`, `pronombre`, `prodetalle`, `procantstock`, `progenero`, `proprecio`) VALUES
-(1, '20.000 leguas de viaje submarino', 'Escritor: Julio Verne', 50, 'Ciencia ficción', 9999.99),
-(2, 'El principito', 'Escritor: Antoine de Saint-Exupéry', 40, 'Infantil', 9999.99),
+(1, '20.000 leguas de viaje submarino', 'Escritor: Julio Verne', 50, 'Ciencia Ficción', 9999.99),
+(2, 'El principito', 'Escritor: Antoine de Saint-Exupéry', 40, 'Literatura Infantil', 9999.99),
 (3, 'Romeo y Julieta', 'Escritor: William Shakespeare', 55, 'Romance', 9999.99),
-(4, 'El Señor de los Anillos', 'Escritor: J.R.R. Tolkien', 60, 'Fantasia', 9999.99),
+(4, 'El Señor de los Anillos', 'Escritor: J.R.R. Tolkien', 60, 'Fantasía', 9999.99),
 (5, 'Robinson Crusoe', 'Escritor: Daniel Defoe', 45, 'Aventura', 9999.99),
 (6, 'Diario de Ana Frank', 'Escritora: Ana Frank', 55, 'Historia', 9999.99),
-(7, 'Harry Potter y la piedra filosofal', 'Escritora: J.K. Rowling', 45, 'Fantasia', 9999.99);
+(7, 'Harry Potter y la piedra filosofal', 'Escritora: J.K. Rowling', 45, 'Fantasía', 9999.99);
 
 -- --------------------------------------------------------
 
