@@ -39,6 +39,7 @@ include "../../estructura/header.php";
         $objproducto=new AbmProducto();
         $productos=$objproducto->buscar(null);
         foreach($productos as $prod){
+            $proprecio=$prod->getproprecio();
             $pronombre=$prod->getpronombre();
             $prodetalle=$prod->getprodetalle();
             $proid=$prod->getidproducto();
@@ -50,6 +51,7 @@ include "../../estructura/header.php";
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $pronombre ?></h5>
                     <p class="card-text"><?php echo $prodetalle ?></p>
+                    <p class="card-text"><?php echo "$".$proprecio ?></p>
                 </div>
                 <?php
                     if ($sesion->estaLogueado()) {

@@ -10,6 +10,8 @@ class Producto
     para poder usar las funciones getLibroAutor(), getLibroGenero() y getLibroPrecio()
     */
     private $procantstock;
+    private $progenero;
+    private $proprecio;
     private $mensajeoperacion;
 
     public function __construct()
@@ -18,15 +20,19 @@ class Producto
         $this->pronombre = "";
         $this->prodetalle = "";
         $this->procantstock = "";
+        $this->progenero = "";
+        $this->proprecio = "";
         $this->mensajeoperacion = "";
     }
 
-    public function setear($idproducto, $pronombre, $prodetalle, $procantstock)
+    public function setear($idproducto, $pronombre, $prodetalle, $procantstock, $progenero, $proprecio)
     {
         $this->setidproducto($idproducto);
         $this->setpronombre($pronombre);
         $this->setprodetalle($prodetalle);
         $this->setprocantstock($procantstock);
+        $this->setprogenero($progenero);
+        $this->setproprecio($proprecio);
     }
 
     //metodos de acceso
@@ -67,6 +73,24 @@ class Producto
         $this->procantstock = $param;
     }
 
+    public function getprogenero()
+    {
+        return $this->progenero;
+    }
+    public function setprogenero($param)
+    {
+        $this->progenero = $param;
+    }
+
+    public function getproprecio()
+    {
+        return $this->proprecio;
+    }
+    public function setproprecio($param)
+    {
+        $this->proprecio = $param;
+    }
+
     public function getmensajeoperacion()
     {
         return $this->mensajeoperacion;
@@ -75,7 +99,7 @@ class Producto
     {
         $this->mensajeoperacion = $param;
     }
-
+/*
     public function getLibroAutor()
     {
         if (preg_match('/Autor:\s*([^;]+)/', $this->prodetalle, $matches)) {
@@ -99,7 +123,7 @@ class Producto
         }
         return null;
     }
-
+*/
     public function cargar()
     {
         $resp = false;
@@ -110,7 +134,7 @@ class Producto
             if ($res > -1) {
                 if ($res > 0) {
                     $row = $base->Registro();
-                    $this->setear($row['idproducto'], $row['pronombre'], $row['prodetalle'], $row['procantstock']);
+                    $this->setear($row['idproducto'], $row['pronombre'], $row['prodetalle'], $row['procantstock'], $row['progenero'], $row['proprecio']);
                     $resp = true;//se setea la resp como true para demostrar que la carga fue exitosa
                 }
             }
@@ -124,8 +148,8 @@ class Producto
     {
         $resp = false;
         $base = new BaseDatosPDO();
-        $sql = "INSERT INTO producto (pronombre, prodetalle, procantstock)
-                VALUES ('" . $this->getpronombre() . "', '" . $this->getprodetalle() . "', '" . $this->getprocantstock() . "')";
+        $sql = "INSERT INTO producto (idproducto, pronombre, prodetalle, procantstock, progenero, proprecio)
+                VALUES ('" . $this->getidproducto() . "', '" . $this->getpronombre() . "', '" . $this->getprodetalle() . "', '" . $this->getprocantstock() . "', '" . $this->getprogenero() . "', '" . $this->getproprecio() . "')";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -143,7 +167,7 @@ class Producto
         $resp = false;
         $base = new BaseDatosPDO();
         $sql = "UPDATE producto SET
-            pronombre='" . $this->getpronombre() . "', prodetalle='" . $this->getprodetalle() . "', procantstock='" . $this->getprocantstock() . "' WHERE idproducto='" . $this->getidproducto() . "'";
+            pronombre='" . $this->getpronombre() . "', prodetalle='" . $this->getprodetalle() . "', procantstock='" . $this->getprocantstock() . "', progenero='" . $this->getprogenero() . "', proprecio='" . $this->getproprecio() . "' WHERE idproducto='" . $this->getidproducto() . "'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -186,7 +210,7 @@ class Producto
             if ($res > 0) {
                 while ($row = $base->Registro()) {
                     $obj = new Producto();
-                    $obj->setear($row['idproducto'], $row['pronombre'], $row['prodetalle'], $row['procantstock']);
+                    $obj->setear($row['idproducto'], $row['pronombre'], $row['prodetalle'], $row['procantstock'], $row['progenero'], $row['proprecio']);
                     array_push($arreglo, $obj);
                 }
             }

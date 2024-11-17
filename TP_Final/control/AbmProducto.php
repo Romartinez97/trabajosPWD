@@ -4,18 +4,19 @@ class AbmProducto{
 
     private function cargarObjeto($param){
         $obj=null;
-        if(array_key_exists('pronombre', $param)&& array_key_exists('prodetalle', $param)&& array_key_exists('procantstock', $param)){
+        if(array_key_exists('idproducto', $param)&&array_key_exists('pronombre', $param)&& array_key_exists('prodetalle', $param)&& array_key_exists('procantstock', $param)&& array_key_exists('progenero', $param)&& array_key_exists('proprecio', $param)){
             $obj=new Producto();
-            $obj->setear($param['idproducto'], $param['pronombre'], $param['prodetalle'], $param['procantstock']);
+            $obj->setear($param['idproducto'], $param['pronombre'], $param['prodetalle'], $param['procantstock'], $param['progenero'], $param['proprecio']);
         }
         return $obj;
     }
+
 
     private function cargarObjetoConClave($param){
         $obj=null;
         if(isset($param['idproducto'])){
             $obj=new Producto();
-            $obj->setear($param['idproducto'], null, null, null);
+            $obj->setear($param['idproducto'], null, null, null, null, null);
         }
         return $obj;
     }
@@ -74,15 +75,21 @@ class AbmProducto{
             if(isset($param['procantstock'])){
                 $where.=" and procantstock='".$param['procantstock']."'";
             }
+            if(isset($param['progenero'])){
+                $where.=" and progenero='".$param['progenero']."'";
+            }
+            if(isset($param['proprecio'])){
+                $where.=" and proprecio='".$param['proprecio']."'";
+            }
         }
         $producto=new Producto();
         $arreglo=$producto->listar($where);
         return $arreglo;
     }
-
+    /*
     public function buscarPorGenero($genero){
         $producto = new Producto();
         $parametro = "prodetalle LIKE '%Género: $genero%'";
         return $producto->listar($parametro);
-    }
+    }*/
 }
