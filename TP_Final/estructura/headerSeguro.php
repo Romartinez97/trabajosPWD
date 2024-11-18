@@ -61,6 +61,13 @@
 
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
+                    <?php
+                        if($sesion->estaLogueado() && $sesion->getRol()==1){
+                    ?>
+                    <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/verUsuarios.php">Ver Usuarios</a></li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/perfil.php">Perfil</a></li>
                     <li class="nav-item active"><a class="nav-link m-1" href="../accion/cerrarSesion.php">Cerrar sesión</a></li>
                     <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
