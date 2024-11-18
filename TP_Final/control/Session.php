@@ -82,6 +82,7 @@ class Session{
     }
 
     public function cerrar(){
+        session_unset();
         session_destroy();
         $resp=true;
         return $resp;
