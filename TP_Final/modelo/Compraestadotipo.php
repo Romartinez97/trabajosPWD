@@ -71,8 +71,8 @@ class Compraestadotipo{
     public function insertar(){
         $resp=false;
         $base = new BaseDatosPDO();
-        $sql="INSERT INTO compraestadotipo (cetdescripcion, cetdetalle)
-                VALUES ('".$this->getcetdescripcion()."', '".$this->getcetdetalle()."')";
+        $sql="INSERT INTO compraestadotipo (idcompraestadotipo, cetdescripcion, cetdetalle)
+                VALUES ('".$this->getidcompraestadotipo()."', '".$this->getcetdescripcion()."', '".$this->getcetdetalle()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

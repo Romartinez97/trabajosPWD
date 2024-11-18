@@ -8,9 +8,12 @@ $mail=$datos['usmail'];
 $pass=md5($datos['uspass']);
 //---
 $usuario=new AbmUsuario();
-$usuarios=$usuario->buscar(null);
-$ultimoid=count($usuarios)-1;
-$nuevoid=$usuarios[$ultimoid]->getidusuario()+1;
+if($usuarios=$usuario->buscar(null)){
+    $ultimoid=count($usuarios)-1;
+    $nuevoid=$usuarios[$ultimoid]->getidusuario()+1;
+}else{
+    $nuevoid=1;//por si no hay usuarios en la BD, (empieza desde 0)
+}
 //---
 $param=[
     'idusuario' => $nuevoid,

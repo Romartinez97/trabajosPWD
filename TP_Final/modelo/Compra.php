@@ -76,8 +76,8 @@ class Compra{
     public function insertar(){
         $resp=false;
         $base=new BaseDatosPDO();
-        $sql="INSERT INTO compra(cofecha, idusuario)
-                VALUES ('".$this->getcofecha()."', '".$this->getobjusuario()->getidusuario()."')";
+        $sql="INSERT INTO compra(idcompra, cofecha, idusuario)
+                VALUES ('".$this->getidcompra()."', '".$this->getcofecha()."', '".$this->getobjusuario()->getidusuario()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

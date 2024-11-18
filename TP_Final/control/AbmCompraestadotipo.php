@@ -4,7 +4,7 @@ class AbmCompraestadotipo{
 
     private function cargarObjeto($param){
         $obj=null;
-        if(array_key_exists('cetdescripcion', $param)&& array_key_exists('cetdetalle', $param)){
+        if(array_key_exists('idcompraestadotipo', $param)&& array_key_exists('cetdescripcion', $param)&& array_key_exists('cetdetalle', $param)){
             $obj=new Compraestadotipo();
             $obj->setear($param['idcompraestadotipo'], $param['cetdescripcion'], $param['cetdetalle']);
         }

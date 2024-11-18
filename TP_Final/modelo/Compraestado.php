@@ -100,8 +100,8 @@ class Compraestado{
     public function insertar(){
         $resp=false;
         $base = new BaseDatosPDO();
-        $sql="INSERT INTO compraestado (idcompra, idcompraestadotipo, cefechaini, cefechafin)
-                VALUES ('".$this->getobjcompra()->getidcompra()."', '".$this->getobjcompraestadotipo()->getidcompraestadotipo()."', '".$this->getcefechaini()."', '".$this->getcefechafin()."')";
+        $sql="INSERT INTO compraestado (idcompraestado, idcompra, idcompraestadotipo, cefechaini, cefechafin)
+                VALUES ('".$this->getidcompraestado()."', '".$this->getobjcompra()->getidcompra()."', '".$this->getobjcompraestadotipo()->getidcompraestadotipo()."', '".$this->getcefechaini()."', '".$this->getcefechafin()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

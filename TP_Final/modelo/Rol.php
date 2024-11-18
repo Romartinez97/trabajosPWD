@@ -79,7 +79,7 @@ class Rol{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE rol SET
-            idrol='".$this->getidrol()."', rodescripcion='".$this->getrodescripcion()."'";
+            rodescripcion='".$this->getrodescripcion()."' WHERE idrol='".$this->getidrol()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

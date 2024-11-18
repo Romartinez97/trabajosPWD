@@ -97,8 +97,8 @@ class Menu{
     public function insertar(){
         $resp=false;
         $base = new BaseDatosPDO();
-        $sql="INSERT INTO menu (menombre, medescripcion, idpadre, medeshabilitado)
-                VALUES ('".$this->getmenombre()."', '".$this->getmedescripcion()."', '".$this->getmedeshabilitado()."', ";
+        $sql="INSERT INTO menu (idmenu, menombre, medescripcion, idpadre, medeshabilitado)
+                VALUES ('".$this->getidmenu()."', '".$this->getmenombre()."', '".$this->getmedescripcion()."', '".$this->getmedeshabilitado()."', ";
         if($this->getobjmenu()!= null){
             $sql.=$this->getobjmenu()->getidmenu().", ";
         }else{
