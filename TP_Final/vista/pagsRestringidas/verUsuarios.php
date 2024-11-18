@@ -17,7 +17,11 @@ if ($sesion->estaLogueado()) {
             <p class="display-5">Lista de Usuarios Logueados:</p>
         </div>
     </div>
-    
+    <?php
+        if (isset($_GET['usedit']) && $_GET['usedit'] == 1) {
+            echo '<div class="alert alert-success" role="alert">Usuario modificado correctamente.</div>';
+        }
+    ?>
     <div class="container p-4 my-4 justify-content-center">
     <?php
         $objusuario =new AbmUsuario();
@@ -58,16 +62,20 @@ if ($sesion->estaLogueado()) {
         </div>
         <!-- Botones -->
         <div class="col-md-3 text-end">
-            <a href="#">
+            <a href="../accion/editarUsuario.php?id=<?php echo $usuario->getidusuario()."&rol=".$rol ?>">
             <button class="btn btn-primary btn-lg me-2">
                 <i class="bi bi-pencil"></i> Editar
             </button>
             </a>
-            <a href="#">
+            <?php
+            //if($rol!=1){?><!--
+            <a href="../accion/editarUsuario.php?accion=borrar&id=<?php echo $usuario->getidusuario() ?>">
             <button class="btn btn-danger btn-lg">
                 <i class="bi bi-trash"></i> Borrar
             </button>
-            </a>
+            </a>-->
+            <?php
+            //}?>
         </div>
     </div>
     <?php

@@ -88,7 +88,7 @@ class Usuariorol{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE usuariorol SET
-            idusuario='".$this->getobjusuario()->getidusuario()."', idrol='".$this->getobjrol()->getidrol()."' WHERE idusuario='".$this->getobjusuario()->getidusuario()."' AND idrol='".$this->getobjrol()->getidrol();
+            idrol='".$this->getobjrol()->getidrol()."' WHERE idusuario='".$this->getobjusuario()->getidusuario()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

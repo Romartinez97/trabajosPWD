@@ -160,6 +160,7 @@ class BaseDatosPDO extends PDO{
      * @return int
      */
     private function EjecutarDeleteUpdate($sql){
+        echo "<br>".$sql."<br>";
         $cantFilas =-1;
         $resultado=parent::query($sql);
         if(!$resultado){
