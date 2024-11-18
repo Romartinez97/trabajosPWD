@@ -10,7 +10,14 @@ if ($sesion->estaLogueado()) {
     include "../../estructura/header.php";
 }
 ?>
-
+<style>
+    .book-cover {
+        width: 100%; 
+        height: 400px; 
+        object-fit: cover;
+        border-radius: 5px; 
+    }
+</style>
 <div id="page-container">
 
     <div class="container-fluid d-flex align-items-center justify-content-center">
@@ -20,8 +27,44 @@ if ($sesion->estaLogueado()) {
     </div>
 
     <div class="container p-4 my-4 justify-content-center">
-        <p class="text-center display-6">Más vendidos</p>
-
+        <p class="text-center display-6">Nuestros Libros</p>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+    <?php
+        $objproducto=new AbmProducto();
+        $productos=$objproducto->buscar(null);
+        foreach($productos as $prod){
+            $proprecio=$prod->getproprecio();
+            $pronombre=$prod->getpronombre();
+            $prodetalle=$prod->getprodetalle();
+            $proid=$prod->getidproducto();
+            $prostock=$prod->getprocantstock();
+            $rutaimg="../assets/imgs/libros/".$proid.".jpg";
+    ?>
+        <div class="col">
+            <div class="card h-100">
+                <img src="<?php echo $rutaimg ?>" class="card-img-top book-cover" alt="Portada del libro">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $pronombre ?></h5>
+                    <p class="card-text"><?php echo $prodetalle ?></p>
+                    <p class="card-text"><?php echo "$".$proprecio ?></p>
+                </div>
+                <?php
+                    if ($sesion->estaLogueado()) {
+                        if($prostock>0){
+                            echo '<div class="card-footer text-center"><button class="btn btnAgregar">Agregar</button></div>';
+                        }else{
+                            echo '<div class="card-footer text-center"><button class="btn btn-danger">No hay Stock</button></div>';
+                        } 
+                    }
+                ?>
+                
+            </div>
+        </div>
+    <?php
+        }
+    ?>
+    </div>
+        <!--
         <div id="carruselGrande" class="carousel" data-bs-ride="carousel">
 
             <div class="carousel-inner">
@@ -146,7 +189,7 @@ if ($sesion->estaLogueado()) {
         </div>
 
     </div>
-
+    -->
     <div class="container-fluid p-4 my-4 justify-content-center bg-dark text-light">
         <p class="display-6 text-center">Libros por temática</p>
         <div class="row">
