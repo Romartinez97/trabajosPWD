@@ -56,21 +56,22 @@ $listaProductos = $abmProducto->buscar(null);
     <div class="container">
         <?php
         if (!empty($listaProductos)) {
-            foreach ($listaProductos as $producto): 
-                if($producto->getprogenero()==$genero){
-                ?>
-                <div class="d-flex pb-4">
-                    <img src="../assets/imgs/libros/<?php echo $producto->getidproducto() ?>.jpg" alt="" class="imgLibroListado">
-                    <div class="detLibroListado">
-                        <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
-                        <p class="h5"><?php echo $producto->getprodetalle(); ?></p>
-                        <p class="h6"><?php echo "$".$producto->getproprecio(); ?></p>
-                        <a href="#" class="btn btnAgregar">Agregar</a>
+            foreach ($listaProductos as $producto):
+                if ($producto->getprogenero() == $genero) {
+                    ?>
+                    <div class="d-flex pb-4">
+                        <img src="../assets/imgs/libros/<?php echo $producto->getidproducto() ?>.jpg" alt=""
+                            class="imgLibroListado">
+                        <div class="detLibroListado">
+                            <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
+                            <p class="h5"><?php echo $producto->getprodetalle(); ?></p>
+                            <p class="h6"><?php echo "$" . $producto->getproprecio(); ?></p>
+                            <a href="#" class="btn btnAgregar">Agregar</a>
+                        </div>
                     </div>
-                </div>
-            <?php
-                } 
-            endforeach; 
+                    <?php
+                }
+            endforeach;
             ?>
         <?php } else { ?>
             <div class="d-flex pb-4">
@@ -80,11 +81,11 @@ $listaProductos = $abmProducto->buscar(null);
     <?php } ?>
 </div>
 
+</div>
+
 <?php
 include '../../estructura/footer.php';
 ?>
-</div>
-
 </body>
 
 </html>
