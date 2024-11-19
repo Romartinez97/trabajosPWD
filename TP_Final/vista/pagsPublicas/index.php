@@ -12,10 +12,10 @@ if ($sesion->estaLogueado()) {
 ?>
 <style>
     .book-cover {
-        width: 100%; 
-        height: 400px; 
+        width: 100%;
+        height: 400px;
         object-fit: cover;
-        border-radius: 5px; 
+        border-radius: 5px;
     }
 </style>
 <div id="page-container">
@@ -27,279 +27,155 @@ if ($sesion->estaLogueado()) {
     </div>
 
     <div class="container p-4 my-4 justify-content-center">
-        <p class="text-center display-6">Nuestros Libros</p>
+        <p class="text-center display-6">Nuestros libros más vendidos</p>
         <div class="row row-cols-1 row-cols-md-4 g-4">
-    <?php
-        $objproducto=new AbmProducto();
-        $productos=$objproducto->buscar(null);
-        foreach($productos as $prod){
-            $proprecio=$prod->getproprecio();
-            $pronombre=$prod->getpronombre();
-            $prodetalle=$prod->getprodetalle();
-            $proid=$prod->getidproducto();
-            $prostock=$prod->getprocantstock();
-            $rutaimg="../assets/imgs/libros/".$proid.".jpg";
-    ?>
-        <div class="col">
-            <div class="card h-100">
-                <img src="<?php echo $rutaimg ?>" class="card-img-top book-cover" alt="Portada del libro">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $pronombre ?></h5>
-                    <p class="card-text"><?php echo $prodetalle ?></p>
-                    <p class="card-text"><?php echo "$".$proprecio ?></p>
+            <?php
+            $objproducto = new AbmProducto();
+            $productos = $objproducto->buscar(null);
+            $productos = array_slice($productos, 0, 4);
+            foreach ($productos as $prod) {
+                $proprecio = $prod->getproprecio();
+                $pronombre = $prod->getpronombre();
+                $prodetalle = $prod->getprodetalle();
+                $proid = $prod->getidproducto();
+                $prostock = $prod->getprocantstock();
+                $rutaimg = "../assets/imgs/libros/" . $proid . ".jpg";
+                ?>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="<?php echo $rutaimg ?>" class="card-img-top book-cover" alt="Portada del libro">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $pronombre ?></h5>
+                            <p class="card-text"><?php echo $prodetalle ?></p>
+                            <p class="card-text"><?php echo "$" . $proprecio ?></p>
+                        </div>
+                        <?php
+                        if ($sesion->estaLogueado()) {
+                            if ($prostock > 0) {
+                                echo '<div class="card-footer text-center"><button class="btn btnAgregar">Agregar</button></div>';
+                            } else {
+                                echo '<div class="card-footer text-center"><button class="btn btn-danger">No hay Stock</button></div>';
+                            }
+                        }
+                        ?>
+
+                    </div>
                 </div>
                 <?php
-                    if ($sesion->estaLogueado()) {
-                        if($prostock>0){
-                            echo '<div class="card-footer text-center"><button class="btn btnAgregar">Agregar</button></div>';
-                        }else{
-                            echo '<div class="card-footer text-center"><button class="btn btn-danger">No hay Stock</button></div>';
-                        } 
-                    }
-                ?>
-                
-            </div>
+            }
+            ?>
         </div>
-    <?php
-        }
-    ?>
-    </div>
-        <!--
-        <div id="carruselGrande" class="carousel" data-bs-ride="carousel">
 
-            <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-4 card carouselCard">
-                            <img src="../assets/imgs/libros/Libro1.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <h4 class="card-title">Libro</h4>
-                                <p class="card-text">Autor</p>
+        <div class="container-fluid p-4 my-4 justify-content-center bg-dark text-light">
+            <p class="display-6 text-center">Libros por temática</p>
+            <div class="row">
+                <div class="col">
+                    <a href="pagGenero.php?genero=aventura">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Aventura.jpg" alt="" class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Aventura</h4>
                             </div>
                         </div>
-                        <div class="col-md-4 card carouselCard">
-                            <img src="../assets/imgs/libros/Libro2.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 card carouselCard">
-                            <img src="../assets/imgs/libros/Libro3.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro4.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
+                <div class="col">
+                    <a href="pagGenero.php?genero=cienciaFiccion">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/CienciaFiccion.jpg" alt=""
+                                class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Ciencia ficción</h4>
                             </div>
                         </div>
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro5.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro6.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro7.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
+                <div class="col">
+                    <a href="pagGenero.php?genero=contemporanea">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Contemporanea.jpg" alt=""
+                                class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Contemporánea</h4>
                             </div>
                         </div>
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro8.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-4 card">
-                            <img src="../assets/imgs/libros/Libro9.jpg" alt="Foto de un libro"
-                                class="card-img-top imagenCarrusel">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <h4 class="card-title">Libro</h4>
-                                    <p class="card-text">Autor</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-
-            <button class="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#carruselGrande"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carruselGrande" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+            <div class="row">
+                <div class="col">
+                    <a href="pagGenero.php?genero=fantasia">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Fantasia.jpg" alt="" class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Fantasía</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="pagGenero.php?genero=historia">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Historia.jpg" alt="" class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Historia</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="pagGenero.php?genero=infantil">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Infantil.jpg" alt="" class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Infantil</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="pagGenero.php?genero=poesia">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Poesia.jpg" alt="" class="card-image-top imagenGrilla">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Poesía</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="pagGenero.php?genero=romance">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Romance.jpg" alt="" class="card-image-top imagenGrilla"
+                                style="object-position: top">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Romance</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="pagGenero.php?genero=terror">
+                        <div class="card imgCard">
+                            <img src="../assets/imgs/generos/Terror.jpg" alt="" class="card-image-top imagenGrilla"
+                                style="object-position: bottom">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title nombreGrilla">Terror</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
 
     </div>
-    -->
-    <div class="container-fluid p-4 my-4 justify-content-center bg-dark text-light">
-        <p class="display-6 text-center">Libros por temática</p>
-        <div class="row">
-            <div class="col">
-                <a href="pagGenero.php?genero=aventura">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Aventura.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Aventura</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=cienciaFiccion">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/CienciaFiccion.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Ciencia ficción</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=contemporanea">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Contemporanea.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Contemporánea</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a href="pagGenero.php?genero=fantasia">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Fantasia.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Fantasía</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=historia">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Historia.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Historia</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=infantil">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Infantil.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Infantil</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a href="pagGenero.php?genero=poesia">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Poesia.jpg" alt="" class="card-image-top imagenGrilla">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Poesía</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=romance">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Romance.jpg" alt="" class="card-image-top imagenGrilla"
-                            style="object-position: top">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Romance</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="pagGenero.php?genero=terror">
-                    <div class="card imgCard">
-                        <img src="../assets/imgs/generos/Terror.jpg" alt="" class="card-image-top imagenGrilla"
-                            style="object-position: bottom">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title nombreGrilla">Terror</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+
 
     <?php
     include '../../estructura/footer.php';
     ?>
+    </body>
 
-</div>
-
-
-
-</body>
-
-</html>
+    </html>
