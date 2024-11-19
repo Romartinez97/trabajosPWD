@@ -4,15 +4,21 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit662aedcc6781129fa81bbdd533343456
+class ComposerStaticInitfbbec717e3aa30643356e5b52ee10182
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+            'Spatie\\ImageOptimizer\\' => 22,
+        ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
         ),
         'F' => 
@@ -22,6 +28,18 @@ class ComposerStaticInit662aedcc6781129fa81bbdd533343456
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Spatie\\ImageOptimizer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/image-optimizer/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -39,9 +57,9 @@ class ComposerStaticInit662aedcc6781129fa81bbdd533343456
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit662aedcc6781129fa81bbdd533343456::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit662aedcc6781129fa81bbdd533343456::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit662aedcc6781129fa81bbdd533343456::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfbbec717e3aa30643356e5b52ee10182::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfbbec717e3aa30643356e5b52ee10182::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfbbec717e3aa30643356e5b52ee10182::$classMap;
 
         }, null, ClassLoader::class);
     }

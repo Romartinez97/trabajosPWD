@@ -1,5 +1,6 @@
 {
     "require": {
-        "fakerphp/faker": "^1.24"
+        "fakerphp/faker": "^1.24",
+        "spatie/image-optimizer": "^1.8"
     }
 }

@@ -17,14 +17,14 @@ $compras=$abmCompra->buscar(null);
 //cofecha fecha de la compra
 //idusuario is del usuario que realizo la compra
 $abmcompraestado=new AbmCompraEstado();
-$comprasestado=$abmcompraestado->buscar(null);
+//$comprasestado=$abmcompraestado->buscar(null);
 //idcompraestado
 //idcompra (objcompra)
 //idcompraestadotipo (objcompraestadotipo(estado del pedido 1, 2, 3, 4))
 //cefechaini
 //cefehcafin
 $abmcompraitem=new AbmCompraItem();
-$comprasitem=$abmcompraitem->buscar(null);
+//$comprasitem=$abmcompraitem->buscar(null);
 //idcompraitem
 //idproducto(objproducto)
 //idcompra(objcompra)

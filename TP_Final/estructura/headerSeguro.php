@@ -90,6 +90,8 @@
                                 href="../pagsRestringidas/deposito.php">Depósito</a></li>
                         <li class="nav-item active"><a class="nav-link m-1"
                                 href="../pagsRestringidas/verPedidos.php">ver Pedidos</a></li>
+                        <li class="nav-item active"><a class="nav-link m-1"
+                                href="../pagsRestringidas/agregarProducto.php">agregar Libro</a></li>
                         <?php
                     }
                     ?>

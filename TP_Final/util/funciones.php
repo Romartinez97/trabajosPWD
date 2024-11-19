@@ -15,16 +15,24 @@ function data_submitted(){
                 $datos[$clave]='null';
             }
         }
-    }else{
-        if(!empty($_GET)){
-            foreach($_GET as $clave => $valor){
-                $datos[$clave] = $valor;
-                if($valor==""){
-                    $datos[$clave]='null';
-                }
+    }
+    if(!empty($_GET)){
+        foreach($_GET as $clave => $valor){
+            $datos[$clave] = $valor;
+            if($valor==""){
+                $datos[$clave]='null';
             }
         }
     }
+    if(!empty($_FILES)){
+        foreach($_FILES as $clave => $valor){
+            $datos[$clave]=$valor;
+            if($valor==""){
+                $datos[$clave]='null';
+            }
+        }
+    }
+
     return $datos;
 }
 

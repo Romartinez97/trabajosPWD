@@ -6,6 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
+    'Spatie\\ImageOptimizer\\' => array($vendorDir . '/spatie/image-optimizer/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
 );
