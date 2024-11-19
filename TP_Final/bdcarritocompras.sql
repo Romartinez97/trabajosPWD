@@ -34,6 +34,11 @@ CREATE TABLE `compra` (
   `idusuario` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+INSERT INTO `compra` (`idcompra`, `cofecha`, `idusuario`) VALUES
+(1, '2024-11-19 16:00:00', 1),
+(2, '2024-11-01 17:00:00', 2),
+(3, '2024-10-16 18:00:00', 3);
 -- --------------------------------------------------------
 
 --
@@ -48,6 +53,11 @@ CREATE TABLE `compraestado` (
   `cefechafin` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+INSERT INTO `compraestado` (`idcompraestado`, `idcompra`, `idcompraestadotipo`, `cefechaini`, `cefechafin`) VALUES
+(1, 1, 1, '2023-01-10 16:00:00', '2024-11-19 16:00:00'),
+(2, 2, 2, '2023-02-10 16:00:00', '2024-11-19 16:00:00'),
+(3, 3, 3, '2023-03-10 16:00:00', '2024-11-19 16:00:00');
 -- --------------------------------------------------------
 
 --
@@ -83,6 +93,10 @@ CREATE TABLE `compraitem` (
   `cicantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `compraitem` (`idcompraitem`, `idproducto`, `idcompra`, `cicantidad`) VALUES
+(1, 2, 1, 3),
+(2, 3, 2, 10),
+(3, 7, 3, 5);
 -- --------------------------------------------------------
 
 --

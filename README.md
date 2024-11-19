@@ -14,5 +14,4 @@ Profesores: Viviana Sánchez, María Laura Pino, Juan Marcos González
 Grupo N° 14
 
 - **Juan Farroni**: Github: JuanF368
-- **Sabrina Gaspart**: Github: sabrinagaspart
 - **Rodrigo Martínez**: Github: Romartinez97
