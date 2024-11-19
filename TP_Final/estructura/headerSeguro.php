@@ -28,29 +28,39 @@
     <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">Nombre de la
-                    página</a>
+                <a class="navbar-brand" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">El Refugio
+                Literario</a>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Géneros</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=aventura">Aventura</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=cienciaFiccion">Ciencia
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=aventura">Aventura</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=cienciaFiccion">Ciencia
                                         ficción</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=contemporanea">Contemporánea</a>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=contemporanea">Contemporánea</a>
                                 </li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=fantasia">Fantasía</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=historia">Historia</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=infantil">Infantil</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=poesia">Poesía</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=romance">Romance</a></li>
-                                <li><a class="dropdown-item" href="../pagsPublicas/pagGenero.php?genero=terror">Terror</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=fantasia">Fantasía</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=historia">Historia</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=infantil">Infantil</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=poesia">Poesía</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=romance">Romance</a></li>
+                                <li><a class="dropdown-item"
+                                        href="../pagsPublicas/pagGenero.php?genero=terror">Terror</a></li>
                             </ul>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="../pagsPublicas/listadoLibros.php" role="button">Todos los libros</a>
+                            <a class="nav-link" href="../pagsPublicas/listadoLibros.php" role="button">Todos los
+                                libros</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="../pagsPublicas/contacto.php" role="button">Contacto</a>
@@ -61,15 +71,30 @@
 
             <div class="ms-auto">
                 <ul class="navbar-nav ml-auto">
+                    <!--Opciones solo para usuarios con rol admin-->
                     <?php
-                        if($sesion->estaLogueado() && $sesion->getRol()==1){
+                    if ($sesion->estaLogueado() && $sesion->getRol() == 1) {
+                        ?>
+                        <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/verUsuarios.php">Ver
+                                Usuarios</a></li>
+                        <li class="nav-item active"><a class="nav-link m-1"
+                                href="../pagsRestringidas/generador.php">Generador</a></li>
+                        <?php
+                    }
                     ?>
-                    <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/verUsuarios.php">Ver Usuarios</a></li>
+                    <!--Opciones solo para usuarios con rol admin o depósito-->
                     <?php
-                        }
+                    if ($sesion->estaLogueado() && in_array($sesion->getRol(), [1, 3])) {
+                        ?>
+                        <li class="nav-item active"><a class="nav-link m-1"
+                                href="../pagsRestringidas/deposito.php">Depósito</a></li>
+                        <?php
+                    }
                     ?>
-                    <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/perfil.php">Perfil</a></li>
-                    <li class="nav-item active"><a class="nav-link m-1" href="../accion/cerrarSesion.php">Cerrar sesión</a></li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="../pagsRestringidas/perfil.php">Perfil</a>
+                    </li>
+                    <li class="nav-item active"><a class="nav-link m-1" href="../accion/cerrarSesion.php">Cerrar
+                            sesión</a></li>
                     <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
                             <i class="fa-solid fa-cart-shopping"></i></a>
                     </li>

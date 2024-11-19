@@ -154,4 +154,10 @@ class AbmUsuario
 
         return $mensaje;
     }
+
+    public function generarUsuarios($cantidad, $rol){
+        $customFaker = new CustomFaker();
+        $seGeneraronUsuarios = $customFaker->generarUsuarios($cantidad, $rol);
+        return $seGeneraronUsuarios;
+    }
 }

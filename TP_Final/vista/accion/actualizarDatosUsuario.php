@@ -9,7 +9,7 @@ $objUsuario = new AbmUsuario();
 $idUsuario = $datos["idusuario"];
 $nombreUsuario = $datos["usnombre"];
 $mailUsuario = $datos["usmail"];
-$passUsuario = $datos["uspass"];
+$passUsuario = md5($datos['uspass']);
 $deshabilitadoUsuario = $datos["usdeshabilitado"];
 $mensaje = "Contraseña modificada correctamente";
 
@@ -31,9 +31,15 @@ $paramModif = [
     "uspass" => $passUsuario,
     "usdeshabilitado" => $deshabilitadoUsuario,
 ];
-$objUsuario->modificacion($paramModif);
 
-header("Location: ../pagsRestringidas/perfil.php?estado=1");
-exit();
+if ($objUsuario->modificacion($paramModif)){
+    header("Location: ../pagsRestringidas/perfil.php?estado=1");
+    exit();
+} else {
+    header("Location: ../pagsRestringidas/perfil.php?estado=2");
+    exit();
+};
+
+
 
 ?>

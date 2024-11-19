@@ -4,7 +4,7 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $datos = data_submitted();
 
-if (!$sesion->estaLogueado() || ($sesion->getRol() != 'deposito' && $sesion->getRol() != 'admin')) {
+if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 }
@@ -18,7 +18,7 @@ if (!empty($datos)) {
         'prodetalle' => $datos['prodetalle'],
         'procantstock' => $datos['procantstock'],
         'progenero' => $datos['progenero'],
-        'proprecio' => $$datos['proprecio']
+        'proprecio' => $datos['proprecio']
     ];
     $abmProducto->modificacion($param);
     header('Location: ../pagsRestringidas/deposito.php');

@@ -16,16 +16,34 @@ include "../../estructura/header.php";
         <p class="display-5">Ingreso</p>
         <?php
         if (isset($_GET['error']) && $_GET['error'] == 1) {
-            echo '<div class="alert alert-danger" role="alert">Correo electrónico o contraseña incorrectos.</div>';
+            echo
+                '<div class="container">
+                <div class="alert alert-danger" role="alert">Los campos "correo electrónico" y "contraseña" no pueden estar vacíos.</div>
+                </div>';
         }
         if (isset($_GET['error']) && $_GET['error'] == 2) {
-            echo '<div class="alert alert-danger" role="alert">Usuario deshabilitado, no se permite el ingreso.</div>';
+            echo 
+                '<div class="container">
+                <div class="alert alert-danger" role="alert">Usuario deshabilitado, no se permite el ingreso.</div>
+                </div>';
         }
         if (isset($_GET['error']) && $_GET['error'] == 3) {
-            echo '<div class="alert alert-danger" role="alert">Error en el login, intente nuevamente.</div>';
+            echo 
+                '<div class="container">
+                <div class="alert alert-danger" role="alert">Error en el login, intente nuevamente.</div>
+                </div>';
+        }
+        if (isset($_GET['error']) && $_GET['error'] == 4) {
+            echo 
+                '<div class="container">
+                <div class="alert alert-danger" role="alert">El correo electrónico o la contraseña son incorrectos, intente nuevamente.</div>
+                </div>';
         }
         if (isset($_GET['regis']) && $_GET['regis'] == 1) {
-            echo '<div class="alert alert-success" role="alert">Registrado con exito, Porfavor inicie sesión.</div>';
+            echo 
+                '<div class="container">
+                <div class="alert alert-success" role="alert">Registrado con exito. Por favor, inicie sesión.</div>
+                </div>';
         }
         ?>
     </div>

@@ -21,6 +21,7 @@ if (count($usuario) > 0) {
     $nombreus = $usuario->getusnombre();
     $usmail = $usuario->getusmail();
     $uspass = $usuario->getuspass();
+    $usdeshabilitado = $usuario->getusdeshabilitado();
 }
 ?>
 
@@ -35,6 +36,12 @@ if (count($usuario) > 0) {
         echo
             '<div class="container">
             <div class="alert alert-success" role="alert">Datos personales actualizados.</div>
+            </div>';
+    }
+    if (isset($_GET['estado']) && $_GET['estado'] == 2) {
+        echo
+            '<div class="container">
+            <div class="alert alert-danger" role="alert">ERROR: No se pudieron actualizar los datos personales.</div>
             </div>';
     }
     ?>
@@ -59,6 +66,7 @@ if (count($usuario) > 0) {
                 </div>
                 <input type="hidden" name="uspassactual" value="<?php echo $uspass ?>">
                 <input type="hidden" name="idusuario" value="<?php echo $idUsuario ?>">
+                <input type="hidden" name="usdeshabilitado" value="<?php echo $usdeshabilitado ?>">
                 <button type="submit" class="btn text-white mb-4" id="botonLogin">Actualizar</button>
 
             </form>

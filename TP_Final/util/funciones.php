@@ -41,6 +41,7 @@ function my_autoloader($class_name){
         $GLOBALS['ROOT'].'control/',
         $GLOBALS['ROOT'].'modelo/',
         $GLOBALS['ROOT'].'modelo/conector/',
+        $GLOBALS['ROOT'].'util/',
     );
     foreach($directories as $directory){
         if(file_exists($directory.$class_name.'.php')){

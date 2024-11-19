@@ -2,7 +2,7 @@
         <div id="content-wrap">
             <footer class="border-top pt-3">
                 <p class="text-center text-body-secondary">El Refugio Literario</p>
-                <p class="text-center text-body-secondary">Sabrina Gaspart - Juan Farroni - Rodrigo Martínez</p>
+                <p class="text-center text-body-secondary">Juan Farroni - Rodrigo Martínez</p>
             </footer>
         </div>
     </div>

@@ -86,10 +86,10 @@ class AbmProducto{
         $arreglo=$producto->listar($where);
         return $arreglo;
     }
-    /*
-    public function buscarPorGenero($genero){
-        $producto = new Producto();
-        $parametro = "prodetalle LIKE '%Género: $genero%'";
-        return $producto->listar($parametro);
-    }*/
+    
+    public function generarProductos($cantidad){
+        $customFaker = new CustomFaker();
+        $seGeneraronLibros = $customFaker->generarLibros($cantidad);
+        return $seGeneraronLibros;
+    }
 }
