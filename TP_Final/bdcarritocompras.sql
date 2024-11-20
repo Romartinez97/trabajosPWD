@@ -36,10 +36,10 @@ CREATE TABLE `compra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-INSERT INTO `compra` (`idcompra`, `cofecha`, `idusuario`) VALUES
-(1, '2024-11-19 16:00:00', 1),
-(2, '2024-11-01 17:00:00', 2),
-(3, '2024-10-16 18:00:00', 3);
+INSERT INTO `compra` (`idcompra`, `cofecha`, `costo`, `idusuario`) VALUES
+(1, '2024-11-19 16:00:00', 29999.97, 1),
+(2, '2024-11-01 17:00:00', 99999.9, 2),
+(3, '2024-10-16 18:00:00', 49999.95, 3);
 -- --------------------------------------------------------
 
 --

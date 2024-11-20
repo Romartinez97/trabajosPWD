@@ -72,9 +72,17 @@ if ($mensaje == 1) {
 
         <?php
         if (!empty($listaProductos)) {
-            foreach ($listaProductos as $producto): ?>
+            foreach ($listaProductos as $producto){ ?>
                 <div class="d-flex pb-4">
-                    <img src="../assets/imgs/libros/<?php echo $producto->getidproducto(); ?>.jpg" alt=""
+                    <?php
+                    if(file_exists("../assets/imgs/libros/".$producto->getidproducto().".jpg")){
+                        $urlimg=$producto->getidproducto();
+                    }else{
+                        $arraylibrosRndm=["Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Libro6", "Libro7", "Libro8", "Libro9"];
+                        $urlimg=$arraylibrosRndm[rand(0,8)];
+                    }
+                    ?>
+                    <img src="../assets/imgs/libros/<?php echo $urlimg; ?>.jpg" alt=""
                         class="imgLibroListado">
                     <div class="detLibroListado">
                         <form action="carrito.php" method="post">
@@ -84,11 +92,19 @@ if ($mensaje == 1) {
                             <p class="h6"><?php echo "$" . $producto->getproprecio(); ?></p>
                             <input type="hidden" name="idproducto" value="<?php echo $producto->getidproducto(); ?>">
                             <input type="hidden" name="origen" value="listadoLibros">
-                            <input type="submit" class="btn btnRegistro" value="Agregar al carrito">
+                            <?php
+                            if ($sesion->estaLogueado()) {
+                                if($producto->getprocantstock()>0){
+                                    echo '<input type="submit" class="btn btnRegistro" value="Agregar al carrito">';
+                                }else{
+                                    echo '<div class="card-footer"><button class="btn btn-danger" disabled>No hay Stock</button></div>';
+                                } 
+                            }
+                            ?>
                         </form>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php } ?>
         <?php } else { ?>
             <div class="d-flex pb-4">
                 <p class="h4 txtNaranja">No hay stock de libros</p>

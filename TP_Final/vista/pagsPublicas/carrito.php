@@ -95,7 +95,7 @@ if ($sesion->estaLogueado()) {
                                     <?php echo "$" . ($proprecio * $cantidad); ?>
                                 </td>
                                 <td>
-                                    <form action="accionCarrito.php" method="post">
+                                    <form action="../accion/accionCarrito.php" method="post">
                                         <input type="hidden" name="accion" value="eliminar">
                                         <input type="hidden" name="idproducto" value="<?php echo $item['idproducto']; ?>">
                                         <button type="submit" class="btn btn-danger">Eliminar</button>

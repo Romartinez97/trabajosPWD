@@ -81,6 +81,9 @@ foreach($compras as $comp){
           <span><strong>Cantidad:</strong> <?php echo $cantprod; ?></span>
         </li>
       </ul>
+      <div class="mt-3">
+      <p class="text-end fs-5"><strong>Costo Total: <?php echo $comp->getcosto(); ?></strong></p>
+    </div>
     </div>
   </div>
 <?php
