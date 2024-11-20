@@ -43,10 +43,10 @@ if (!empty($datos)) {
 
     if ($origen == "listadoLibros") {
         header("Location: listadoLibros.php?mensaje=" . $mensaje);
-    }elseif ($origen == "index") {
-        header("Location: index.php?mensaje=" .$mensaje);
+    } elseif ($origen == "index") {
+        header("Location: index.php?mensaje=" . $mensaje);
     } elseif ($origen == "pagGenero") {
-        header("Location: pagGenero.php?genero=" .$genero . "&mensaje=" . $mensaje);
+        header("Location: pagGenero.php?genero=" . $genero . "&mensaje=" . $mensaje);
     }
     exit();
 }
@@ -55,6 +55,13 @@ if ($sesion->estaLogueado()) {
     include "../../estructura/headerSeguro.php";
 } else {
     include "../../estructura/header.php";
+}
+
+$estado = isset($_GET['estado']) ? $_GET['estado'] : '';
+$mensaje = "";
+
+if ($estado == 1) {
+    $mensaje = "Compra realizada con éxito.";
 }
 ?>
 
@@ -65,6 +72,15 @@ if ($sesion->estaLogueado()) {
         </div>
     </div>
     <div class="container">
+
+        <div class="text-center pb-4">
+            <?php if ($mensaje) { ?>
+                <div class="alert alert-warning" role="alert">
+                    <b><?php echo $mensaje; ?></b>
+                </div>
+            <?php } ?>
+        </div>
+
         <?php if (isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])): ?>
             <form action="../accion/accionCarrito.php" method="post">
                 <table class="table">

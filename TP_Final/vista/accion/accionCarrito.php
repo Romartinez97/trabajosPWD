@@ -29,6 +29,7 @@ switch ($accion) {
         print_r($datos);
         //--
         $abmcompra=new AbmCompra();
+        $abmcompraitem = new AbmCompraItem();
         $compras=$abmcompra->buscar(null);
         $ultimoid=count($compras)-1;
         $nuevoid=$compras[$ultimoid]->getidcompra()+1;
@@ -39,7 +40,28 @@ switch ($accion) {
             'cofecha' => $cofecha,
             'idusuario' => $idusuario,
         ];
-        break; // Agregar funcionalidad de compra ingresando a la base de datos
+        $abmcompra->alta($paramcompra);
+
+        // obtengo ID de la compra que acabo de hacer
+        $nuevaCompra = $abmcompra->buscar(['cofecha' => $cofecha, 'idusuario' => $idusuario]);
+        $idcomprarealizada = $nuevaCompra[0]->getIdcompra();
+
+        // creo un compraitem por cada producto del carrito
+        foreach($_SESSION['carrito'] as $item){
+            $paramcompraitem=[
+                'idcompraitem' => $null,
+                'idproducto' => $item['idproducto'],
+                'idcompra' => $idcomprarealizada,
+                'cicantidad' => $item['cantidad']
+            ];
+            $abmcompraitem->alta($paramcompraitem);
+        }
+
+        // vacio el carrito
+        unset($_SESSION['carrito']);
+        header('Location: ../pagsPublicas/carrito.php?estado=1');
+        exit();
+        
     case 'vaciar':
         unset($_SESSION['carrito']);
         header('Location: ../pagsPublicas/carrito.php');

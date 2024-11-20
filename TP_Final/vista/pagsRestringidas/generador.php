@@ -74,3 +74,7 @@ $abmUsuario = new AbmUsuario();
 </div>
 
 <?php include '../../estructura/footer.php'; ?>
+
+</body>
+
+</html>

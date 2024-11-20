@@ -12,7 +12,7 @@ if (!$sesion->estaLogueado()) {
 }
 
 $abmUsuario = new AbmUsuario();
-$param = ['idusuario' => $sesion->getUsuario()->getidusuario()];
+$param = ['idusuario' => $sesion->getUsuario()];
 $usuario = $abmUsuario->buscar($param);
 
 if (count($usuario) > 0) {
