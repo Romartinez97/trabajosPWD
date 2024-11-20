@@ -1,3 +1,16 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$totalProductos = 0;
+if (isset($_SESSION['carrito'])) {
+    foreach ($_SESSION['carrito'] as $item) {
+        $totalProductos += $item['cantidad'];
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +24,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.js"></script>
-    <script src="assets/js/validacion.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 
     <style>
         #navbar {
@@ -65,8 +78,13 @@
                             href="registro.php">Registrarse</a>
                     </li>
                     </li>
-                    <li class="nav-item"><a href="#" class="btn rounded-pill btn-dark py-2 px-4 m-1">
-                            <i class="fa-solid fa-cart-shopping"></i></a>
+                    <li class="nav-item"><a href="../pagsPublicas/carrito.php"
+                            class="btn rounded-pill btn-dark py-2 px-4 m-1">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <?php if ($totalProductos > 0): ?>
+                                <span><sup><?php echo $totalProductos; ?></sup></span>
+                            <?php endif; ?>
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -108,12 +108,12 @@ body {
 }
 
 .btnAgregar {
-  background-color: #a5b68d !important;
+  background-color: #83b33f !important;
   color: white !important;
 }
 
 .btnAgregar:hover {
-  background-color: #83b33f !important;
+  background-color: #a5b68d !important;
   color: white !important;
 }
 

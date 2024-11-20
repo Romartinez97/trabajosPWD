@@ -5,10 +5,7 @@ class Producto
     private $idproducto;
     private $pronombre;
     private $prodetalle; 
-    /*
-    Pasar como detalle del libro un string que diga "Autor: Nombre del autor; Género: Nombre del género; Precio: precio del libro"
-    para poder usar las funciones getLibroAutor(), getLibroGenero() y getLibroPrecio()
-    */
+
     private $procantstock;
     private $progenero;
     private $proprecio;
