@@ -7,7 +7,7 @@ $sesion = new Session();
 $datos = data_submitted();
 $mensaje = "";
 
-if (!empty($datos)) {
+if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (linea 11 y 13) porque no existen esos indices en $datos
     $idproducto = $datos['idproducto'];
     $cantidad = 1;
     $origen = $datos['origen'];
@@ -94,7 +94,9 @@ if ($estado == 1) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['carrito'] as $index => $item):
+                        <?php 
+                        $i=1;
+                        foreach ($_SESSION['carrito'] as $index => $item){
                             $idproducto = $item['idproducto'];
                             $pronombre = $item['pronombre'];
                             $proprecio = $item['proprecio'];
@@ -104,11 +106,11 @@ if ($estado == 1) {
                                 <td><?php echo $item['pronombre']; ?></td>
                                 <td><?php echo "$" . $item['proprecio']; ?></td>
                                 <td>
-                                    <input type="number" name="cantidad" value="<?php echo $cantidad; ?>" min="1"
+                                    <input type="number" name="cantidad<?php echo $i; ?>" value="<?php echo $cantidad; ?>" min="1"
                                         style="width:4rem" id="cantProductosCarrito">
-                                    <input type="hidden" name="idproducto" value="<?php echo $idproducto; ?>">
-                                    <input type="hidden" name="pronombre" value="<?php echo $pronombre; ?>">
-                                    <input type="hidden" name="proprecio" value="<?php echo $proprecio; ?>">
+                                    <input type="hidden" name="idproducto<?php echo $i; ?>" value="<?php echo $idproducto; ?>">
+                                    <input type="hidden" name="pronombre<?php echo $i; ?>" value="<?php echo $pronombre; ?>">
+                                    <input type="hidden" name="proprecio<?php echo $i; ?>" value="<?php echo $proprecio; ?>">
                                 </td>
                                 <td id="total-<?php echo $index; ?>">
                                     <?php echo "$" . ($proprecio * $cantidad); ?>
@@ -121,9 +123,12 @@ if ($estado == 1) {
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php 
+                        $i++;
+                        } ?>
                     </tbody>
                 </table>
+                <input type="hidden" name="cantprodsunicos" id="cantprodsunicos" value="<?php echo $i-1; ?>">
                 <div class="text-center">
                     <p>Total del carrito: $<span id="total-carrito">0.00</span></p>
                 </div>

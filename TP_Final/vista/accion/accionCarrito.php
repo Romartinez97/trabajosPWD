@@ -22,24 +22,71 @@ switch ($accion) {
                 exit();
             }
         }
+        break;
     case 'comprar':
         //-- seteo el horario a argentina para las columnas de fechas
         date_default_timezone_set("America/Argentina/Buenos_Aires");
         $cofecha=date("Y-m-d H:i:s");
-        print_r($datos);
+        //foreach($datos as $dato => $valor){
+        //    echo $dato."==".$valor."<br>";
+        //}
         //--
         $abmcompra=new AbmCompra();
-        $abmcompraitem = new AbmCompraItem();
         $compras=$abmcompra->buscar(null);
         $ultimoid=count($compras)-1;
-        $nuevoid=$compras[$ultimoid]->getidcompra()+1;
+        $nuevoidcompra=$compras[$ultimoid]->getidcompra()+1;
         $idusuario=$sesion->getUsuario();
+        $costofinal=0;
+        for($j=1;$j<$datos["cantprodsunicos"]+1;$j++){
+            $costoprod=$datos["cantidad".$j]*$datos['proprecio'.$j];
+            $costofinal+=$costoprod;
+        }
+        //echo "<br>costo final:".$costofinal."<br>";
         //--
         $paramcompra=[
-            'idcompra'=> $nuevoid,
+            'idcompra'=> $nuevoidcompra,
             'cofecha' => $cofecha,
+            'costo' => $costofinal,
             'idusuario' => $idusuario,
         ];
+        //echo "<br>";
+        //print_r($paramcompra);
+        //$abmcompra->alta($param);
+        //--
+        $abmcompraestado=new AbmCompraEstado();
+        $comprasestado=$abmcompraestado->buscar(null);
+        $ultimoidce=count($comprasestado)-1;
+        $nuevoidce=$comprasestado[$ultimoidce]->getidcompraestado()+1;
+        //--
+        $paramcompraestado=[
+            'idcompraestado' => $nuevoidce,
+            'idcompra' => $nuevoidcompra,
+            'idcompraestadotipo' => 1,
+            'cefechaini' => $cofecha,
+            'cefechafin' => null,
+        ];
+        //echo "<br>";
+        //print_r($paramcompraestado);
+        //$abmcompraestado->alta($paramcompraestado);
+        //--
+        $abmcompraitem=new AbmCompraItem();
+        for($j=1;$j<$datos["cantprodsunicos"]+1;$j++){
+            $comprasitem=$abmcompraitem->buscar(null);
+            $ultimoidci=count($comprasitem)-1;
+            $nuevoidci=$comprasitem[$ultimoidci]->getIdcompraitem()+1;
+            //--
+            $paramcompraitem=[
+                'idcompraitem' => $nuevoidci,
+                'idproducto' => $datos["idproducto".$j],
+                'idcompra' => $nuevoidcompra,
+                'cicantidad' => $datos["cantidad".$j],
+            ];
+            //echo "<br>";
+            //print_r($paramcompraitem);
+            //$abmcompraitem->alta($paramcompraitem);
+        }
+        //--
+        /*
         $abmcompra->alta($paramcompra);
 
         // obtengo ID de la compra que acabo de hacer
@@ -56,16 +103,17 @@ switch ($accion) {
             ];
             $abmcompraitem->alta($paramcompraitem);
         }
-
+        */
         // vacio el carrito
         unset($_SESSION['carrito']);
         header('Location: ../pagsPublicas/carrito.php?estado=1');
         exit();
-        
+        break;
     case 'vaciar':
         unset($_SESSION['carrito']);
         header('Location: ../pagsPublicas/carrito.php');
         exit();
+        break;
 }
 
 ?>
