@@ -2,9 +2,9 @@
 
 include_once '../../util/funciones.php';
 $datos=data_submitted();
-foreach($datos as $dato => $valor){
-    echo"<br>".$dato."=".$valor;
-}
+//foreach($datos as $dato => $valor){
+//    echo"<br>".$dato."=".$valor;
+//}
 $idpedido=$datos["idpedido"];
 $abmcompraestado=new AbmCompraEstado();
 $param=[
@@ -47,3 +47,5 @@ switch($datos["nuevoEstado"]){
         $abmcompraestado->modificacion($paramcancelar);
         break;
 }
+header("Location: ../pagsRestringidas/verPedidos.php");
+exit;
