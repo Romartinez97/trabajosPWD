@@ -118,7 +118,8 @@ class Compraestado{
         $resp=false;
         $base=new BaseDatosPDO();
         $sql="UPDATE compraestado SET
-            idcompra='".$this->getobjcompra()->getidcompra()."', idcompraestadotipo='".$this->getobjcompraestadotipo()->getidcompraestadotipo()."', '".$this->getcefechaini()."', '".$this->getcefechafin()."' WHERE idcompraestado='".$this->getidcompraestado()."'";
+            idcompra='".$this->getobjcompra()->getidcompra()."', idcompraestadotipo='".$this->getobjcompraestadotipo()->getidcompraestadotipo()."', cefechaini='".$this->getcefechaini()."', cefechafin='".$this->getcefechafin()."' WHERE idcompraestado='".$this->getidcompraestado()."'";
+        echo "<br>'".$this->getcefechaini()."', '".$this->getcefechafin()."' WHERE idcompraestado='".$this->getidcompraestado()."'";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

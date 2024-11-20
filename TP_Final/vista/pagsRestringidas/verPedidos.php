@@ -79,6 +79,7 @@ $abmcompraitem = new AbmCompraItem();
         <strong>ID Pedido:</strong><?php echo $idpedido ?>
       </div>
       <div class="card-body">
+        <form action="../accion/actualizarEstadoPedido.php" method="post">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <p class="mb-0"><strong>Usuario:</strong> <?php echo $usuariopedido; ?></p>
           <?php
@@ -102,6 +103,25 @@ $abmcompraitem = new AbmCompraItem();
         <div class="mt-3">
           <p class="text-end fs-5"><strong>Costo Total: <?php echo $comp->getcosto(); ?></strong></p>
         </div>
+        <!--
+        <input type="submit" class="btn btn-danger me-2" value="Cancelar">
+        <input type="submit" class="btn btn-success" value="Aceptar">
+        <input type="submit" class="btn btn-primary" value="Enviar">
+        -->
+        <?php
+        echo '<div class="mt-3 d-flex justify-content-end">';
+        if ($estado == 1) { // Estado Iniciado
+            echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
+            echo '<input type="submit" class="btn btn-success" name="nuevoEstado" value="Aceptar">';
+        } elseif ($estado == 2) { // Estado Aceptado
+            echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
+            echo '<input type="submit" class="btn btn-primary" name="nuevoEstado" value="Enviar">';
+        }
+        echo '</div>';
+        ?>
+        <input type="hidden" name="idpedido" value="<?php echo $idpedido ?>">
+        <input type="hidden" name="estadoActual" value="<?php echo $estado ?>">
+        </form>
       </div>
     </div>
     <?php
