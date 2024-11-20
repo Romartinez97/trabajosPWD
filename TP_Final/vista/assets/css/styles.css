@@ -97,7 +97,7 @@ body {
 }
 
 .imgLibroListado {
-  width: auto;
+  width: 150px;
   height: 250px;
   object-fit: cover;
   padding: 5px;

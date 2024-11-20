@@ -42,9 +42,11 @@ if (!empty($datos)) {
     }
 
     if ($origen == "listadoLibros") {
-        header("Location: listadoLibros.php?mensaje=" . urlencode($mensaje));
+        header("Location: listadoLibros.php?mensaje=" . $mensaje);
+    }elseif ($origen == "index") {
+        header("Location: index.php?mensaje=" .$mensaje);
     } elseif ($origen == "pagGenero") {
-        header("Location: pagGenero.php?genero=" . urlencode($genero) . "&mensaje=" . urlencode($mensaje));
+        header("Location: pagGenero.php?genero=" .$genero . "&mensaje=" . $mensaje);
     }
     exit();
 }
@@ -86,7 +88,8 @@ if ($sesion->estaLogueado()) {
                                 <td><?php echo $item['pronombre']; ?></td>
                                 <td><?php echo "$" . $item['proprecio']; ?></td>
                                 <td>
-                                    <input type="number" name="cantidad" value="<?php echo $cantidad; ?>" min="1" style="width:4rem">
+                                    <input type="number" name="cantidad" value="<?php echo $cantidad; ?>" min="1"
+                                        style="width:4rem" id="cantProductosCarrito">
                                     <input type="hidden" name="idproducto" value="<?php echo $idproducto; ?>">
                                     <input type="hidden" name="pronombre" value="<?php echo $pronombre; ?>">
                                     <input type="hidden" name="proprecio" value="<?php echo $proprecio; ?>">
@@ -106,6 +109,9 @@ if ($sesion->estaLogueado()) {
                     </tbody>
                 </table>
                 <div class="text-center">
+                    <p>Total del carrito: $<span id="total-carrito">0.00</span></p>
+                </div>
+                <div class="text-center">
                     <button type="submit" name="accion" value="vaciar" class="btn btn-dark">Vaciar carrito</button>
                     <?php if ($sesion->estaLogueado()): ?>
                         <button type="submit" name="accion" value="comprar" class="btn btnAgregar mx-3">Comprar</button>
@@ -113,7 +119,7 @@ if ($sesion->estaLogueado()) {
                 </div>
             </form>
         <?php else: ?>
-            <p class="h5 text-center">No hay productos en el carrito.</p>
+            <p class="h5 text-center">No hay productos en el carrito</p>
         <?php endif; ?>
     </div>
 </div>

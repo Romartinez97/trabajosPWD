@@ -97,7 +97,7 @@ if ($mensaje == 1) {
                                 if($producto->getprocantstock()>0){
                                     echo '<input type="submit" class="btn btnRegistro" value="Agregar al carrito">';
                                 }else{
-                                    echo '<div class="card-footer"><button class="btn btn-danger" disabled>No hay Stock</button></div>';
+                                    echo '<div class="card-footer"><button class="btn" disabled>No hay stock</button></div>';
                                 } 
                             }
                             ?>

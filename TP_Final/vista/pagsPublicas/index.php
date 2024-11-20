@@ -52,9 +52,11 @@ if ($sesion->estaLogueado()) {
                         <?php
                         if ($sesion->estaLogueado()) {
                             if ($prostock > 0) {
-                                echo '<div class="card-footer text-center"><button class="btn btnAgregar">Agregar</button></div>';
+                                echo '
+                                <div class="card-footer text-center">
+                                <input type="submit" class="btn btnRegistro" value="Agregar al carrito"></div>';
                             } else {
-                                echo '<div class="card-footer text-center"><button class="btn btn-danger">No hay Stock</button></div>';
+                                echo '<div class="card-footer text-center"><button class="btn" disabled>No hay stock</button></div>';
                             }
                         }
                         ?>

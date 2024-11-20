@@ -80,8 +80,15 @@ if ($mensaje == 1) {
                 if ($producto->getprogenero() == arreglarNombreGenero($genero)) {
                     ?>
                     <div class="d-flex pb-4">
-                        <img src="../assets/imgs/libros/<?php echo $producto->getidproducto() ?>.jpg" alt=""
-                            class="imgLibroListado">
+                        <?php
+                        if (file_exists("../assets/imgs/libros/" . $producto->getidproducto() . ".jpg")) {
+                            $urlimg = $producto->getidproducto();
+                        } else {
+                            $arraylibrosRndm = ["Libro1", "Libro2", "Libro3", "Libro4", "Libro5", "Libro6", "Libro7", "Libro8", "Libro9"];
+                            $urlimg = $arraylibrosRndm[rand(0, 8)];
+                        }
+                        ?>
+                        <img src="../assets/imgs/libros/<?php echo $urlimg; ?>.jpg" alt="" class="imgLibroListado">
                         <div class="detLibroListado">
                             <form action="carrito.php" method="post">
                                 <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
@@ -92,7 +99,15 @@ if ($mensaje == 1) {
                                 <input type="hidden" name="proprecio" value="<?php echo $producto->getproprecio(); ?>">
                                 <input type="hidden" name="origen" value="pagGenero">
                                 <input type="hidden" name="genero" value="<?php echo $genero; ?>">
-                                <input type="submit" class="btn btnAgregar" value="Agregar al carrito">
+                                <?php
+                                if ($sesion->estaLogueado()) {
+                                    if ($producto->getprocantstock() > 0) {
+                                        echo '<input type="submit" class="btn btnRegistro" value="Agregar al carrito">';
+                                    } else {
+                                        echo '<div class="card-footer"><button class="btn" disabled>No hay stock</button></div>';
+                                    }
+                                }
+                                ?>
                             </form>
                         </div>
                     </div>
