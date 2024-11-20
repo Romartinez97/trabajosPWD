@@ -91,7 +91,7 @@ class Compraitem{
         $resp=false;
         $base = new BaseDatosPDO();
         $sql="INSERT INTO compraitem (idcompraitem, idproducto, idcompra, cicantidad)
-                VALUES ('".$this->getidcompraitem()."', '".$this->getobjproducto()."', '".$this->getobjcompra()."', '".$this->getcicantidad()."')";
+                VALUES ('".$this->getidcompraitem()."', '".$this->getobjproducto()->getidproducto()."', '".$this->getobjcompra()->getidcompra()."', '".$this->getcicantidad()."')";
         if($base->Iniciar()){
             if($base->Ejecutar($sql)){
                 $resp=true;

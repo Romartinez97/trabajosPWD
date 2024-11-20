@@ -45,9 +45,30 @@ $abmcompraitem = new AbmCompraItem();
     $param = ["idcompra" => $idpedido];
     //-- buscar producto y cantidad del producto de la compra
     $compraitem = $abmcompraitem->buscar($param);
-    $compraitem = $compraitem[0];
-    $producto = $compraitem->getobjproducto()->getpronombre();//producto
-    $cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
+    $cantprodunicos=count($compraitem);
+    if($cantprodunicos>1){
+      $prodsfinal="";
+      for($i=0;$i<$cantprodunicos;$i++){
+        $compraitems = $compraitem[$i];
+        $producto = $compraitems->getobjproducto()->getpronombre();//producto
+        $cantprod = $compraitems->getcicantidad();//cantidad del producto comprado
+        $prodsfinal.='<li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>Producto:</strong>'.$producto.'</span>
+            <span><strong>Cantidad:</strong>'.$cantprod.'</span>
+          </li>';
+      }
+    }else{
+      $compraitem = $compraitem[0];
+        $producto = $compraitem->getobjproducto()->getpronombre();//producto
+        $cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
+        $prodsfinal='<li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>Producto:</strong>'.$producto.'</span>
+            <span><strong>Cantidad:</strong>'.$cantprod.'</span>
+          </li>';
+    }
+    //$compraitem = $compraitem[0];
+    //$producto = $compraitem->getobjproducto()->getpronombre();//producto
+    //$cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
     //-- buscar estado de la compra
     $compraestado = $abmcompraestado->buscar($param);
     $compraestado = $compraestado[0];
@@ -76,10 +97,7 @@ $abmcompraitem = new AbmCompraItem();
         </div>
         <h5>Producto</h5>
         <ul class="list-group">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span><strong>Producto:</strong> <?php echo $producto; ?></span>
-            <span><strong>Cantidad:</strong> <?php echo $cantprod; ?></span>
-          </li>
+          <?php echo $prodsfinal; ?>
         </ul>
         <div class="mt-3">
           <p class="text-end fs-5"><strong>Costo Total: <?php echo $comp->getcosto(); ?></strong></p>

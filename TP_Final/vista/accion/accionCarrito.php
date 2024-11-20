@@ -51,7 +51,7 @@ switch ($accion) {
         ];
         //echo "<br>";
         //print_r($paramcompra);
-        //$abmcompra->alta($param);
+        $abmcompra->alta($paramcompra);
         //--
         $abmcompraestado=new AbmCompraEstado();
         $comprasestado=$abmcompraestado->buscar(null);
@@ -67,7 +67,7 @@ switch ($accion) {
         ];
         //echo "<br>";
         //print_r($paramcompraestado);
-        //$abmcompraestado->alta($paramcompraestado);
+        $abmcompraestado->alta($paramcompraestado);
         //--
         $abmcompraitem=new AbmCompraItem();
         for($j=1;$j<$datos["cantprodsunicos"]+1;$j++){
@@ -83,7 +83,7 @@ switch ($accion) {
             ];
             //echo "<br>";
             //print_r($paramcompraitem);
-            //$abmcompraitem->alta($paramcompraitem);
+            $abmcompraitem->alta($paramcompraitem);
         }
         //--
         /*
