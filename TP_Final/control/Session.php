@@ -57,7 +57,7 @@ class Session{
             $param['idusuario']=$_SESSION['idusuario'];
             $resultado=$obj->buscar($param);
             if(count($resultado)>0){
-                $usuario=$resultado[0];
+                $usuario=$resultado[0]->getidusuario();
             }
         }
         return $usuario;
