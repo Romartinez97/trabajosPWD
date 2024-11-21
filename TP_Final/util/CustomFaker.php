@@ -23,7 +23,7 @@ class Customfaker
                 "idusuario" => null,
                 "usnombre" => $this->faker->name(),
                 "usmail" => $this->faker->unique()->email(),
-                "uspass" => $this->faker->password(),
+                "uspass" => $this->faker->regexify('[A-Za-z0-9]{8}'),
                 "usdeshabilitado" => $this->faker->dateTimeThisDecade()->format('Y-m-d H:i:s'),
             ];
 

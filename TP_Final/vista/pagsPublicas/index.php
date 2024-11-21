@@ -2,7 +2,7 @@
 include_once '../../util/funciones.php';
 $sesion = new Session();
 
-$titulo = "Página principal";
+$titulo = "El Refugio Literario";
 
 if ($sesion->estaLogueado()) {
     include "../../estructura/headerSeguro2.php";
