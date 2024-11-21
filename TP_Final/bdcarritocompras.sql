@@ -121,7 +121,8 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 (2, 'Generador', 'Permite generar usuario o libros al azar utilizando Faker', NULL, NULL),
 (3, 'Depósito', 'Permite modificar libros existentes; nombre, autor/a, género, precio y stock', NULL, NULL),
 (4, 'Ver Pedidos', 'Permite ver un listado de pedidos, su estado y modificar este último', NULL, NULL),
-(5, 'Agregar libro', 'Permite agregar un libro con sus datos y su imagen', NULL, NULL);
+(5, 'Agregar libro', 'Permite agregar un libro con sus datos y su imagen', NULL, NULL),
+(6, 'Modificar menús', 'Permite modificar los menús de cada rol', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -144,6 +145,7 @@ INSERT INTO `menurol` (`idmenu`, `idrol`) VALUES
 (3, 1),
 (4, 1),
 (5, 1),
+(6, 1),
 (3, 3),
 (4, 3),
 (5, 3);

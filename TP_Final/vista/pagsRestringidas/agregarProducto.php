@@ -8,7 +8,7 @@ if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 } else {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 }
 ?>
 

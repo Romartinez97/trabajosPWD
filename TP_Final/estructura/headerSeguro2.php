@@ -10,9 +10,9 @@ if (isset($_SESSION['carrito'])) {
     }
 }
 
-$rolUsuarioActual = $sesion->getRol();
+$idRolActual = $sesion->getRol();
 $abmMenuRol = new AbmMenurol();
-$menues = $abmMenuRol->buscar(['idrol' => $rolUsuarioActual]);
+$menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
 ?>
 
 <!DOCTYPE html>
@@ -58,19 +58,61 @@ $menues = $abmMenuRol->buscar(['idrol' => $rolUsuarioActual]);
                                 <li class="nav-item ">
                                     <a class="nav-link" href="../pagsPublicas/contacto.php" role="button">Contacto</a>
                                 </li>
+                                <?php
+                                foreach ($menusPorRol as $menu) {
+                                    switch ($menu) {
+                                        case 1:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/verUsuarios.php\">Ver
+                                        Usuarios</a>";
+                                            echo "</li>";
+                                            break;
+                                        case 2:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/generador.php\">Generador</a>";
+                                            echo "</li>";
+                                            break;
+                                        case 3:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/deposito.php\">Depósito</a>";
+                                            echo "</li>";
+                                            break;
+                                        case 4:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/verPedidos.php\">Ver Pedidos</a>";
+                                            echo "</li>";
+                                            break;
+                                        case 5:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/agregarProducto.php\">Agregar Libro</a>";
+                                            echo "</li>";
+                                            break;
+                                        case 6:
+                                            echo "<li class='nav-item'>";
+                                            echo "<a class=\"nav-link m-1\" href=\"../pagsRestringidas/modificarMenus.php\">Modificar Menús</a>";
+                                            echo "</li>";
+                                            break;
+                                    }
+                                }
+                                ?>
                             </ul>
+
                         </div>
                     </li>
                 </ul>
 
-                <span class="navbar-brand mx-auto" id="tituloPagina">El Refugio Literario</span>
+                <span class="navbar-brand mx-auto">
+                    <a id="tituloPagina" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">
+                        El Refugio Literario
+                    </a>
+                </span>
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
-                        <a class="nav-link m-1" href="../pagsRestringidas/perfil.php">Perfil</a>
+                        <a class="nav-link m-1 linkPerfil" href="../pagsRestringidas/perfil.php">Perfil</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link m-1" href="../accion/cerrarSesion.php">Cerrar sesión</a>
+                        <a class="nav-link m-1 linkPerfil" href="../accion/cerrarSesion.php">Cerrar sesión</a>
                     </li>
                     <li class="nav-item"><a href="../pagsPublicas/carrito.php"
                             class="btn rounded-pill btn-dark py-2 px-4 m-1">

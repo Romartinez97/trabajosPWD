@@ -5,7 +5,7 @@ $sesion = new Session();
 $titulo = "Usuarios Logueados";
 
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 } else {
     include "../../estructura/header.php";
 }

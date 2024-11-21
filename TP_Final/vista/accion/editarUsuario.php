@@ -4,7 +4,7 @@ $datos=data_submitted();
 
     $sesion=new Session();
     $titulo="Editar Usuario";
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
     $objusuario=new AbmUsuario();
     $param=["idusuario" => $datos["id"]];
     $usuario=$objusuario->buscar($param);

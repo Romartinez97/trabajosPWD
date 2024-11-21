@@ -39,7 +39,7 @@ function arreglarNombreGenero($genero)
 $titulo = "Libros de " . arreglarNombreGenero($genero);
 
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 } else {
     include "../../estructura/header.php";
 }

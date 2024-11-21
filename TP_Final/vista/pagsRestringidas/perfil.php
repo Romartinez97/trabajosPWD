@@ -8,7 +8,7 @@ if (!$sesion->estaLogueado()) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 } else {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 }
 
 $abmUsuario = new AbmUsuario();
@@ -70,11 +70,13 @@ if (count($usuario) > 0) {
                 <button type="submit" class="btn text-white mb-4" id="botonLogin">Actualizar</button>
 
             </form>
+            <div class="pb-5">
             <form action="accion/eliminarLogin.php" method="post">
                 <input type="hidden" name="idusuario" value="<?php echo $idUsuario ?>">
                 <button type="submit" class="btn bg-danger text-white" id="eliminarUsuario">Eliminar
                     usuario</button>
             </form>
+            </div>
         </div>
     </div>
 </div>

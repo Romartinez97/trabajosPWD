@@ -8,7 +8,7 @@ if (!$sesion->estaLogueado() || $sesion->getRol() != 1) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 } else {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 }
 
 $abmProducto = new AbmProducto();

@@ -54,7 +54,7 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
 }
 
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro.php";
+    include "../../estructura/headerSeguro2.php";
 } else {
     include "../../estructura/header.php";
 }
