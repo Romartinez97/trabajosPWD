@@ -8,6 +8,16 @@ if (!$sesion->estaLogueado()) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 } else {
+    $idRolActual = $sesion->getRol();
+    $abmMenuRol = new AbmMenurol();
+    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
+
+    $idMenuModificarMenus = 6;
+    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
+        header('Location: ../pagsPublicas/login.php');
+        exit();
+    }
+
     include "../../estructura/headerSeguro2.php";
 }
 

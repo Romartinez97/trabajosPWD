@@ -1,13 +1,23 @@
 <?php
 include_once '../../util/funciones.php';
 
-$sesion=new Session();
+$sesion = new Session();
 $titulo = "agregar Libro";
 
-if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
+if (!$sesion->estaLogueado()) {
     header('Location: ../pagsPublicas/login.php');
     exit();
 } else {
+    $idRolActual = $sesion->getRol();
+    $abmMenuRol = new AbmMenurol();
+    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
+
+    $idMenuModificarMenus = 5;
+    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
+        header('Location: ../pagsPublicas/login.php');
+        exit();
+    }
+
     include "../../estructura/headerSeguro2.php";
 }
 ?>
@@ -18,12 +28,13 @@ if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
     </div>
     <div class="container">
         <div class="div-form">
-        <?php
-        if (isset($_GET['prodsubido']) && $_GET['prodsubido'] == 1) {
-            echo '<div class="alert alert-success" role="alert">Libro agregado correctamente.</div>';
-        }
-        ?>
-            <form action="../accion/subirProducto.php" method="post" name="formAgregarProd" id="formAgregarProd" enctype="multipart/form-data">
+            <?php
+            if (isset($_GET['prodsubido']) && $_GET['prodsubido'] == 1) {
+                echo '<div class="alert alert-success" role="alert">Libro agregado correctamente.</div>';
+            }
+            ?>
+            <form action="../accion/subirProducto.php" method="post" name="formAgregarProd" id="formAgregarProd"
+                enctype="multipart/form-data">
                 <div>
                     <label class="form-label fw-bold" for="pronombre">Titulo:</label>
                     <input class="form-control" type="text" name="pronombre" id="pronombre" required>

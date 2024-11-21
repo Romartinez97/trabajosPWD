@@ -4,10 +4,20 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "Ver Pedidos";
 
-if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
+if (!$sesion->estaLogueado()) {
   header('Location: ../pagsPublicas/login.php');
   exit();
 } else {
+  $idRolActual = $sesion->getRol();
+  $abmMenuRol = new AbmMenurol();
+  $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
+
+  $idMenuModificarMenus = 4;
+  if (!in_array($idMenuModificarMenus, $menusPorRol)) {
+    header('Location: ../pagsPublicas/login.php');
+    exit();
+  }
+
   include "../../estructura/headerSeguro2.php";
 }
 
@@ -45,38 +55,38 @@ $abmcompraitem = new AbmCompraItem();
     $param = ["idcompra" => $idpedido];
     //-- buscar producto y cantidad del producto de la compra
     $compraitem = $abmcompraitem->buscar($param);
-    $cantprodunicos=count($compraitem);
-    if($cantprodunicos>1){
-      $prodsfinal="";
-      for($i=0;$i<$cantprodunicos;$i++){
+    $cantprodunicos = count($compraitem);
+    if ($cantprodunicos > 1) {
+      $prodsfinal = "";
+      for ($i = 0; $i < $cantprodunicos; $i++) {
         $compraitems = $compraitem[$i];
         $producto = $compraitems->getobjproducto()->getpronombre();//producto
         $cantprod = $compraitems->getcicantidad();//cantidad del producto comprado
         $cantstock = $compraitems->getObjProducto()->getprocantstock();//cantstock
         $idprod = $compraitems->getObjProducto()->getIdProducto();//idprod
-        $prodsfinal.='<li class="list-group-item d-flex justify-content-between align-items-center">
-            <span><strong>Producto:</strong>'.$producto.'</span>
-            <span><strong>Cantidad:</strong>'.$cantprod.'</span>
+        $prodsfinal .= '<li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>Producto:</strong>' . $producto . '</span>
+            <span><strong>Cantidad:</strong>' . $cantprod . '</span>
           </li>
-          <input type="hidden" name="cantstockprod'.($i+1).'" value="'.$cantstock.'">
-          <input type="hidden" name="idprod'.($i+1).'" value="'.$idprod.'">
-          <input type="hidden" name="cantlibros" value="'.$cantprodunicos.'">
-          <input type="hidden" name="cantprod'.($i+1).'" value="'.$cantprod.'">';
+          <input type="hidden" name="cantstockprod' . ($i + 1) . '" value="' . $cantstock . '">
+          <input type="hidden" name="idprod' . ($i + 1) . '" value="' . $idprod . '">
+          <input type="hidden" name="cantlibros" value="' . $cantprodunicos . '">
+          <input type="hidden" name="cantprod' . ($i + 1) . '" value="' . $cantprod . '">';
       }
-    }else{
+    } else {
       $compraitem = $compraitem[0];
-        $producto = $compraitem->getobjproducto()->getpronombre();//producto
-        $cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
-        $cantstock = $compraitem->getObjProducto()->getprocantstock();//cantstock
-        $idprod = $compraitem->getObjProducto()->getIdProducto();//idprod
-        $prodsfinal='<li class="list-group-item d-flex justify-content-between align-items-center">
-            <span><strong>Producto:</strong>'.$producto.'</span>
-            <span><strong>Cantidad:</strong>'.$cantprod.'</span>
+      $producto = $compraitem->getobjproducto()->getpronombre();//producto
+      $cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
+      $cantstock = $compraitem->getObjProducto()->getprocantstock();//cantstock
+      $idprod = $compraitem->getObjProducto()->getIdProducto();//idprod
+      $prodsfinal = '<li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>Producto:</strong>' . $producto . '</span>
+            <span><strong>Cantidad:</strong>' . $cantprod . '</span>
           </li>
-          <input type="hidden" name="cantstock" value="'.$cantstock.'">
-          <input type="hidden" name="idprod" value="'.$idprod.'">
-          <input type="hidden" name="cantlibros" value="'.$cantprodunicos.'">
-          <input type="hidden" name="cantprod" value="'.$cantprod.'">';
+          <input type="hidden" name="cantstock" value="' . $cantstock . '">
+          <input type="hidden" name="idprod" value="' . $idprod . '">
+          <input type="hidden" name="cantlibros" value="' . $cantprodunicos . '">
+          <input type="hidden" name="cantprod" value="' . $cantprod . '">';
     }
     //$compraitem = $compraitem[0];
     //$producto = $compraitem->getobjproducto()->getpronombre();//producto
@@ -92,47 +102,47 @@ $abmcompraitem = new AbmCompraItem();
       </div>
       <div class="card-body">
         <form action="../accion/actualizarEstadoPedido.php" method="post">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <p class="mb-0"><strong>Usuario:</strong> <?php echo $usuariopedido; ?></p>
-          <?php
-          if ($estado == 1) {
-            echo "<span class='badge bg-warning text-dark'>Iniciada</span>";
-          } elseif ($estado == 2) {
-            echo "<span class='badge bg-success'>Aceptada</span>";
-          } elseif ($estado == 3) {
-            echo "<span class='badge bg-primary'>Enviada</span>";
-          } elseif ($estado == 4) {
-            echo "<span class='badge bg-danger'>Cancelada</span>";
-          } else {
-            echo "<span class='badge bg-secondary'>Desconocido</span>";
-          }
-          ?>
-        </div>
-        <h5>Producto</h5>
-        <ul class="list-group">
-          <?php echo $prodsfinal; ?>
-        </ul>
-        <div class="mt-3">
-          <p class="text-end fs-5"><strong>Costo Total: <?php echo $comp->getcosto(); ?></strong></p>
-        </div>
-        <!--
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <p class="mb-0"><strong>Usuario:</strong> <?php echo $usuariopedido; ?></p>
+            <?php
+            if ($estado == 1) {
+              echo "<span class='badge bg-warning text-dark'>Iniciada</span>";
+            } elseif ($estado == 2) {
+              echo "<span class='badge bg-success'>Aceptada</span>";
+            } elseif ($estado == 3) {
+              echo "<span class='badge bg-primary'>Enviada</span>";
+            } elseif ($estado == 4) {
+              echo "<span class='badge bg-danger'>Cancelada</span>";
+            } else {
+              echo "<span class='badge bg-secondary'>Desconocido</span>";
+            }
+            ?>
+          </div>
+          <h5>Producto</h5>
+          <ul class="list-group">
+            <?php echo $prodsfinal; ?>
+          </ul>
+          <div class="mt-3">
+            <p class="text-end fs-5"><strong>Costo Total: <?php echo $comp->getcosto(); ?></strong></p>
+          </div>
+          <!--
         <input type="submit" class="btn btn-danger me-2" value="Cancelar">
         <input type="submit" class="btn btn-success" value="Aceptar">
         <input type="submit" class="btn btn-primary" value="Enviar">
         -->
-        <?php
-        echo '<div class="mt-3 d-flex justify-content-end">';
-        if ($estado == 1) { // Estado Iniciado
+          <?php
+          echo '<div class="mt-3 d-flex justify-content-end">';
+          if ($estado == 1) { // Estado Iniciado
             echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
             echo '<input type="submit" class="btn btn-success" name="nuevoEstado" value="Aceptar">';
-        } elseif ($estado == 2) { // Estado Aceptado
+          } elseif ($estado == 2) { // Estado Aceptado
             echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
             echo '<input type="submit" class="btn btn-primary" name="nuevoEstado" value="Enviar">';
-        }
-        echo '</div>';
-        ?>
-        <input type="hidden" name="idpedido" value="<?php echo $idpedido ?>">
-        <input type="hidden" name="estadoActual" value="<?php echo $estado ?>">
+          }
+          echo '</div>';
+          ?>
+          <input type="hidden" name="idpedido" value="<?php echo $idpedido ?>">
+          <input type="hidden" name="estadoActual" value="<?php echo $estado ?>">
         </form>
       </div>
     </div>

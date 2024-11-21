@@ -4,12 +4,24 @@ $sesion = new Session();
 
 $titulo = "Usuarios Logueados";
 
-if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro2.php";
+if (!$sesion->estaLogueado()) {
+    header('Location: ../pagsPublicas/login.php');
+    exit();
 } else {
-    include "../../estructura/header.php";
+    $idRolActual = $sesion->getRol();
+    $abmMenuRol = new AbmMenurol();
+    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
+
+    $idMenuModificarMenus = 1;
+    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
+        header('Location: ../pagsPublicas/login.php');
+        exit();
+    }
+
+    include "../../estructura/headerSeguro2.php";
 }
 ?>
+
 <div id="page-container">
     <?php if ($sesion->getRol() == 1) { ?>
         <div class="container-fluid d-flex align-items-center justify-content-center">
