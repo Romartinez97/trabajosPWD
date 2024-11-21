@@ -17,6 +17,7 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
     $producto = $abmProducto->buscar(['idproducto' => $idproducto])[0];
     $pronombre = $producto->getPronombre();
     $proprecio = $producto->getProprecio();
+    $procantstock = $producto->getprocantstock();
 
     if (!isset($_SESSION['carrito'])) {
         $_SESSION['carrito'] = [];
@@ -36,7 +37,8 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
             'idproducto' => $idproducto,
             'pronombre' => $pronombre,
             'proprecio' => $proprecio,
-            'cantidad' => $cantidad
+            'cantidad' => $cantidad,
+            'cantstock' => $procantstock
         ];
         $mensaje = 2;
     }
@@ -102,6 +104,7 @@ if ($estado == 1) {
                             $idproducto = $item['idproducto'];
                             $pronombre = $item['pronombre'];
                             $proprecio = $item['proprecio'];
+                            $cantstock = $item['cantstock'];
                             $cantidad = 1;
                             ?>
                             <tr>
@@ -109,7 +112,7 @@ if ($estado == 1) {
                                 <td><?php echo "$" . $item['proprecio']; ?></td>
                                 <td>
                                     <input type="number" name="cantidad<?php echo $i; ?>" value="<?php echo $cantidad; ?>"
-                                        min="1" style="width:4rem" id="cantProductosCarrito">
+                                        min="1" max="<?php echo $cantstock ?>" style="width:4rem" id="cantProductosCarrito">
                                     <input type="hidden" name="idproducto<?php echo $i; ?>" value="<?php echo $idproducto; ?>">
                                     <input type="hidden" name="pronombre<?php echo $i; ?>" value="<?php echo $pronombre; ?>">
                                     <input type="hidden" name="proprecio<?php echo $i; ?>" value="<?php echo $proprecio; ?>">
