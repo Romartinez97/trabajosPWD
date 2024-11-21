@@ -3,7 +3,7 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 
 $titulo = "Página principal";
-include "../../estructura/header.php";
+include "../../estructura/headerSeguro2.php";
 ?>
 <style>
     .book-cover {

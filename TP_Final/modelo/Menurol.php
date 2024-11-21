@@ -5,7 +5,7 @@ class Menurol{
     private $objrol;
     private $mensajeoperacion;
 
-    private function __construct(){
+    public function __construct(){
         $this->objmenu=null;
         $this->objrol=null;
         $this->mensajeoperacion="";

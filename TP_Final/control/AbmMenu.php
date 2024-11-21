@@ -92,7 +92,8 @@ class AbmMenu{
                 $where.=" and medeshabilitado ='".$param['medeshabilitado']."'";
             }
         }
-        $arreglo = Menu::listar($where);  
+        $menu = new Menu();
+        $arreglo = $menu->listar($where);  
         return $arreglo;  
     }
 }

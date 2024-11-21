@@ -117,11 +117,11 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`) VALUES
-(7, 'nuevo', 'kkkkk', NULL, NULL),
-(8, 'nuevo', 'kkkkk', NULL, NULL),
-(9, 'nuevo', 'kkkkk', 7, NULL),
-(10, 'nuevo', 'kkkkk', NULL, NULL),
-(11, 'nuevo', 'kkkkk', NULL, NULL);
+(1, 'Ver Usuario', 'Permite ver un listado de todos los usuarios', NULL, NULL),
+(2, 'Generador', 'Permite generar usuario o libros al azar utilizando Faker', NULL, NULL),
+(3, 'Depósito', 'Permite modificar libros existentes; nombre, autor/a, género, precio y stock', NULL, NULL),
+(4, 'Ver Pedidos', 'Permite ver un listado de pedidos, su estado y modificar este último', NULL, NULL),
+(5, 'Agregar libro', 'Permite agregar un libro con sus datos y su imagen', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -133,6 +133,20 @@ CREATE TABLE `menurol` (
   `idmenu` bigint(20) NOT NULL,
   `idrol` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `menurol`
+--
+
+INSERT INTO `menurol` (`idmenu`, `idrol`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(3, 3),
+(4, 3),
+(5, 3);
 
 -- --------------------------------------------------------
 
