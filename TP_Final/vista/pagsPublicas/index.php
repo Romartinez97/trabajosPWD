@@ -9,6 +9,18 @@ if ($sesion->estaLogueado()) {
 } else {
     include "../../estructura/header.php";
 }
+
+$estado = isset($_GET['estado']) ? $_GET['estado'] : '';
+$mensaje = isset($_GET['mensaje']) ? $_GET['mensaje'] : '';
+
+if ($mensaje == 1) {
+    $mensaje = "El producto ya se encuentra en el carrito, puede modificar la cantidad ingresando al mismo.";
+} elseif ($mensaje == 2) {
+    $mensaje = "Producto agregado al carrito.";
+}
+if ($estado == 1) {
+    $mensaje = "Compra realizada con éxito. ¡Gracias por elegirnos!";
+}
 ?>
 <style>
     .book-cover {
@@ -24,6 +36,14 @@ if ($sesion->estaLogueado()) {
         <div class="text-center p-4">
             <p class="display-5">Encontrá los mejores libros en El Refugio Literario</p>
         </div>
+    </div>
+
+    <div class="text-center pb-4">
+        <?php if ($mensaje) { ?>
+            <div class="alert alert-warning" role="alert">
+                <b><?php echo $mensaje; ?></b>
+            </div>
+        <?php } ?>
     </div>
 
     <div class="container p-4 my-4 justify-content-center">
@@ -54,7 +74,12 @@ if ($sesion->estaLogueado()) {
                             if ($prostock > 0) {
                                 echo '
                                 <div class="card-footer text-center">
-                                <input type="submit" class="btn btnRegistro" value="Agregar al carrito"></div>';
+                                <form action="carrito.php" method="post">
+                                <input type="hidden" name="idproducto" value="' . $proid . '">
+                                <input type="hidden" name="origen" value="index">
+                                <input type="submit" class="btn btnRegistro" value="Agregar al carrito">
+                                </form>
+                                </div>';
                             } else {
                                 echo '<div class="card-footer text-center"><button class="btn" disabled>No hay stock</button></div>';
                             }

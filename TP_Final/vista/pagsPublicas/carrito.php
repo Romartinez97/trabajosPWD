@@ -57,12 +57,14 @@ if ($sesion->estaLogueado()) {
     include "../../estructura/header.php";
 }
 
+/*
 $estado = isset($_GET['estado']) ? $_GET['estado'] : '';
 $mensaje = "";
 
 if ($estado == 1) {
     $mensaje = "Compra realizada con éxito.";
 }
+*/
 ?>
 
 <div id="page-container">
@@ -94,9 +96,9 @@ if ($estado == 1) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        $i=1;
-                        foreach ($_SESSION['carrito'] as $index => $item){
+                        <?php
+                        $i = 1;
+                        foreach ($_SESSION['carrito'] as $index => $item) {
                             $idproducto = $item['idproducto'];
                             $pronombre = $item['pronombre'];
                             $proprecio = $item['proprecio'];
@@ -106,8 +108,8 @@ if ($estado == 1) {
                                 <td><?php echo $item['pronombre']; ?></td>
                                 <td><?php echo "$" . $item['proprecio']; ?></td>
                                 <td>
-                                    <input type="number" name="cantidad<?php echo $i; ?>" value="<?php echo $cantidad; ?>" min="1"
-                                        style="width:4rem" id="cantProductosCarrito">
+                                    <input type="number" name="cantidad<?php echo $i; ?>" value="<?php echo $cantidad; ?>"
+                                        min="1" style="width:4rem" id="cantProductosCarrito">
                                     <input type="hidden" name="idproducto<?php echo $i; ?>" value="<?php echo $idproducto; ?>">
                                     <input type="hidden" name="pronombre<?php echo $i; ?>" value="<?php echo $pronombre; ?>">
                                     <input type="hidden" name="proprecio<?php echo $i; ?>" value="<?php echo $proprecio; ?>">
@@ -123,12 +125,12 @@ if ($estado == 1) {
                                     </form>
                                 </td>
                             </tr>
-                        <?php 
-                        $i++;
+                            <?php
+                            $i++;
                         } ?>
                     </tbody>
                 </table>
-                <input type="hidden" name="cantprodsunicos" id="cantprodsunicos" value="<?php echo $i-1; ?>">
+                <input type="hidden" name="cantprodsunicos" id="cantprodsunicos" value="<?php echo $i - 1; ?>">
                 <div class="text-center">
                     <p>Total del carrito: $<span id="total-carrito">0.00</span></p>
                 </div>
