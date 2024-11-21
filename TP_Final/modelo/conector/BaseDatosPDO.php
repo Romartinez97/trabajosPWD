@@ -139,7 +139,7 @@ class BaseDatosPDO extends PDO{
      * @return bool|int|string
      */
     private function EjecutarInsert($sql){
-        echo "<br>".$sql."<br>";
+        //echo "<br>".$sql."<br>";
         $resultado=parent::query($sql);
         if(!$resultado){
             $this->analizarDebug();
@@ -160,7 +160,7 @@ class BaseDatosPDO extends PDO{
      * @return int
      */
     private function EjecutarDeleteUpdate($sql){
-        echo "<br>".$sql."<br>";
+        //echo "<br>".$sql."<br>";
         $cantFilas =-1;
         $resultado=parent::query($sql);
         if(!$resultado){
