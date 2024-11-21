@@ -155,3 +155,28 @@ $abmcompraitem = new AbmCompraItem();
 </body>
 
 </html>
+<script>
+  $(document).ready(function(){
+    $('#formestadopedido').submit(function(event){
+      event.preventDefault();
+
+      var form = $(this);
+      var url = form.attr('action');
+      var formData = form.serialize();
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data:formData,
+        success: function(response) {
+            // Handle success response, e.g., show a success message
+            alert('exito!');
+        },
+        error: function(xhr, status, error) {
+            // Handle error response, e.g., show an error message
+            console.error(error);
+        }
+      })
+    })
+  })
+</script>
