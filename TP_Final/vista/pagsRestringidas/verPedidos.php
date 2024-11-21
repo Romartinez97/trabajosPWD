@@ -52,19 +52,31 @@ $abmcompraitem = new AbmCompraItem();
         $compraitems = $compraitem[$i];
         $producto = $compraitems->getobjproducto()->getpronombre();//producto
         $cantprod = $compraitems->getcicantidad();//cantidad del producto comprado
+        $cantstock = $compraitems->getObjProducto()->getprocantstock();//cantstock
+        $idprod = $compraitems->getObjProducto()->getIdProducto();//idprod
         $prodsfinal.='<li class="list-group-item d-flex justify-content-between align-items-center">
             <span><strong>Producto:</strong>'.$producto.'</span>
             <span><strong>Cantidad:</strong>'.$cantprod.'</span>
-          </li>';
+          </li>
+          <input type="hidden" name="cantstockprod'.($i+1).'" value="'.$cantstock.'">
+          <input type="hidden" name="idprod'.($i+1).'" value="'.$idprod.'">
+          <input type="hidden" name="cantlibros" value="'.$cantprodunicos.'">
+          <input type="hidden" name="cantprod'.($i+1).'" value="'.$cantprod.'">';
       }
     }else{
       $compraitem = $compraitem[0];
         $producto = $compraitem->getobjproducto()->getpronombre();//producto
         $cantprod = $compraitem->getcicantidad();//cantidad del producto comprado
+        $cantstock = $compraitem->getObjProducto()->getprocantstock();//cantstock
+        $idprod = $compraitem->getObjProducto()->getIdProducto();//idprod
         $prodsfinal='<li class="list-group-item d-flex justify-content-between align-items-center">
             <span><strong>Producto:</strong>'.$producto.'</span>
             <span><strong>Cantidad:</strong>'.$cantprod.'</span>
-          </li>';
+          </li>
+          <input type="hidden" name="cantstock" value="'.$cantstock.'">
+          <input type="hidden" name="idprod" value="'.$idprod.'">
+          <input type="hidden" name="cantlibros" value="'.$cantprodunicos.'">
+          <input type="hidden" name="cantprod" value="'.$cantprod.'">';
     }
     //$compraitem = $compraitem[0];
     //$producto = $compraitem->getobjproducto()->getpronombre();//producto
