@@ -2,6 +2,10 @@
 
 include_once '../../util/funciones.php';
 $datos = data_submitted();
+$response = [
+        "success" => true,
+        "message" => "Exito2",
+    ];
 //foreach($datos as $dato => $valor){
 //    echo"<br>".$dato."=".$valor;
 //}
@@ -128,6 +132,12 @@ switch ($datos["nuevoEstado"]) {
             }
         }
         break;
+        default:
+        $response = [
+            "success" => false,
+            "message" => "error de estado",
+        ];
+        break;
 }
-header("Location: ../pagsRestringidas/verPedidos.php");
-exit;
+//
+echo json_encode($response);
