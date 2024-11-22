@@ -113,6 +113,17 @@ switch ($accion) {
             $abmcompraitem->alta($paramcompraitem);
         }
         */
+
+        //Obtengo la información del usuario
+        $abmusuario = new AbmUsuario();
+        $usuario = $abmusuario->buscar(['idusuario' => $idusuario])[0];
+        $nombreCliente = $usuario->getUsnombre();
+        $mailCliente = $usuario->getUsmail();
+
+        //Envío de mail
+        $mail = new CustomPHPMailer();
+        $mail->enviarMail($nombreCliente, $mailCliente, 1);
+
         // vacio el carrito
         unset($_SESSION['carrito']);
         header('Location: ../pagsPublicas/index.php?estado=1');

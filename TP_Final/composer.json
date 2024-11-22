@@ -1,6 +1,7 @@
 {
     "require": {
         "fakerphp/faker": "^1.24",
-        "spatie/image-optimizer": "^1.8"
+        "spatie/image-optimizer": "^1.8",
+        "phpmailer/phpmailer": "^6.9"
     }
 }

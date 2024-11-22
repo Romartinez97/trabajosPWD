@@ -3,12 +3,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$totalProductos = 0;
-if (isset($_SESSION['carrito'])) {
-    foreach ($_SESSION['carrito'] as $item) {
-        $totalProductos += $item['cantidad'];
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,58 +29,47 @@ if (isset($_SESSION['carrito'])) {
     </style>
 </head>
 
-
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id="navbar">
+    <nav class="navbar navbar-expand-md navbar-light" id="navbar">
         <div class="container-fluid">
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">El Refugio
-                    Literario</a>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Géneros</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=aventura">Aventura</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=cienciaFiccion">Ciencia
-                                        ficción</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=contemporanea">Contemporánea</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown"
+                                id="btnMenu">
+                                Menú
+                            </button>
+                            <ul class="dropdown-menu text-center">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="../pagsPublicas/listadoLibros.php" role="button">Todos
+                                        los
+                                        libros</a>
                                 </li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=fantasia">Fantasía</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=historia">Historia</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=infantil">Infantil</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=poesia">Poesía</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=romance">Romance</a></li>
-                                <li><a class="dropdown-item" href="pagGenero.php?genero=terror">Terror</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="listadoLibros.php" role="button">Todos los libros</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="contacto.php" role="button">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="../pagsPublicas/contacto.php" role="button">Contacto</a>
+                                </li>
 
-            <div class="ms-auto">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link m-1" href="login.php">Ingresar</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+                <span class="navbar-brand mx-auto">
+                    <a id="tituloPagina" href="/trabajosPWD/TP_Final/vista/pagsPublicas/index.php">
+                        El Refugio Literario
+                    </a>
+                </span>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item active"><a class="nav-link linkPerfil m-1" href="login.php">Ingresar</a></li>
                     <li class="nav-item"><a class="btn rounded-pill btnRegistro py-2 px-4 m-1"
                             href="registro.php">Registrarse</a>
                     </li>
                     </li>
-                    <li class="nav-item"><a href="../pagsPublicas/carrito.php"
-                            class="btn rounded-pill btn-dark py-2 px-4 m-1">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <?php if ($totalProductos > 0): ?>
-                                <span><sup><?php echo $totalProductos; ?></sup></span>
-                            <?php endif; ?>
-                        </a>
-                    </li>
                 </ul>
+
             </div>
         </div>
     </nav>
