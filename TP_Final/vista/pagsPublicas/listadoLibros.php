@@ -135,6 +135,7 @@ include '../../estructura/footer.php';
         url: url,
         data:formData,
         success: function(response) {
+            alert("agregado al carrito");
           const result = JSON.parse(response);
             if (result.success) {
               alert('Éxito');
