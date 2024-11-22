@@ -4,22 +4,8 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "agregar Libro";
 
-if (!$sesion->estaLogueado()) {
-    header('Location: ../pagsPublicas/login.php');
-    exit();
-} else {
-    $idRolActual = $sesion->getRol();
-    $abmMenuRol = new AbmMenurol();
-    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
+include "../../estructura/headerSeguro.php";
 
-    $idMenuModificarMenus = 5;
-    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
-        header('Location: ../pagsPublicas/login.php');
-        exit();
-    }
-
-    include "../../estructura/headerSeguro2.php";
-}
 ?>
 
 <div id="page-container">

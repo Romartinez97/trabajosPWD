@@ -53,11 +53,9 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
     exit();
 }
 
-if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro2.php";
-} else {
-    include "../../estructura/header.php";
-}
+
+include "../../estructura/headerSeguro.php";
+
 
 /*
 $estado = isset($_GET['estado']) ? $_GET['estado'] : '';

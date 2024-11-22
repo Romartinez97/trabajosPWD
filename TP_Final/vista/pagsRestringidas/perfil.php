@@ -3,13 +3,7 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "Registro";
 
-//Verifico si el usuario está logueado
-if (!$sesion->estaLogueado()) {
-    header('Location: ../pagsPublicas/login.php');
-    exit();
-} else {
-    include "../../estructura/headerSeguro2.php";
-}
+include "../../estructura/headerSeguro.php";
 
 $abmUsuario = new AbmUsuario();
 $param = ['idusuario' => $sesion->getUsuario()];

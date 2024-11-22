@@ -4,7 +4,7 @@ $titulo = "Contacto";
 
 $sesion = new Session();
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro2.php";
+    include "../../estructura/headerSeguro.php";
 } else {
     include "../../estructura/header.php";
 }
