@@ -4,7 +4,7 @@ $sesion = new Session();
 
 $titulo = "Listado de libros";
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro2.php";
+    include "../../estructura/headerSeguro.php";
 } else {
     include "../../estructura/header.php";
 }

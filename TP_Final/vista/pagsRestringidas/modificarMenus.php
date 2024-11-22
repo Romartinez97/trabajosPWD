@@ -4,22 +4,7 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "Modificar menús";
 
-if (!$sesion->estaLogueado()) {
-    header('Location: ../pagsPublicas/login.php');
-    exit();
-} else {
-    $idRolActual = $sesion->getRol();
-    $abmMenuRol = new AbmMenurol();
-    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
-
-    $idMenuModificarMenus = 6;
-    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
-        header('Location: ../pagsPublicas/login.php');
-        exit();
-    }
-
-    include "../../estructura/headerSeguro2.php";
-}
+include "../../estructura/headerSeguro.php";
 
 $abmRol = new AbmRol();
 $abmMenu = new AbmMenu();

@@ -117,12 +117,12 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`) VALUES
-(1, 'Ver Usuario', 'Permite ver un listado de todos los usuarios', NULL, NULL),
-(2, 'Generador', 'Permite generar usuario o libros al azar utilizando Faker', NULL, NULL),
-(3, 'Depósito', 'Permite modificar libros existentes; nombre, autor/a, género, precio y stock', NULL, NULL),
-(4, 'Ver Pedidos', 'Permite ver un listado de pedidos, su estado y modificar este último', NULL, NULL),
-(5, 'Agregar libro', 'Permite agregar un libro con sus datos y su imagen', NULL, NULL),
-(6, 'Modificar menús', 'Permite modificar los menús de cada rol', NULL, NULL);
+(1, 'Ver Usuario', '../pagsRestringidas/verUsuarios.php', NULL, NULL),
+(2, 'Generador', '../pagsRestringidas/generador.php', NULL, NULL),
+(3, 'Depósito', '../pagsRestringidas/deposito.php', NULL, NULL),
+(4, 'Ver Pedidos', '../pagsRestringidas/verPedidos.php', NULL, NULL),
+(5, 'Agregar libro', '../pagsRestringidas/agregarProducto.php', NULL, NULL),
+(6, 'Modificar menús', '../pagsRestringidas/modificarMenus.php', NULL, NULL);
 
 -- --------------------------------------------------------
 

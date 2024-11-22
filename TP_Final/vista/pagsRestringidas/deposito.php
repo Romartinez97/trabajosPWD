@@ -4,22 +4,7 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "Depósito";
 
-if (!$sesion->estaLogueado()) {
-    header('Location: ../pagsPublicas/login.php');
-    exit();
-} else {
-    $idRolActual = $sesion->getRol();
-    $abmMenuRol = new AbmMenurol();
-    $menusPorRol = $abmMenuRol->listarIdsMenusPorRol($idRolActual);
-
-    $idMenuModificarMenus = 3;
-    if (!in_array($idMenuModificarMenus, $menusPorRol)) {
-        header('Location: ../pagsPublicas/login.php');
-        exit();
-    }
-
-    include "../../estructura/headerSeguro2.php";
-}
+include "../../estructura/headerSeguro.php";
 
 $abmProducto = new AbmProducto();
 $listaProductos = $abmProducto->buscar(null);

@@ -5,7 +5,7 @@ $sesion = new Session();
 $titulo = "El Refugio Literario";
 
 if ($sesion->estaLogueado()) {
-    include "../../estructura/headerSeguro2.php";
+    include "../../estructura/headerSeguro.php";
 } else {
     include "../../estructura/header.php";
 }
