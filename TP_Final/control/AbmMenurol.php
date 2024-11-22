@@ -132,6 +132,18 @@ class AbmMenurol
         return $resp;
     }
 
+    public function modificarMenus($menusPorRol)
+    {
+        foreach ($menusPorRol as $idRol => $menus) {
+            foreach ($menus as $idMenu) {
+                $existe = $this->buscar(['idmenu' => $idMenu, 'idrol' => $idRol]);
+                if (empty($existe)) {
+                    $this->alta(['idmenu' => $idMenu, 'idrol' => $idRol]);
+                }
+            }
+        }
+    }
+
 
 
 }
