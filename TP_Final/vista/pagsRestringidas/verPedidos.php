@@ -101,7 +101,7 @@ $abmcompraitem = new AbmCompraItem();
         <strong>ID Pedido:</strong><?php echo $idpedido ?>
       </div>
       <div class="card-body">
-        <form action="../accion/actualizarEstadoPedido.php" method="post">
+        <form id="formestadopedido">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <p class="mb-0"><strong>Usuario:</strong> <?php echo $usuariopedido; ?></p>
             <?php
@@ -133,16 +133,21 @@ $abmcompraitem = new AbmCompraItem();
           <?php
           echo '<div class="mt-3 d-flex justify-content-end">';
           if ($estado == 1) { // Estado Iniciado
-            echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
-            echo '<input type="submit" class="btn btn-success" name="nuevoEstado" value="Aceptar">';
+            ?>
+            <input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar" onclick="estadocancelar()">
+            <input type="submit" class="btn btn-success" name="nuevoEstado" value="Aceptar" onclick="estadoaceptar()">
+            <?php
           } elseif ($estado == 2) { // Estado Aceptado
-            echo '<input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar">';
-            echo '<input type="submit" class="btn btn-primary" name="nuevoEstado" value="Enviar">';
+            ?>
+            <input type="submit" class="btn btn-danger me-2" name="nuevoEstado" value="Cancelar" onclick="estadocancelar()">
+            <input type="submit" class="btn btn-primary" name="nuevoEstado" value="Enviar" onclick="estadoenviar()">
+          <?php
           }
           echo '</div>';
           ?>
           <input type="hidden" name="idpedido" value="<?php echo $idpedido ?>">
           <input type="hidden" name="estadoActual" value="<?php echo $estado ?>">
+          <input type="hidden" id="nuevoEstado" name="nuevoEstado" value="">
         </form>
       </div>
     </div>
@@ -157,26 +162,36 @@ $abmcompraitem = new AbmCompraItem();
 </html>
 <script>
   $(document).ready(function(){
-    $('#formestadopedido').submit(function(event){
+    $("#formestadopedido").on ("submit",function(event){
       event.preventDefault();
 
       var form = $(this);
-      var url = form.attr('action');
+      var url = '../accion/actualizarEstadoPedido.php';
+
+      // Agregar manualmente el valor del botón que fue presionado
+      var nuevoEstado = $("input[type='submit']:focus").val();  // Se obtiene el valor del botón presionado
+      form.find("input[name='nuevoEstado']").val(nuevoEstado);  // Se pone el valor en el campo hidden
+
       var formData = form.serialize();
+      console.log(formData);
 
       $.ajax({
         type: 'POST',
         url: url,
         data:formData,
         success: function(response) {
-            // Handle success response, e.g., show a success message
-            alert('exito!');
+          const result = JSON.parse(response);
+            if (result.success) {
+              alert('Éxito');
+              
+            } else {
+            alert('Error1: ' + result.message);
+            }
         },
-        error: function(xhr, status, error) {
-            // Handle error response, e.g., show an error message
-            console.error(error);
+        error: function() {
+          alert('Error2');
         }
-      })
-    })
-  })
+      });
+    });
+  });
 </script>
