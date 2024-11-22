@@ -2,6 +2,9 @@
 
 include_once '../../util/funciones.php';
 $datos = data_submitted();
+foreach($datos as $dato => $valor){
+    echo $dato." = ".$valor."<br>";
+}
 $response = [
     "success" => true,
     "message" => "Exito2",
@@ -21,31 +24,27 @@ $param = [
     "idcompra" => $idpedido,
 ];
 $compraestado = $abmcompraestado->buscar($param);
-$compraestado = $compraestado[0];
-$idce = $compraestado->getidcompraestado();
+$objcompraestado = $compraestado[0];
+$idce = $objcompraestado->getidcompraestado();
 $fecha = date("Y-m-d H:i:s");
 
 // Obtener idcompra usando idcompraestado
-$idcompra = $compraestado->getobjcompra()->getidcompra();
+$idcompra = $objcompraestado->getobjcompra()->getidcompra();
 // Obtener idusuario usando idcompra
 $abmcompra = new AbmCompra();
 $compra = $abmcompra->buscar(['idcompra' => $idcompra])[0];
 $idusuario = $compra->getobjusuario()->getidusuario();
 // Obtener datos del usuario usando idusuario
-$datosCliente = $AbmUsuario->datosUsuarioParaCorreo($idusuario);
+$datosCliente = $abmusuario->datosUsuarioParaCorreo($idusuario);
 
 
 switch ($datos["nuevoEstado"]) {
     case "Aceptar":
         $abmcompraestado->actualizarCompra($idce, $idpedido, 2, null, $objcompraestado);
         //--actualizar stock (stock actual - stock comprado)
-        for ($k = 1; $k < $datos["cantlibros"] + 1; $k++) {
-            $abmproducto->actualizarStock($cantlibros, $idprod, $cantprod);
+        
+            $abmproducto->actualizarStockaceptar($datos["cantlibros"], $datos);
 
-            if ($datos["cantlibros"] == 1) {
-                $k = $datos["cantlibros"];
-            }
-        }
         // Enviar correo
         $mail->enviarMail($datosCliente['nombreCliente'], $datosCliente['mailCliente'], 2);
         break;
@@ -61,7 +60,7 @@ switch ($datos["nuevoEstado"]) {
         // Enviar correo
         $mail->enviarMail($datosCliente['nombreCliente'], $datosCliente['mailCliente'], 4);
         //--actualizar stock(stock actual + stock cancelada)
-        $abmproducto->actualizarStock($cantlibros, $idprod, $cantprod);
+        $abmproducto->actualizarStockcancelar($datos["cantlibros"], $datos);
         break;
 
     default:

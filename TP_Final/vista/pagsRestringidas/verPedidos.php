@@ -86,7 +86,7 @@ $abmcompraitem = new AbmCompraItem();
         <strong>ID Pedido:</strong><?php echo $idpedido ?>
       </div>
       <div class="card-body">
-        <form id="formestadopedido">
+        <form action="../accion/actualizarEstadoPedido.php" method="post" id="formestadopedido">
           <div class="d-flex justify-content-between align-items-center mb-3">
             <p class="mb-0"><strong>Usuario:</strong> <?php echo $usuariopedido; ?></p>
             <?php
@@ -132,7 +132,7 @@ $abmcompraitem = new AbmCompraItem();
           ?>
           <input type="hidden" name="idpedido" value="<?php echo $idpedido ?>">
           <input type="hidden" name="estadoActual" value="<?php echo $estado ?>">
-          <input type="hidden" id="nuevoEstado" name="nuevoEstado" value="">
+          <input type="hidden" id="nuevoEstado" name="nuevoEstados" value="">
         </form>
       </div>
     </div>
@@ -145,7 +145,7 @@ $abmcompraitem = new AbmCompraItem();
 </body>
 
 </html>
-<script>
+<script>/*
   $(document).ready(function(){
     $("form").on ("submit",function(event){
       event.preventDefault();
@@ -155,7 +155,7 @@ $abmcompraitem = new AbmCompraItem();
 
       // Agregar manualmente el valor del botón que fue presionado
       var nuevoEstado = $("input[type='submit']:focus").val();  // Se obtiene el valor del botón presionado
-      form.find("input[name='nuevoEstado']").val(nuevoEstado);  // Se pone el valor en el campo hidden
+      form.find("input[name='nuevoEstados']").val(nuevoEstado);  // Se pone el valor en el campo hidden
 
       var formData = form.serialize();
       console.log(formData);
@@ -178,5 +178,5 @@ $abmcompraitem = new AbmCompraItem();
         }
       });
     });
-  });
+  });*/
 </script>

@@ -102,16 +102,46 @@ class AbmProducto
         return $seGeneraronLibros;
     }
 
-    public function actualizarStock($cantlibros, $idprod, $cantprod)
+    public function actualizarStockaceptar($cantlibros, $datos)
     {
         for ($k = 1; $k < $cantlibros + 1; $k++) {
             if ($cantlibros == 1) {
                 $k = "";
             }
-            $param = ["idproducto" => $idprod . $k];
+            echo "k = ".$k."<br>";
+            echo "A cantlibros: ".$cantlibros."<br>";
+            $param = ["idproducto" => $datos["idprod" . $k]];
             $productos = $this->buscar($param);
             $producto = $productos[0];
-            $nuevostock = $producto->getprocantstock() + $cantprod . $k;
+            $nuevostock = $producto->getprocantstock() - $datos["cantprod" . $k];
+            echo "<br>ACEPTAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
+            $paramnuevostock = [
+                'idproducto' => $producto->getidproducto(),
+                'pronombre' => $producto->getpronombre(),
+                'prodetalle' => $producto->getprodetalle(),
+                'procantstock' => $nuevostock,
+                'progenero' => $producto->getprogenero(),
+                'proprecio' => $producto->getproprecio(),
+            ];
+            $this->modificacion($paramnuevostock);
+            echo "D cantlibros: ".$cantlibros."<br>";
+            if ($cantlibros == 1) {
+                $k = $cantlibros;
+            }
+        }
+    }
+
+    public function actualizarStockcancelar($cantlibros, $datos)
+    {
+        for ($k = 1; $k < $cantlibros + 1; $k++) {
+            if ($cantlibros == 1) {
+                $k = "";
+            }
+            $param = ["idproducto" => $datos["idprod" . $k]];
+            $productos = $this->buscar($param);
+            $producto = $productos[0];
+            $nuevostock = $producto->getprocantstock() + $datos["cantprod" . $k];
+            echo "<br>CANCELAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
             $paramnuevostock = [
                 'idproducto' => $producto->getidproducto(),
                 'pronombre' => $producto->getpronombre(),
