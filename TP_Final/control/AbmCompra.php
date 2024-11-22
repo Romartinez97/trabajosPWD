@@ -108,14 +108,14 @@ class AbmCompra
     public function vaciar()
     {
         unset($_SESSION['carrito']);
-        //header('Location: ../pagsPublicas/carrito.php');
+        header('Location: ../pagsPublicas/carrito.php');
     }
 
     public function comprar($cantprodsunicos, $idusuario, $datos)
     {
-        foreach($datos as $dato => $valor){
-            echo $dato." = ".$valor."<br>";
-        }
+        //foreach($datos as $dato => $valor){
+        //    echo $dato." = ".$valor."<br>";
+        //}
         $cofecha = date("Y-m-d H:i:s");
         $abmcompra = new AbmCompra();
         $compras = $abmcompra->buscar(null);

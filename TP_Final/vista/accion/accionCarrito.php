@@ -6,9 +6,9 @@ $titulo = "Acción carrito";
 
 $datos = data_submitted();
 
-foreach($datos as $dato => $valor){
-    echo $dato." = ".$valor."<br>";
-}
+//foreach($datos as $dato => $valor){
+//    echo $dato." = ".$valor."<br>";
+//}
 
 $accion = $datos['accion'];
 $cantprodsunicos = $datos['cantprodsunicos'];
@@ -29,7 +29,7 @@ switch ($accion) {
         $mail->enviarMail($datos['nombreCliente'], $datos['mailCliente'], 1);
         // vacio el carrito
         $AbmCompra->vaciar();
-        //header('Location: ../pagsPublicas/index.php?estado=1');
+        header('Location: ../pagsPublicas/index.php?estado=1');
         exit();
     case 'vaciar':
         $AbmCompra->vaciar();
