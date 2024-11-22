@@ -4,6 +4,11 @@ $sesion = new Session();
 
 $titulo = "Usuarios Logueados";
 
+if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1])) {
+    header('Location: ../pagsPublicas/login.php');
+    exit();
+}
+
 include "../../estructura/headerSeguro.php";
 ?>
 

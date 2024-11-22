@@ -4,6 +4,11 @@ include_once '../../util/funciones.php';
 $sesion = new Session();
 $titulo = "agregar Libro";
 
+if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
+    header('Location: ../pagsPublicas/login.php');
+    exit();
+}
+
 include "../../estructura/headerSeguro.php";
 
 ?>
