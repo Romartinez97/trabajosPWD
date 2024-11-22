@@ -56,15 +56,6 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
 
 include "../../estructura/headerSeguro.php";
 
-
-/*
-$estado = isset($_GET['estado']) ? $_GET['estado'] : '';
-$mensaje = "";
-
-if ($estado == 1) {
-    $mensaje = "Compra realizada con éxito.";
-}
-*/
 ?>
 
 <div id="page-container">
@@ -73,8 +64,8 @@ if ($estado == 1) {
             <p class="display-5">Carrito</p>
         </div>
     </div>
-    <div class="container">
 
+    <div class="container">
         <div class="text-center pb-4">
             <?php if ($mensaje) { ?>
                 <div class="alert alert-warning" role="alert">
@@ -138,7 +129,8 @@ if ($estado == 1) {
                 <div class="text-center">
                     <button type="submit" name="accion" value="vaciar" class="btn btn-dark">Vaciar carrito</button>
                     <?php if ($sesion->estaLogueado()): ?>
-                        <button type="submit" name="accion" value="comprar" class="btn btnAgregar mx-3">Comprar</button>
+                        <button type="submit" name="accion" value="comprar" class="btn btnAgregar mx-3"
+                            id="comprarBtn">Comprar</button>
                     <?php endif; ?>
                 </div>
             </form>
@@ -151,7 +143,6 @@ if ($estado == 1) {
 <?php
 include '../../estructura/footer.php';
 ?>
-
 </body>
 
 </html>

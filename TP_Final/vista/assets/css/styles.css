@@ -1,8 +1,8 @@
-:root{
---verde: #A5B68D;
---beigeOscuro: #ECDFCC;
---beigeClaro: #FCFAEE;
---naranja: #DA8359;
+:root {
+  --verde: #A5B68D;
+  --beigeOscuro: #ECDFCC;
+  --beigeClaro: #FCFAEE;
+  --naranja: #DA8359;
 }
 
 html,
@@ -114,22 +114,24 @@ body {
 }
 
 
-#btnMenu, #tituloPagina{
+#btnMenu,
+#tituloPagina {
   text-decoration: none !important;
   color: var(--beigeClaro) !important;
 }
 
-#tituloPagina{
+#tituloPagina {
   padding-left: 10rem;
   font-size: 1.5rem;
   text-decoration: none;
   color: var(--beigeClaro);
 }
 
-.linkPerfil{
+.linkPerfil {
   color: var(--beigeClaro) !important;
 }
 
-.linkPerfil:hover, #btnMenu:hover{
+.linkPerfil:hover,
+#btnMenu:hover {
   color: var(--beigeOscuro) !important;
 }

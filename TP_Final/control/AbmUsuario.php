@@ -160,4 +160,17 @@ class AbmUsuario
         $seGeneraronUsuarios = $customFaker->generarUsuarios($cantidad, $rol);
         return $seGeneraronUsuarios;
     }
+
+    public function datosUsuarioParaCorreo($idusuario){
+        $usuario = new Usuario();
+        $usuario = $this->buscar(['idusuario' => $idusuario])[0];
+        $nombreCliente = $usuario->getUsnombre();
+        $mailCliente = $usuario->getUsmail();
+        $arregloDatos = [
+            'nombreCliente' => $nombreCliente,
+            'mailCliente' => $mailCliente
+        ];
+
+        return $arregloDatos;
+    }
 }

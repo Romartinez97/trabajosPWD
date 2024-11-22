@@ -92,4 +92,77 @@ class AbmCompra
         $arreglo = $compra->listar($where);
         return $arreglo;
     }
+
+    public function eliminar($idproducto)
+    {
+        error_log("ID producto a eliminar: " . $idproducto);
+        foreach ($_SESSION['carrito'] as $key => $item) {
+            if ($item['idproducto'] == $idproducto) {
+                unset($_SESSION['carrito'][$key]);
+                header('Location: ../pagsPublicas/carrito.php');
+                exit();
+            }
+        }
+    }
+
+    public function vaciar()
+    {
+        unset($_SESSION['carrito']);
+        header('Location: ../pagsPublicas/carrito.php');
+    }
+
+    public function comprar($cantprodsunicos, $proprecio, $cantidad, $idusuario, $idproducto)
+    {
+        $cofecha = date("Y-m-d H:i:s");
+        $abmcompra = new AbmCompra();
+        $compras = $abmcompra->buscar(null);
+        if (count($compras) > 0) {
+            $ultimoid = count($compras) - 1;
+            $nuevoidcompra = $compras[$ultimoid]->getidcompra() + 1;
+        } else {
+            $nuevoidcompra = 1;
+        }
+        $costofinal = 0;
+        for ($j = 1; $j < $cantprodsunicos + 1; $j++) {
+            $costoprod = $cantidad . $j * $proprecio . $j;
+            $costofinal += $costoprod;
+        }
+        $paramcompra = [
+            'idcompra' => $nuevoidcompra,
+            'cofecha' => $cofecha,
+            'costo' => $costofinal,
+            'idusuario' => $idusuario,
+        ];
+        $abmcompra->alta($paramcompra);
+
+        $abmcompraestado = new AbmCompraEstado();
+        $comprasestado = $abmcompraestado->buscar(null);
+        $ultimoidce = count($comprasestado) - 1;
+        $nuevoidce = $comprasestado[$ultimoidce]->getidcompraestado() + 1;
+
+        $paramcompraestado = [
+            'idcompraestado' => $nuevoidce,
+            'idcompra' => $nuevoidcompra,
+            'idcompraestadotipo' => 1,
+            'cefechaini' => $cofecha,
+            'cefechafin' => null,
+        ];
+        $abmcompraestado->alta($paramcompraestado);
+
+        $abmcompraitem = new AbmCompraItem();
+        for ($j = 1; $j < $cantprodsunicos + 1; $j++) {
+            $comprasitem = $abmcompraitem->buscar(null);
+            $ultimoidci = count($comprasitem) - 1;
+            $nuevoidci = $comprasitem[$ultimoidci]->getIdcompraitem() + 1;
+
+            $paramcompraitem = [
+                'idcompraitem' => $nuevoidci,
+                'idproducto' => $idproducto . $j,
+                'idcompra' => $nuevoidcompra,
+                'cicantidad' => $cantidad . $j,
+            ];
+
+            $abmcompraitem->alta($paramcompraitem);
+        }
+    }
 }
