@@ -148,6 +148,9 @@ class AbmCompraestado
             'cefechaini' => $objcompraestado->getcefechaini(),
             'cefechafin' => $fecha,
         ];
+        //foreach($param as $para => $valor){
+        //    echo $para." = ".$valor."<br>";
+        //}
         $this->modificacion($param);
     }
 

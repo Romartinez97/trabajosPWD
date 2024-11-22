@@ -147,7 +147,7 @@ $abmcompraitem = new AbmCompraItem();
 </html>
 <script>
   $(document).ready(function(){
-    $("form").on ("submit",function(event){
+    $("#formestadopedido").on ("submit",function(event){
       event.preventDefault();
 
       var form = $(this);
@@ -165,6 +165,7 @@ $abmcompraitem = new AbmCompraItem();
         url: url,
         data:formData,
         success: function(response) {
+          alert ("estado cambiado");
           const result = JSON.parse(response);
             if (result.success) {
               alert('Éxito');

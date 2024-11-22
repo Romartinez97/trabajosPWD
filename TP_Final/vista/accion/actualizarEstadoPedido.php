@@ -71,4 +71,4 @@ switch ($datos["nuevoEstado"]) {
         break;
 }
 //
-echo json_encode($response);
+header("Location: ../pagsRestringidas/verPedidos.php");
