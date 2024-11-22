@@ -145,7 +145,7 @@ $abmcompraitem = new AbmCompraItem();
 </body>
 
 </html>
-<script>/*
+<script>
   $(document).ready(function(){
     $("form").on ("submit",function(event){
       event.preventDefault();
@@ -178,5 +178,5 @@ $abmcompraitem = new AbmCompraItem();
         }
       });
     });
-  });*/
+  });
 </script>

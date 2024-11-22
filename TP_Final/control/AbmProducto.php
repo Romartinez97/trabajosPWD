@@ -108,13 +108,13 @@ class AbmProducto
             if ($cantlibros == 1) {
                 $k = "";
             }
-            echo "k = ".$k."<br>";
-            echo "A cantlibros: ".$cantlibros."<br>";
+            //echo "k = ".$k."<br>";
+            //echo "A cantlibros: ".$cantlibros."<br>";
             $param = ["idproducto" => $datos["idprod" . $k]];
             $productos = $this->buscar($param);
             $producto = $productos[0];
             $nuevostock = $producto->getprocantstock() - $datos["cantprod" . $k];
-            echo "<br>ACEPTAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
+            //echo "<br>ACEPTAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
             $paramnuevostock = [
                 'idproducto' => $producto->getidproducto(),
                 'pronombre' => $producto->getpronombre(),
@@ -124,7 +124,7 @@ class AbmProducto
                 'proprecio' => $producto->getproprecio(),
             ];
             $this->modificacion($paramnuevostock);
-            echo "D cantlibros: ".$cantlibros."<br>";
+            //echo "D cantlibros: ".$cantlibros."<br>";
             if ($cantlibros == 1) {
                 $k = $cantlibros;
             }
@@ -141,7 +141,7 @@ class AbmProducto
             $productos = $this->buscar($param);
             $producto = $productos[0];
             $nuevostock = $producto->getprocantstock() + $datos["cantprod" . $k];
-            echo "<br>CANCELAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
+            //echo "<br>CANCELAR(stock antes: ".$producto->getprocantstock().", stock despues: ".$nuevostock.")<br>";
             $paramnuevostock = [
                 'idproducto' => $producto->getidproducto(),
                 'pronombre' => $producto->getpronombre(),

@@ -2,9 +2,9 @@
 
 include_once '../../util/funciones.php';
 $datos = data_submitted();
-foreach($datos as $dato => $valor){
-    echo $dato." = ".$valor."<br>";
-}
+//foreach($datos as $dato => $valor){
+//    echo $dato." = ".$valor."<br>";
+//}
 $response = [
     "success" => true,
     "message" => "Exito2",
