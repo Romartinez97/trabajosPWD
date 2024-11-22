@@ -12,6 +12,7 @@ $abmMenuRol = new AbmMenurol();
 
 $roles = $abmRol->buscar(null);
 $menus = $abmMenu->buscar(null);
+$ultimoIndice = count($menus) - 1;
 
 $estado = isset($_GET['estado']) ? $_GET['estado'] : '';
 $mensaje = '';
@@ -38,7 +39,10 @@ if ($estado == 1) {
                     <?php foreach ($roles as $rol): ?>
                         <div class="col mb-3">
                             <h3><?php echo ucfirst($rol->getrodescripcion()); ?></h3>
-                            <?php foreach ($menus as $menu): ?>
+                            <?php foreach ($menus as $indice => $menu):
+                                if ($indice === $ultimoIndice) {
+                                    continue; // Salta el último ítem
+                                } ?>
                                 <div class="form-check">
                                     <input class="form-check-input " type="checkbox"
                                         style="background-color:#83b33f; border-color:#83b33f;"
