@@ -27,7 +27,7 @@ switch ($accion) {
         $datos = $AbmUsuario->datosUsuarioParaCorreo($idusuario);
         $mail = new CustomPHPMailer();
         $mail->enviarMail($datos['nombreCliente'], $datos['mailCliente'], 1);
-        // vacio el carrito
+        //Vacio el carrito
         $AbmCompra->vaciar();
         header('Location: ../pagsPublicas/index.php?estado=1');
         exit();

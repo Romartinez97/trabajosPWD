@@ -3,21 +3,26 @@
 include_once '../../util/funciones.php';
 $datos = data_submitted();
 $response = [
-        "success" => true,
-        "message" => "Exito2",
-    ];
-//foreach($datos as $dato => $valor){
-//    echo"<br>".$dato."=".$valor;
-//}
+    "success" => true,
+    "message" => "Exito2",
+];
+
 $idpedido = $datos["idpedido"];
+
 $abmcompraestado = new AbmCompraEstado();
+$abmproducto = new AbmProducto();
+$abmcompra = new AbmCompra();
+$abmusuario = new AbmUsuario();
+$mail = new CustomPHPMailer();
+
+
+
 $param = [
     "idcompra" => $idpedido,
 ];
 $compraestado = $abmcompraestado->buscar($param);
 $compraestado = $compraestado[0];
 $idce = $compraestado->getidcompraestado();
-date_default_timezone_set("America/Argentina/Buenos_Aires");
 $fecha = date("Y-m-d H:i:s");
 
 // Obtener idcompra usando idcompraestado
@@ -27,111 +32,39 @@ $abmcompra = new AbmCompra();
 $compra = $abmcompra->buscar(['idcompra' => $idcompra])[0];
 $idusuario = $compra->getobjusuario()->getidusuario();
 // Obtener datos del usuario usando idusuario
-$abmusuario = new AbmUsuario();
-$usuario = $abmusuario->buscar(['idusuario' => $idusuario])[0];
-$nombreCliente = $usuario->getUsnombre();
-$mailCliente = $usuario->getUsmail();
+$datosCliente = $AbmUsuario->datosUsuarioParaCorreo($idusuario);
 
 
 switch ($datos["nuevoEstado"]) {
     case "Aceptar":
-        $paramaceptar = [
-            'idcompraestado' => $idce,
-            'idcompra' => $idpedido,
-            'idcompraestadotipo' => 2,
-            'cefechaini' => $compraestado->getcefechaini(),
-            'cefechafin' => null,
-        ];
-        $abmcompraestado->modificacion($paramaceptar);
+        $abmcompraestado->actualizarCompra($idce, $idpedido, 2, null, $objcompraestado);
         //--actualizar stock (stock actual - stock comprado)
-        $abmproducto = new AbmProducto();
         for ($k = 1; $k < $datos["cantlibros"] + 1; $k++) {
-            if ($datos["cantlibros"] == 1) {
-                $k = "";
-            }
-            $param = ["idproducto" => $datos["idprod" . $k]];
-            $productos = $abmproducto->buscar($param);
-            $producto = $productos[0];
-            $nuevostock = $producto->getprocantstock() - $datos["cantprod" . $k];
-            $paramnuevostock = [
-                'idproducto' => $producto->getidproducto(),
-                'pronombre' => $producto->getpronombre(),
-                'prodetalle' => $producto->getprodetalle(),
-                'procantstock' => $nuevostock,
-                'progenero' => $producto->getprogenero(),
-                'proprecio' => $producto->getproprecio(),
-            ];
-            $abmproducto->modificacion($paramnuevostock);
-            //foreach($paramnuevostock as $dato => $valor){
-            //    echo"<br>".$dato."=".$valor;
-            //}
-
-            // Enviar correo
-            $mail = new CustomPHPMailer();
-            $mail->enviarMail($nombreCliente, $mailCliente, 2);
+            $abmproducto->actualizarStock($cantlibros, $idprod, $cantprod);
 
             if ($datos["cantlibros"] == 1) {
                 $k = $datos["cantlibros"];
             }
         }
+        // Enviar correo
+        $mail->enviarMail($datosCliente['nombreCliente'], $datosCliente['mailCliente'], 2);
         break;
+
     case "Enviar":
-        $paramenviar = [
-            'idcompraestado' => $idce,
-            'idcompra' => $idpedido,
-            'idcompraestadotipo' => 3,
-            'cefechaini' => $compraestado->getcefechaini(),
-            'cefechafin' => $fecha,
-        ];
-        $abmcompraestado->modificacion($paramenviar);
-
-        // Enviar correo
-        $mail = new CustomPHPMailer();
-        $mail->enviarMail($nombreCliente, $mailCliente, 3);
-
+        $abmcompraestado->actualizarCompra($idce, $idpedido, 3, $fecha, $objcompraestado);
+        // Enviar correo  
+        $mail->enviarMail($datosCliente['nombreCliente'], $datosCliente['mailCliente'], 3);
         break;
+
     case "Cancelar":
-        $paramcancelar = [
-            'idcompraestado' => $idce,
-            'idcompra' => $idpedido,
-            'idcompraestadotipo' => 4,
-            'cefechaini' => $compraestado->getcefechaini(),
-            'cefechafin' => $fecha,
-        ];
-        $abmcompraestado->modificacion($paramcancelar);
-
+        $abmcompraestado->actualizarCompra($idce, $idpedido, 4, $fecha, $objcompraestado);
         // Enviar correo
-        $mail = new CustomPHPMailer();
-        $mail->enviarMail($nombreCliente, $mailCliente, 4);
-
+        $mail->enviarMail($datosCliente['nombreCliente'], $datosCliente['mailCliente'], 4);
         //--actualizar stock(stock actual + stock cancelada)
-        $abmproducto = new AbmProducto();
-        for ($k = 1; $k < $datos["cantlibros"] + 1; $k++) {
-            if ($datos["cantlibros"] == 1) {
-                $k = "";
-            }
-            $param = ["idproducto" => $datos["idprod" . $k]];
-            $productos = $abmproducto->buscar($param);
-            $producto = $productos[0];
-            $nuevostock = $producto->getprocantstock() + $datos["cantprod" . $k];
-            $paramnuevostock = [
-                'idproducto' => $producto->getidproducto(),
-                'pronombre' => $producto->getpronombre(),
-                'prodetalle' => $producto->getprodetalle(),
-                'procantstock' => $nuevostock,
-                'progenero' => $producto->getprogenero(),
-                'proprecio' => $producto->getproprecio(),
-            ];
-            $abmproducto->modificacion($paramnuevostock);
-            //foreach($paramnuevostock as $dato => $valor){
-            //    echo"<br>".$dato."=".$valor;
-            //}
-            if ($datos["cantlibros"] == 1) {
-                $k = $datos["cantlibros"];
-            }
-        }
+        $abmproducto->actualizarStock($cantlibros, $idprod, $cantprod);
         break;
-        default:
+
+    default:
         $response = [
             "success" => false,
             "message" => "error de estado",
