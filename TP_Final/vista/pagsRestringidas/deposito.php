@@ -32,7 +32,7 @@ $listaProductos = $abmProducto->buscar(null);
             <?php foreach ($listaProductos as $producto) { ?>
                 <div class="pb-4 container">
                     <div class="detLibroListado">
-                        <form method="post" action="../accion/editarProducto.php">
+                        <form method="post" >
                             <input type="hidden" name="idproducto" value="<?php echo $producto->getidproducto(); ?>">
                             <div class="mb-3">
                                 <label for="pronombre" class="form-label h6">Nombre:</label>
@@ -76,3 +76,32 @@ $listaProductos = $abmProducto->buscar(null);
 </body>
 
 </html>
+<script>
+  $(document).ready(function(){
+    $("form").on ("submit",function(event){
+      event.preventDefault();
+
+      var form = $(this);
+      var url = '../accion/editarProducto.php';
+      var formData = form.serialize();
+      console.log(formData);
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data:formData,
+        success: function(response) {
+          const result = JSON.parse(response);
+            if (result.success) {
+              alert('Éxito');
+            } else {
+            alert('Error1: ' + result.message);
+            }
+        },
+        error: function() {
+          alert('Error2');
+        }
+      });
+    });
+  });
+</script>

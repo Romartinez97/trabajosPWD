@@ -74,7 +74,7 @@ if ($estado == 1) {
                             if ($prostock > 0) {
                                 echo '
                                 <div class="card-footer text-center">
-                                <form action="carrito.php" method="post">
+                                <form  method="post">
                                 <input type="hidden" name="idproducto" value="' . $proid . '">
                                 <input type="hidden" name="origen" value="index">
                                 <input type="submit" class="btn btnRegistro" value="Agregar al carrito">
@@ -206,3 +206,32 @@ if ($estado == 1) {
     </body>
 
     </html>
+    <script>
+  $(document).ready(function(){
+    $("form").on ("submit",function(event){
+      event.preventDefault();
+
+      var form = $(this);
+      var url = 'carrito.php';
+      var formData = form.serialize();
+      console.log(formData);
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data:formData,
+        success: function(response) {
+          const result = JSON.parse(response);
+            if (result.success) {
+              alert('Éxito');
+            } else {
+            alert('Error1: ' + result.message);
+            }
+        },
+        error: function() {
+          alert('Error2');
+        }
+      });
+    });
+  });
+</script>

@@ -49,7 +49,7 @@ if (count($usuario) > 0) {
     <div class="container">
         <div class="div-form">
             <p class="h5 pb-4">Modificar datos personales: </p>
-            <form action="../accion/actualizarDatosUsuario.php" method="post">
+            <form method="post">
                 <div class="mb-3">
                     <label for="usnombre" class="form-label">Nombre de Usuario</label>
                     <input type="text" class="form-control" id="usnombre" name="usnombre"
@@ -88,3 +88,32 @@ include '../../estructura/footer.php';
 </body>
 
 </html>
+<script>
+  $(document).ready(function(){
+    $("form").on ("submit",function(event){
+      event.preventDefault();
+
+      var form = $(this);
+      var url = '../accion/actualizarDatosUsuario.php';
+      var formData = form.serialize();
+      console.log(formData);
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data:formData,
+        success: function(response) {
+          const result = JSON.parse(response);
+            if (result.success) {
+              alert('Éxito');
+            } else {
+            alert('Error1: ' + result.message);
+            }
+        },
+        error: function() {
+          alert('Error2');
+        }
+      });
+    });
+  });
+</script>

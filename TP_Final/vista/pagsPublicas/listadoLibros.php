@@ -84,7 +84,7 @@ if ($mensaje == 1) {
                     ?>
                     <img src="../assets/imgs/libros/<?php echo $urlimg; ?>.jpg" alt="" class="imgLibroListado">
                     <div class="detLibroListado">
-                        <form action="carrito.php" method="post">
+                        <form method="post">
                             <p class="h4 txtNaranja"><?php echo $producto->getpronombre(); ?></p>
                             <p class="h5"><?php echo $producto->getprodetalle(); ?></p>
                             <p class="h5"><?php echo "Género: " . $producto->getprogenero(); ?></p>
@@ -120,3 +120,32 @@ include '../../estructura/footer.php';
 </body>
 
 </html>
+<script>
+  $(document).ready(function(){
+    $("form").on ("submit",function(event){
+      event.preventDefault();
+
+      var form = $(this);
+      var url = 'carrito.php';
+      var formData = form.serialize();
+      console.log(formData);
+
+      $.ajax({
+        type: 'POST',
+        url: url,
+        data:formData,
+        success: function(response) {
+          const result = JSON.parse(response);
+            if (result.success) {
+              alert('Éxito');
+            } else {
+            alert('Error1: ' + result.message);
+            }
+        },
+        error: function() {
+          alert('Error2');
+        }
+      });
+    });
+  });
+</script>

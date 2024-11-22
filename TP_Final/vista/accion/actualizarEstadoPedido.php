@@ -26,7 +26,6 @@ $idcompra = $compraestado->getobjcompra()->getidcompra();
 $abmcompra = new AbmCompra();
 $compra = $abmcompra->buscar(['idcompra' => $idcompra])[0];
 $idusuario = $compra->getobjusuario()->getidusuario();
-echo "<script>alert('".json_encode($compra)."');</script>";
 // Obtener datos del usuario usando idusuario
 $abmusuario = new AbmUsuario();
 $usuario = $abmusuario->buscar(['idusuario' => $idusuario])[0];
