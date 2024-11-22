@@ -111,8 +111,11 @@ class AbmCompra
         header('Location: ../pagsPublicas/carrito.php');
     }
 
-    public function comprar($cantprodsunicos, $proprecio, $cantidad, $idusuario, $idproducto)
+    public function comprar($cantprodsunicos, $idusuario, $datos)
     {
+        //foreach($datos as $dato => $valor){
+        //    echo $dato." = ".$valor."<br>";
+        //}
         $cofecha = date("Y-m-d H:i:s");
         $abmcompra = new AbmCompra();
         $compras = $abmcompra->buscar(null);
@@ -124,7 +127,7 @@ class AbmCompra
         }
         $costofinal = 0;
         for ($j = 1; $j < $cantprodsunicos + 1; $j++) {
-            $costoprod = $cantidad . $j * $proprecio . $j;
+            $costoprod = $datos["cantidad" . $j] * $datos["proprecio" . $j];
             $costofinal += $costoprod;
         }
         $paramcompra = [
@@ -157,9 +160,9 @@ class AbmCompra
 
             $paramcompraitem = [
                 'idcompraitem' => $nuevoidci,
-                'idproducto' => $idproducto . $j,
+                'idproducto' => $datos["idproducto" . $j],
                 'idcompra' => $nuevoidcompra,
-                'cicantidad' => $cantidad . $j,
+                'cicantidad' => $datos["cantidad" . $j],
             ];
 
             $abmcompraitem->alta($paramcompraitem);

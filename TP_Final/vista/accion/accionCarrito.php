@@ -6,12 +6,12 @@ $titulo = "Acción carrito";
 
 $datos = data_submitted();
 
+//foreach($datos as $dato => $valor){
+//    echo $dato." = ".$valor."<br>";
+//}
+
 $accion = $datos['accion'];
-$idproducto = $datos['idproducto'];
-$cantprodunicos = $datos['cantprodsunicos'];
-$proprecio = $datos['proprecio'];
-$cantidad = $datos['cantidad'];
-$idproducto = $datos['idproducto'];
+$cantprodsunicos = $datos['cantprodsunicos'];
 $idusuario = $sesion->getUsuario();
 
 $AbmCompra = new AbmCompra();
@@ -22,7 +22,7 @@ switch ($accion) {
         $AbmCompra->eliminar($datos);
         break;
     case 'comprar':
-        $AbmCompra->comprar($cantprodsunicos, $proprecio, $cantidad, $idusuario, $idproducto);
+        $AbmCompra->comprar($cantprodsunicos, $idusuario, $datos);
         //Envío de mail
         $datos = $AbmUsuario->datosUsuarioParaCorreo($idusuario);
         $mail = new CustomPHPMailer();
