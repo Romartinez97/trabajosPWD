@@ -37,7 +37,7 @@ class CustomPHPMailer extends PHPMailer
         $this->Port = 587;
 
         $this->CharSet = 'UTF-8';
-        $this->setFrom('romartinez1997@gmail.com', 'El Rincon Literario');
+        $this->setFrom('romartinez1997@gmail.com', 'El Refugio Literario');
         $this->addAddress($mailCliente, $nombreCliente);
         $this->Subject = $asunto;
         $this->Body = $cuerpo;

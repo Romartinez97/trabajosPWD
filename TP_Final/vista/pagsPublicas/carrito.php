@@ -4,10 +4,6 @@ $titulo = "Carrito";
 
 $sesion = new Session();
 
-if (!$sesion->estaLogueado() || !in_array($sesion->getRol(), [1, 3])) {
-        header('Location: ../pagsPublicas/login.php');
-        exit();
-}
 
 $datos = data_submitted();
 $mensaje = "";
