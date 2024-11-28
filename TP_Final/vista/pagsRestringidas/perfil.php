@@ -1,7 +1,7 @@
 <?php
 include_once '../../util/funciones.php';
 $sesion = new Session();
-$titulo = "Registro";
+$titulo = "Perfil";
 
 include "../../estructura/headerSeguro.php";
 

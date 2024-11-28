@@ -3,10 +3,11 @@ if (session_status() == PHP_SESSION_NONE) {
     $sesion = new Session();
 }
 
-//Verifico si el usuario está logueado
-if (!$sesion->estaLogueado()|| !$sesion->activa()) {
-    header('Location: ../pagsPublicas/login.php');
-    exit();
+//Verifico si el usuario está logueado y si tiene permisos para acceder a la página
+if (!$sesion->esPaginaPublica()) {
+    if (!$sesion->puedeIngresar()) {
+        exit();
+    }
 }
 
 //Para actualizar la cantidad de items del carrito
@@ -91,7 +92,7 @@ $menus = $abmMenuRol->buscar(['idrol' => $idRolActual]);
                     <li class="nav-item active">
                         <a class="nav-link m-1 linkPerfil" href="../accion/cerrarSesion.php">Cerrar sesión</a>
                     </li>
-                    <li class="nav-item"><a href="../pagsPublicas/carrito.php"
+                    <li class="nav-item"><a href="../pagsRestringidas/carrito.php"
                             class="btn rounded-pill btn-dark py-2 px-4 m-1">
                             <i class="fa-solid fa-cart-shopping"></i>
                             <?php if ($totalProductos > 0): ?>

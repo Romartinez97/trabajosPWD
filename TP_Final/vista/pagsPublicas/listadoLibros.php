@@ -121,32 +121,32 @@ include '../../estructura/footer.php';
 
 </html>
 <script>
-  $(document).ready(function(){
-    $("form").on ("submit",function(event){
-      event.preventDefault();
+    $(document).ready(function () {
+        $("form").on("submit", function (event) {
+            event.preventDefault();
 
-      var form = $(this);
-      var url = 'carrito.php';
-      var formData = form.serialize();
-      console.log(formData);
+            var form = $(this);
+            var url = '../pagsRestringidas/carrito.php';
+            var formData = form.serialize();
+            console.log(formData);
 
-      $.ajax({
-        type: 'POST',
-        url: url,
-        data:formData,
-        success: function(response) {
-            alert("agregado al carrito");
-          const result = JSON.parse(response);
-            if (result.success) {
-              alert('Éxito');
-            } else {
-            alert('Error1: ' + result.message);
-            }
-        },
-        error: function() {
-          alert('Error2');
-        }
-      });
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                success: function (response) {
+                    alert("Producto agregado al carrito.");
+                    const result = JSON.parse(response);
+                    if (result.success) {
+                        alert('Éxito');
+                    } else {
+                        alert('Error1: ' + result.message);
+                    }
+                },
+                error: function () {
+                    alert('Error2');
+                }
+            });
+        });
     });
-  });
 </script>

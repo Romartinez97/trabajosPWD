@@ -99,7 +99,7 @@ class AbmCompra
         foreach ($_SESSION['carrito'] as $key => $item) {
             if ($item['idproducto'] == $idproducto) {
                 unset($_SESSION['carrito'][$key]);
-                header('Location: ../pagsPublicas/carrito.php');
+                header('Location: ../pagsRestringidas/carrito.php');
                 exit();
             }
         }
@@ -108,7 +108,7 @@ class AbmCompra
     public function vaciar()
     {
         unset($_SESSION['carrito']);
-        header('Location: ../pagsPublicas/carrito.php');
+        header('Location: ../pagsRestringidas/carrito.php');
     }
 
     public function comprar($cantprodsunicos, $idusuario, $datos)

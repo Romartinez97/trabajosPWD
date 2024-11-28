@@ -44,6 +44,7 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
         $mensaje = 2;
     }
 
+    /*
     if ($origen == "listadoLibros") {
         header("Location: listadoLibros.php?mensaje=" . $mensaje);
     } elseif ($origen == "index") {
@@ -51,7 +52,7 @@ if (!empty($datos)) {//cuando se realiza la compra del carrito da error aca (lin
     } elseif ($origen == "pagGenero") {
         header("Location: pagGenero.php?genero=" . $genero . "&mensaje=" . $mensaje);
     }
-    exit();
+    exit();*/
 }
 
 

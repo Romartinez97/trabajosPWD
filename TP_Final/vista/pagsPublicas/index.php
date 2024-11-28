@@ -212,7 +212,7 @@ if ($estado == 1) {
                 event.preventDefault();
 
                 var form = $(this);
-                var url = 'carrito.php';
+                var url = '../pagsRestringidas/carrito.php';
                 var formData = form.serialize();
                 console.log(formData);
 
@@ -221,7 +221,7 @@ if ($estado == 1) {
                     url: url,
                     data: formData,
                     success: function (response) {
-                        alert("agregado al carrito");
+                        alert("Ítem agregado al carrito");
                         const result = JSON.parse(response);
                         if (result.success) {
                             alert('Éxito');

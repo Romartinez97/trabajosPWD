@@ -122,7 +122,9 @@ INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabi
 (3, 'Depósito', '../pagsRestringidas/deposito.php', NULL, NULL),
 (4, 'Ver Pedidos', '../pagsRestringidas/verPedidos.php', NULL, NULL),
 (5, 'Agregar libro', '../pagsRestringidas/agregarProducto.php', NULL, NULL),
-(6, 'Modificar menús', '../pagsRestringidas/modificarMenus.php', NULL, NULL);
+(6, 'Modificar menús', '../pagsRestringidas/modificarMenus.php', NULL, NULL),
+(7, 'Carrito', '../pagsRestringidas/carrito.php', NULL, NULL),
+(8, 'Perfil', '../pagsRestringidas/perfil.php', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -146,9 +148,15 @@ INSERT INTO `menurol` (`idmenu`, `idrol`) VALUES
 (4, 1),
 (5, 1),
 (6, 1),
+(7, 1),
+(8, 1),
+(7, 2),
+(8, 2),
 (3, 3),
 (4, 3),
-(5, 3);
+(5, 3),
+(7, 3),
+(8, 3);
 
 -- --------------------------------------------------------
 
